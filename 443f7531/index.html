@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>贪婪算法 | Albert&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="python,贪婪算法">
+    <meta name="description" content="贪心算法贪心算法（又称为贪婪算法 Greedy Algorithm）指的是，在对问题求解时，总是做出在当前看来是最好的选择，换句话说，就是通过一步步寻找局部最优解的方式来寻找全局最优解。贪心算法在有最优子结构的问题中尤为有效。最优子结构的意思是局部最优解决定全局最优解。也就是说问题能够分解成子问题来解决，子问题的最优解能递推到最终问题的最优解。 找零问题假设商店老板需要找零n元钱，钱币的面额有10">
+<meta name="keywords" content="python,贪婪算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="贪婪算法">
+<meta property="og:url" content="https://albert-5.github.io/blogs/443f7531/index.html">
+<meta property="og:site_name" content="Albert&#39;s Blog">
+<meta property="og:description" content="贪心算法贪心算法（又称为贪婪算法 Greedy Algorithm）指的是，在对问题求解时，总是做出在当前看来是最好的选择，换句话说，就是通过一步步寻找局部最优解的方式来寻找全局最优解。贪心算法在有最优子结构的问题中尤为有效。最优子结构的意思是局部最优解决定全局最优解。也就是说问题能够分解成子问题来解决，子问题的最优解能递推到最终问题的最优解。 找零问题假设商店老板需要找零n元钱，钱币的面额有10">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-11-06T11:13:40.694Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="贪婪算法">
+<meta name="twitter:description" content="贪心算法贪心算法（又称为贪婪算法 Greedy Algorithm）指的是，在对问题求解时，总是做出在当前看来是最好的选择，换句话说，就是通过一步步寻找局部最优解的方式来寻找全局最优解。贪心算法在有最优子结构的问题中尤为有效。最优子结构的意思是局部最优解决定全局最优解。也就是说问题能够分解成子问题来解决，子问题的最优解能递推到最终问题的最优解。 找零问题假设商店老板需要找零n元钱，钱币的面额有10">
+    
+        <link rel="alternate" type="application/atom+xml" title="Albert&#39;s Blog" href="/blogs/atom.xml">
+    
+    <link rel="shortcut icon" href="/blogs/favicon.ico">
+    <link rel="stylesheet" href="/blogs/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/blogs/img/brand.jpg)">
+      <div class="brand">
+        <a href="/blogs/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blogs/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Albert</h5>
+          <a href="mailto:981287080@qq.com" title="981287080@qq.com" class="mail">981287080@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://https://github.com/Albert-5" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">贪婪算法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">贪婪算法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-11-06T08:19:16.000Z" itemprop="datePublished" class="page-time">
+  2021-11-06
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blogs/categories/算法/">算法</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#贪心算法"><span class="post-toc-text">贪心算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#找零问题"><span class="post-toc-text">找零问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#背包问题"><span class="post-toc-text">背包问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#拼接最大数字问题"><span class="post-toc-text">拼接最大数字问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#扩充：cmp-to-key函数"><span class="post-toc-text">扩充：cmp_to_key函数</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-贪婪算法"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">贪婪算法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-11-06 16:19:16" datetime="2021-11-06T08:19:16.000Z"  itemprop="datePublished">2021-11-06</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blogs/categories/算法/">算法</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h2><p>贪心算法（又称为贪婪算法 Greedy Algorithm）指的是，在对问题求解时，总是做出在当前看来是最好的选择，换句话说，就是通过一步步寻找局部最优解的方式来寻找全局最优解。<br>贪心算法在有最优子结构的问题中尤为有效。最优子结构的意思是<code>局部最优解决定全局最优解</code>。也就是说问题能够分解成子问题来解决，子问题的最优解能递推到最终问题的最优解。</p>
+<h3 id="找零问题"><a href="#找零问题" class="headerlink" title="找零问题"></a>找零问题</h3><p>假设商店老板需要找零<code>n</code>元钱，钱币的面额有100元，50元，20元，5元，1元，如何找零使得所需钱币的数量最少？（并没有面额10的钱币）<br>如果是找零276元呢？$100<em>2+50</em>1+10<em>2+5</em>1+1*1=276$<br>代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># t表示商店有的零钱面额</span></span><br><span class="line">t = [<span class="number">100</span>, <span class="number">50</span>, <span class="number">20</span>, <span class="number">5</span>, <span class="number">1</span>]</span><br><span class="line"><span class="comment"># n表示n元钱</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">change</span><span class="params">(t, n)</span>:</span></span><br><span class="line">    m = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(len(t))]</span><br><span class="line">    <span class="keyword">for</span> j, money <span class="keyword">in</span> enumerate(t):</span><br><span class="line">        m[j] = n // money  <span class="comment"># 除法向下取整</span></span><br><span class="line">        n = n % money  <span class="comment"># 取余</span></span><br><span class="line">    <span class="keyword">return</span> m, n</span><br><span class="line"></span><br><span class="line">print(change(t, <span class="number">276</span>))</span><br></pre></td></tr></table></figure></p>
+<h3 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h3><p>常见的背包问题有整数背包和部分背包问题。<br>一个小偷在某个商店发现有$n$个商品，第$i$个商品价值$V_i$元，重$W_i$千克。他希望拿走的东西价值最高，但是他的背包的容量是有限的，最多只能容纳$W$千克的东西，那么他应该拿走那些东西?<br><code>0-1背包</code>：对于一个商品，小偷要么完整拿走，要么一点不拿，即不能拿走其中一部分，或把一个东西拿走多次。<br><code>分数背包</code>：对于一个商品，小偷可以拿走其中的一部分。<br>很明显，贪心算法对于分数背包问题肯定能得到最优解，首先计算每个物品的单位重量的价值，然后将它们按照降序排列，接着开始拿取物资即可，只要装得下全部的该类商品那么就可以完全装进去；如果不能全部装下就直到背包装满为止。<br>对于这种问题，<code>0-1背包</code>问题肯定装不满，但不排除偶然可以的情况，并不适用于所有的整数背包问题。<br>代码实现：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 每个商品用元组表示（价值，重量）</span></span><br><span class="line">goods = [(<span class="number">60</span>, <span class="number">10</span>), (<span class="number">100</span>, <span class="number">20</span>), (<span class="number">120</span>, <span class="number">30</span>)]</span><br><span class="line">goods.sort(key=<span class="keyword">lambda</span> x: x[<span class="number">0</span>]/x[<span class="number">1</span>], reverse=<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># w表示背包容量</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fractional_backpack</span><span class="params">(goods, w)</span>:</span></span><br><span class="line">    <span class="comment"># m表示拿走的商品数量</span></span><br><span class="line">    total_v = <span class="number">0</span></span><br><span class="line">    m = [<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(len(goods))]</span><br><span class="line">    <span class="keyword">for</span> i, (prize, weight) <span class="keyword">in</span> enumerate(goods):</span><br><span class="line">        <span class="keyword">if</span> w &gt;= weight:</span><br><span class="line">            m[i] = <span class="number">1</span></span><br><span class="line">            total_v += prize</span><br><span class="line">            w -= weight</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            m[i] = w/weight</span><br><span class="line">            total_v += m[i] * prize</span><br><span class="line">            w = <span class="number">0</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> m, total_v</span><br><span class="line"></span><br><span class="line">res1, res2 = fractional_backpack(goods, <span class="number">50</span>)</span><br><span class="line">print(res1, res2)</span><br></pre></td></tr></table></figure></p>
+<p>输出结果如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">==================== RESTART: C:/Users/DELL/Desktop/test.py ====================</span><br><span class="line">[<span class="number">1</span>, <span class="number">1</span>, <span class="number">0.6666666666666666</span>] <span class="number">240.0</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="拼接最大数字问题"><a href="#拼接最大数字问题" class="headerlink" title="拼接最大数字问题"></a>拼接最大数字问题</h3><p>有$n$个非负数，将其按照字符串拼接的方式拼接成一个整数。如何可以使得拼接得到的整数最大？<br>例如：32，94, 128，1286， 6， 71可以拼接得到的最大整数位9471321286128<br>但字符串比较数字大小和整数比较数字大小的方式不一样，字符串比较大小就是首先看第一位，大的就大，可是一个字符长而另一个短如何比较就成了问题。<br>思路如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">'96'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="string">'97'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a+b <span class="keyword">if</span> a&gt;b <span class="keyword">else</span> b+a</span><br><span class="line"><span class="string">'9796'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">'128'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b =<span class="string">'1286'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a+b</span><br><span class="line"><span class="string">'1281286'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b+a</span><br><span class="line"><span class="string">'1286128'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a+b <span class="keyword">if</span> a+b &gt; b+a <span class="keyword">else</span> b+a</span><br><span class="line"><span class="string">'1286128'</span></span><br></pre></td></tr></table></figure></p>
+<p>数字拼接代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> cmp_to_key</span><br><span class="line">li = [<span class="number">30</span>, <span class="number">94</span>, <span class="number">128</span>, <span class="number">1286</span>, <span class="number">8</span>, <span class="number">71</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">xy_cmp</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="comment"># 其中1表示x&gt;y</span></span><br><span class="line">    <span class="keyword">if</span> x+y &lt; y+x:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> x+y &gt; y+x:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">number_join</span><span class="params">(li)</span>:</span></span><br><span class="line">    li = list(map(str, li))</span><br><span class="line">    li.sort(key=cmp_to_key(xy_cmp))</span><br><span class="line">    <span class="keyword">return</span> <span class="string">""</span>.join(li), li</span><br><span class="line"></span><br><span class="line">print(number_join(li))</span><br></pre></td></tr></table></figure></p>
+<p>输出结果如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">==================== RESTART: C:/Users/DELL/Desktop/test.py ====================</span><br><span class="line"><span class="number">94871301286128</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="扩充：cmp-to-key函数"><a href="#扩充：cmp-to-key函数" class="headerlink" title="扩充：cmp_to_key函数"></a>扩充：cmp_to_key函数</h4><p>该函数作用是比较<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lagestnumber</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">    <span class="keyword">from</span> functools <span class="keyword">import</span> cmp_to_key</span><br><span class="line">    temp = list(map(str, nums))</span><br><span class="line">    temp.sort(key=cmp_to_key(<span class="keyword">lambda</span> x, y: int(x+y) - int(y+x)), reverse=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">""</span>.join(temp <span class="keyword">if</span> temp[<span class="number">0</span>] != <span class="string">'0'</span> <span class="keyword">else</span> <span class="string">'0'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>上面这个函数有传入两个参数x,y，当x&gt;y时返回1，等于0时返回0，否则的话返回-1,。它在list的工作原理就是将列表中的元素去两两比较，当cmp返回的是正数时交换两元素。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2021-11-06T11:13:40.694Z" itemprop="dateUpdated">2021-11-06 19:13:40</time>
+</span><br>
+
+
+        
+        版权声明：转载请注明出处<a href="/blogs/443f7531/" target="_blank" rel="external">https://albert-5.github.io/blogs/443f7531/</a>！
+        
+    </div>
+    
+    <footer>
+        <a href="https://albert-5.github.io/blogs">
+            <img src="/blogs/img/avatar.jpg" alt="Albert">
+            Albert
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/贪婪算法/">贪婪算法</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/443f7531/&title=《贪婪算法》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/443f7531/&title=《贪婪算法》 — Albert's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/443f7531/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《贪婪算法》 — Albert's Blog&url=https://albert-5.github.io/blogs/443f7531/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/443f7531/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/blogs/491cb1e0/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">2021年个人总结</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/blogs/18650a07/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">立体视觉计算视差图</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "INtYRvGKRn1Ey9323UGJz7gk-gzGzoHsz",
+            appKey: "sruYEhxHh1hJxo04K2Gd8heb",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blogs/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blogs/img/wechat.jpg" data-alipay="/blogs/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/blogs/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Albert &copy; 2019 - 2022</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/443f7531/&title=《贪婪算法》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/443f7531/&title=《贪婪算法》 — Albert's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/443f7531/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《贪婪算法》 — Albert's Blog&url=https://albert-5.github.io/blogs/443f7531/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/443f7531/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAByElEQVR42u3awY6DMAxFUf7/p1upq5Fo4T6bGEa6WVUlCicsrNjOtuHx+oz97/2cv4PM31YMuXLltrmvw/Fr6f2cX//z9Y/nyJUrd55LghffBt9YHOzkypX7MG56GOJrypUr9/9ySTDi4U+uXLnP5/LkpFM66SRIcuXKneR2CqZX/R6q78qVK7fdlUgDyvH8NHh9WU2uXLkjXF70rL3gGF1Lh+TKlbuam7ZX+QvSZAkFRLly5Q5yeSghgSkNVTz8yZUrd56btkbSbXTKpugsJleu3Iu4taX7BxeOQ+cyuXLlLuCSggUvavD/a59Drly5q7m1F6c90E4TV65cuXdxa9enyEyyjaCtIleu3BFuenGKt2NrFzJQaJMrV+5iLjlYpMROWDwxyJUrd4TLE4/ahYz0GITWlCtX7mIuP4LULk/wzcuVK/dp3LQkuqJgig5GcuXKHeTy0elo8Jbtln4PuXLlXspNAwovqvIGDCm+xJuRK1dum5sGrzTJSa9tnTyVK1fuILdWvCgWOHDQDB7LlSv3Ji6/WpGmWCSJkitX7vO5KYsnOSfvlStX7iC31lLlT2vXNVplEbly5Ta4nYJpCuKBTK5cuTdx3ytQbMNDRJ6tAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/blogs/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/blogs/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/blogs/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    <!-- //引入小心心特效 -->
+    <script src="https://cdn.jsdelivr.net/gh/Sanarous/files@1.151/js/clicklove.js"></script>
+    
+</body>
+</html>

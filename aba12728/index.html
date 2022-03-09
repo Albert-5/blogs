@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Linux学习笔记三 | Albert&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="学习笔记,Linux">
+    <meta name="description" content="Linux学习笔记三环境变量变量准确的说是shell变量，就是计算机中用于记录一个值的符号，而这些符号将用于不同的运算处理中。通常变量与值都是一一对应的关系，可以通过表达式读取它的值并赋值给其他变量，也可以直接指定数值赋值给任意变量。 使用declare命令创建一个变量名为temp的变量。 1declare temp  预声明而已 使用=赋值运算符将变量temp进行赋值，shell中的赋值操作，=">
+<meta name="keywords" content="学习笔记,Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux学习笔记三">
+<meta property="og:url" content="https://albert-5.github.io/blogs/aba12728/index.html">
+<meta property="og:site_name" content="Albert&#39;s Blog">
+<meta property="og:description" content="Linux学习笔记三环境变量变量准确的说是shell变量，就是计算机中用于记录一个值的符号，而这些符号将用于不同的运算处理中。通常变量与值都是一一对应的关系，可以通过表达式读取它的值并赋值给其他变量，也可以直接指定数值赋值给任意变量。 使用declare命令创建一个变量名为temp的变量。 1declare temp  预声明而已 使用=赋值运算符将变量temp进行赋值，shell中的赋值操作，=">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://doc.shiyanlou.com/linux_base/5-2.png">
+<meta property="og:image" content="https://doc.shiyanlou.com/linux_base/5-3.png">
+<meta property="og:updated_time" content="2022-02-07T03:26:42.908Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux学习笔记三">
+<meta name="twitter:description" content="Linux学习笔记三环境变量变量准确的说是shell变量，就是计算机中用于记录一个值的符号，而这些符号将用于不同的运算处理中。通常变量与值都是一一对应的关系，可以通过表达式读取它的值并赋值给其他变量，也可以直接指定数值赋值给任意变量。 使用declare命令创建一个变量名为temp的变量。 1declare temp  预声明而已 使用=赋值运算符将变量temp进行赋值，shell中的赋值操作，=">
+<meta name="twitter:image" content="https://doc.shiyanlou.com/linux_base/5-2.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Albert&#39;s Blog" href="/blogs/atom.xml">
+    
+    <link rel="shortcut icon" href="/blogs/favicon.ico">
+    <link rel="stylesheet" href="/blogs/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/blogs/img/brand.jpg)">
+      <div class="brand">
+        <a href="/blogs/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blogs/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Albert</h5>
+          <a href="mailto:981287080@qq.com" title="981287080@qq.com" class="mail">981287080@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://https://github.com/Albert-5" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Linux学习笔记三</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Linux学习笔记三</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-02-07T03:19:23.000Z" itemprop="datePublished" class="page-time">
+  2022-02-07
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blogs/categories/Linux学习笔记/">Linux学习笔记</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Linux学习笔记三"><span class="post-toc-text">Linux学习笔记三</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境变量"><span class="post-toc-text">环境变量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#变量"><span class="post-toc-text">变量</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#命令的查找路径与顺序"><span class="post-toc-text">命令的查找路径与顺序</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#文件查找"><span class="post-toc-text">文件查找</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#whereis简单快速"><span class="post-toc-text">whereis简单快速</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Linux学习笔记三"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Linux学习笔记三</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-02-07 11:19:23" datetime="2022-02-07T03:19:23.000Z"  itemprop="datePublished">2022-02-07</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blogs/categories/Linux学习笔记/">Linux学习笔记</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Linux学习笔记三"><a href="#Linux学习笔记三" class="headerlink" title="Linux学习笔记三"></a>Linux学习笔记三</h1><h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>准确的说是shell变量，就是计算机中用于记录一个值的符号，而这些符号将用于不同的运算处理中。通常变量与值都是一一对应的关系，可以通过表达式读取它的值并赋值给其他变量，也可以直接指定数值赋值给任意变量。</p>
+<p>使用<code>declare</code>命令创建一个变量名为temp的变量。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">declare temp  预声明而已</span><br></pre></td></tr></table></figure>
+<p>使用<code>=</code>赋值运算符将变量temp进行赋值，shell中的赋值操作，<code>=</code>两边不能有空格</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 正确的赋值</span></span><br><span class="line">temp=nihao</span><br><span class="line"><span class="meta">#</span><span class="bash"> 错误的赋值</span></span><br><span class="line">temp = nihao</span><br></pre></td></tr></table></figure>
+<p>读取变量的值，使用<code>echo</code>和<code>$</code>符号。（$符号用于表示引用一个变量的值）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $temp</span><br></pre></td></tr></table></figure>
+<p><img src="https://doc.shiyanlou.com/linux_base/5-2.png"></p>
+<p>变量类型有三种：</p>
+<ul>
+<li>当前shell进程私有用户自定义变量</li>
+<li>shell本身内建的变量</li>
+<li>从自定义变量导出的环境变量</li>
+</ul>
+<p>与上述相关的命令为：<code>set</code>、<code>env</code>、<code>export</code></p>
+<p><code>set</code>：显示当前shell所有变量，包括其内建环境变量，用户自定义变量以及导出的环境变量；</p>
+<p><code>env</code>：显示与当前用户相关的环境变量，还可以让命令在指定环境中运行；</p>
+<p><code>export</code>：显示从shell中导出成环境变量的变量，也能通过它将自定义变量导出为环境变量。</p>
+<p><img src="https://doc.shiyanlou.com/linux_base/5-3.png"></p>
+<p><strong>永久生效</strong></p>
+<ul>
+<li>永久的：需要修改配置文件，变量永久生效</li>
+<li>临时的：使用<code>export</code>命令行声明即可，变量在关闭shell时失效。</li>
+</ul>
+<p><code>注</code>两个文件<code>/etc/bashrc</code>和<code>/etc/profile</code>分别存放的是shell变量和环境变量。</p>
+<h2 id="命令的查找路径与顺序"><a href="#命令的查找路径与顺序" class="headerlink" title="命令的查找路径与顺序"></a>命令的查找路径与顺序</h2><p><strong>查看<code>PATH</code>环境变量的内容</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $PATH</span><br></pre></td></tr></table></figure>
+<p>创建一个shell脚本文件，可以使用<code>gedit,vim,sublime</code>等工具编辑</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd mydir</span><br><span class="line">touch hello_shell.sh</span><br><span class="line">gedit hello_shell.sh</span><br></pre></td></tr></table></figure>
+<p>在脚本中添加内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">for ((i=0; i&lt;10; i++));do</span><br><span class="line">    echo &quot;hello shell&quot;</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">exit 0</span><br></pre></td></tr></table></figure>
+<p>为文件添加可执行权限，否则执行时会报错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 755 hello_shell.sh</span><br></pre></td></tr></table></figure>
+<p>执行脚本即可</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd sh_filedir</span><br><span class="line">./hello_shell.sh</span><br></pre></td></tr></table></figure>
+<p><strong>创建C语言的hello world程序</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gedit hello_world.c</span><br></pre></td></tr></table></figure>
+<p>添加一下程序：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"hello world!\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>保存后使用<code>gcc</code>生成可执行文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -o hello_world hello_world.c</span><br></pre></td></tr></table></figure>
+<p><strong>变量删除</strong></p>
+<p>使用<code>unset</code>命令删除一个环境变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unset mypath</span><br></pre></td></tr></table></figure>
+<h2 id="文件查找"><a href="#文件查找" class="headerlink" title="文件查找"></a>文件查找</h2><p>与搜索有关的命令有：<code>whereis</code>、<code>which</code>、<code>find</code>、<code>locate</code></p>
+<h3 id="whereis简单快速"><a href="#whereis简单快速" class="headerlink" title="whereis简单快速"></a><code>whereis</code>简单快速</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">whereis who</span><br><span class="line">whereis find</span><br></pre></td></tr></table></figure>
+<p><code>whereis</code>只能搜索二进制文件（-b），man帮助文件（-m）和源代码文件（-s）.</p>
+<p><strong>locate快且全</strong></p>
+<p>使用<code>locate</code>命令查找文件也不会遍历硬盘，它通过查询<code>/var/lib/mlocate/mlocate.db</code>数据库来检索信息。不过这个数据库也不是实时更新的，系统会使用定时任务每天自动执行<code>updatedb</code>命令来更新数据库。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install locate</span><br><span class="line">sudo updatedb</span><br><span class="line"></span><br><span class="line">locate /etc/sh    查找`/etc`下所有以sh开头的文件</span><br></pre></td></tr></table></figure>
+<p>查找某目录下的所有图片：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locate /dir/*.jpg</span><br></pre></td></tr></table></figure>
+<p><strong>which小而精</strong></p>
+<p><code>which</code>本身是shell内建的一个命令，使用该命令来确定是否安装了某个指定的程序，因为它只从<code>PATH</code>环境变量指定的路径去搜索命令并且返回第一个搜索到的结果</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">which man</span><br><span class="line">which nginx</span><br><span class="line">which ping</span><br></pre></td></tr></table></figure>
+<p><strong>find精而细</strong></p>
+<p><code>find</code>不仅可以通过文件类型、文件名进行查找而且还可以根据文件的属性进行搜索，比如文件的时间戳和文件的权限等。</p>
+<p>命令格式为：<code>find [path][option][action]</code></p>
+<p>与时间有关的命令参数：</p>
+<p><code>-atime</code>：最后访问时间</p>
+<p><code>-ctime</code>：最后修改文件内容的时间</p>
+<p><code>-mtime</code>：最后修改文件属性的时间</p>
+<ul>
+<li><code>-mtime n</code>：n为数字，表示为在n天之前的一天之内修改过的文件、</li>
+<li><code>-mtime +n</code>：列出在n天之前被修改过的文件</li>
+<li><code>mtime -n</code>：列出在n天之内被修改过的文件</li>
+<li><code>newer file</code>：file作为一个已经存在的文件，列出比file还要新的文件名</li>
+</ul>
+<p><strong>实现黑客帝国里的数字雨</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install cmatrix</span><br><span class="line">cmatrix   # 运行</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2022-02-07T03:26:42.908Z" itemprop="dateUpdated">2022-02-07 11:26:42</time>
+</span><br>
+
+
+        
+        版权声明：转载请注明出处<a href="/blogs/aba12728/" target="_blank" rel="external">https://albert-5.github.io/blogs/aba12728/</a>！
+        
+    </div>
+    
+    <footer>
+        <a href="https://albert-5.github.io/blogs">
+            <img src="/blogs/img/avatar.jpg" alt="Albert">
+            Albert
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/学习笔记/">学习笔记</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/aba12728/&title=《Linux学习笔记三》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/aba12728/&title=《Linux学习笔记三》 — Albert's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/aba12728/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Linux学习笔记三》 — Albert's Blog&url=https://albert-5.github.io/blogs/aba12728/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/aba12728/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/blogs/e7734b36/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Linux学习笔记四</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/blogs/e9fdb125/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Linux学习笔记二</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "INtYRvGKRn1Ey9323UGJz7gk-gzGzoHsz",
+            appKey: "sruYEhxHh1hJxo04K2Gd8heb",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blogs/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blogs/img/wechat.jpg" data-alipay="/blogs/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/blogs/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Albert &copy; 2019 - 2022</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/aba12728/&title=《Linux学习笔记三》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/aba12728/&title=《Linux学习笔记三》 — Albert's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/aba12728/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Linux学习笔记三》 — Albert's Blog&url=https://albert-5.github.io/blogs/aba12728/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/aba12728/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABuElEQVR42u3aQXKEMAwEQP7/afKALViNJbxUqn3aA4F2Dipr5OMor/NjXT2z9vzwwsXFbXPP2/X5TIV4/63K9i7fhouLu5GbvrpSmK623XknLi7uO7lTf4WLi/ufuGnBSo87uLi47+FWmp/OwaXeXI31ari4uA1uPaV87vcj+S4uLu4S9wzX7Iwj/jouLu4WbtqozJawte/i4uI+zb0POOphRz8WKV31wMXFfQ33HrR25aIev8aFDBcXt81NW5e1kepaAPqlLOLi4j7MrVytmB2l1DcTHHRwcXFHuf0IY1Pzg4uLuz1nWAtE0itWrUKGi4u7hTvbwKSD1co2vjQ/uLi4j3HThmcNXX9z3Pzg4uI+wF0rZHX0Ea6ghOHi4m7kphcvKsSpmBUXF3cnt3K8SNub9PhS+mfh4uJu59ZHJveIzqHnyzO4uLgPc89wdQLQNBDBxcX9FTeNKtauWcyOZnFxcfdw68Wr/zsdysbVFxcXd5SbFpo0zhju1XBxcV/MTZuZyhD3WNsNLi7uT7mVolbpt+qN0+VMGBcX92FuGoP2t5pe68TFxd3J7YSb/QHMVMuEi4s7xP0D3MSaebk0TtsAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/blogs/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/blogs/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/blogs/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    <!-- //引入小心心特效 -->
+    <script src="https://cdn.jsdelivr.net/gh/Sanarous/files@1.151/js/clicklove.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>关于opencv的配置问题 | Albert&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="计算机视觉,opencv">
+    <meta name="description" content="最近学习了计算机视觉的课程，准备用opencv来实现相机标定，但在import cv2时出现了一些问题，看了许多博客都没感觉有啥用。  问题一：vscode中import cv2出现错误在进行调用库文件import cv2时出现提示：ImportError: No module named cv2这种情况是属于没有下载opencv文件或者是安装位置不对导致的，所以去网站下了相关文件，具体链接如下">
+<meta name="keywords" content="计算机视觉,opencv">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于opencv的配置问题">
+<meta property="og:url" content="https://albert-5.github.io/blogs/3ffaec4c/index.html">
+<meta property="og:site_name" content="Albert&#39;s Blog">
+<meta property="og:description" content="最近学习了计算机视觉的课程，准备用opencv来实现相机标定，但在import cv2时出现了一些问题，看了许多博客都没感觉有啥用。  问题一：vscode中import cv2出现错误在进行调用库文件import cv2时出现提示：ImportError: No module named cv2这种情况是属于没有下载opencv文件或者是安装位置不对导致的，所以去网站下了相关文件，具体链接如下">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2021/09/22/H5adfwCocASYu4t.jpg">
+<meta property="og:image" content="https://i.loli.net/2021/09/22/5YKEVWfXxs1jClo.jpg">
+<meta property="og:image" content="https://i.loli.net/2021/09/22/5YKEVWfXxs1jClo.jpg">
+<meta property="og:image" content="https://i.loli.net/2021/09/22/rgEMcBPauhwIkpi.jpg">
+<meta property="og:updated_time" content="2021-09-22T14:16:19.965Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于opencv的配置问题">
+<meta name="twitter:description" content="最近学习了计算机视觉的课程，准备用opencv来实现相机标定，但在import cv2时出现了一些问题，看了许多博客都没感觉有啥用。  问题一：vscode中import cv2出现错误在进行调用库文件import cv2时出现提示：ImportError: No module named cv2这种情况是属于没有下载opencv文件或者是安装位置不对导致的，所以去网站下了相关文件，具体链接如下">
+<meta name="twitter:image" content="https://i.loli.net/2021/09/22/H5adfwCocASYu4t.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="Albert&#39;s Blog" href="/blogs/atom.xml">
+    
+    <link rel="shortcut icon" href="/blogs/favicon.ico">
+    <link rel="stylesheet" href="/blogs/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/blogs/img/brand.jpg)">
+      <div class="brand">
+        <a href="/blogs/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blogs/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Albert</h5>
+          <a href="mailto:981287080@qq.com" title="981287080@qq.com" class="mail">981287080@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://https://github.com/Albert-5" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">关于opencv的配置问题</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">关于opencv的配置问题</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-09-22T12:51:13.000Z" itemprop="datePublished" class="page-time">
+  2021-09-22
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blogs/categories/计算机视觉/">计算机视觉</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题一：vscode中import-cv2出现错误"><span class="post-toc-text">问题一：vscode中import cv2出现错误</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题二：pip-install出现问题"><span class="post-toc-text">问题二：pip install出现问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查找python安装路径的方法"><span class="post-toc-text">查找python安装路径的方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题三：Defaulting-to-user-installation-because-normal-site-packages-is-not-writeable错误提示"><span class="post-toc-text">问题三：Defaulting to user installation because normal site-packages is not writeable错误提示</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果"><span class="post-toc-text">结果</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-关于opencv的配置问题"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">关于opencv的配置问题</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-09-22 20:51:13" datetime="2021-09-22T12:51:13.000Z"  itemprop="datePublished">2021-09-22</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blogs/categories/计算机视觉/">计算机视觉</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>最近学习了计算机视觉的课程，准备用opencv来实现相机标定，但在<code>import cv2</code>时出现了一些问题，看了许多博客都没感觉有啥用。</p>
+</blockquote>
+<h2 id="问题一：vscode中import-cv2出现错误"><a href="#问题一：vscode中import-cv2出现错误" class="headerlink" title="问题一：vscode中import cv2出现错误"></a>问题一：vscode中<code>import cv2</code>出现错误</h2><p>在进行调用库文件<code>import cv2</code>时出现提示：<br><code>ImportError: No module named cv2</code><br>这种情况是属于没有下载<code>opencv</code>文件或者是安装位置不对导致的，所以去网站下了相关文件，具体链接如下：<a src="https://pypi.org/project/opencv-python/#files">opencv点击下载</a><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/09/22/H5adfwCocASYu4t.jpg" alt="opencv.jpg" title>
+                </div>
+                <div class="image-caption">opencv.jpg</div>
+            </figure><br><code>注：</code>下载前确定好自己的<code>python版本</code>，版本不对的话还是会出现错误的。</p>
+<p>紧接着，<code>ctrl + r</code>输入<code>cmd</code>，在命令提示窗内继续输入<code>pip install &lt;刚刚下载下来的文件路径&gt;</code></p>
+<h2 id="问题二：pip-install出现问题"><a href="#问题二：pip-install出现问题" class="headerlink" title="问题二：pip install出现问题"></a>问题二：pip install出现问题</h2><p>上诉操作之后按道理来说是没有任何问题的，但偏偏还是出现了问题：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImportError: DLL load failed：找不到指定模块</span><br></pre></td></tr></table></figure></p>
+<p> 这种情况错误产生的原因是<code>对应模块的文件不完善或者没有对应的模块</code>；<br> 解决方法下载相对应的模块，<a src="https://sourceforge.net/projects/opencvlibrary/files/">点击进入</a>。因为我用的是opencv-python，所以在下载完成后将python文件夹下的python38版本的opencv文件（<code>.pyd</code>结尾的）复制到python的安装目录<code>\python38\Lib\site-packages</code>下,并将其改名为<code>c2.pyd</code>。</p>
+<h3 id="查找python安装路径的方法"><a href="#查找python安装路径的方法" class="headerlink" title="查找python安装路径的方法"></a>查找<code>python安装</code>路径的方法</h3><p> <code>win + r</code>输入<code>cmd</code>进入命令提示窗：<br> <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/09/22/5YKEVWfXxs1jClo.jpg" alt="cmd.jpg" title>
+                </div>
+                <div class="image-caption">cmd.jpg</div>
+            </figure><br> 然后，输入<code>python</code>进入到<code>python</code>交互环境，再输入以下命令：<br> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path</span><br></pre></td></tr></table></figure></p>
+<p> <img src="https://i.loli.net/2021/09/22/5YKEVWfXxs1jClo.jpg" alt="cmd.jpg"><br> 这样就能看到相对应的<code>site-packages</code>文件夹。</p>
+<h2 id="问题三：Defaulting-to-user-installation-because-normal-site-packages-is-not-writeable错误提示"><a href="#问题三：Defaulting-to-user-installation-because-normal-site-packages-is-not-writeable错误提示" class="headerlink" title="问题三：Defaulting to user installation because normal site-packages is not writeable错误提示"></a>问题三：Defaulting to user installation because normal site-packages is not writeable错误提示</h2><p> 从网上看了很多帖子，方法也都实验过了但都无济于事，先对一些方法做一些集锦：</p>
+<ol>
+<li>使用<code>user</code>权限<br><code>pip install --user &lt;package name&gt;</code></li>
+<li>更改文件夹权限，让<code>packages</code>有权限写入；</li>
+<li><p>找对<code>python</code>文件夹，确保将其加入到环境变量中，环境变量的查看以及操作方法如下：<br>在桌面右键<code>此电脑</code>，点击<code>属性</code>，选择<code>高级系统设置</code>,编辑并下列python文件夹加入到<code>path</code>，<code>...\python38\Scripts\</code>、<code>...\python38\</code>、<code>...\python38\Lib</code>。</p>
+<p><code>注：</code>我的问题在第二步将<code>.pyd</code>文件添加到<code>site-packages</code>下就解决了。</p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/09/22/rgEMcBPauhwIkpi.jpg" alt="测试结果.jpg" title>
+                </div>
+                <div class="image-caption">测试结果.jpg</div>
+            </figure>
+<p>显示的图太大了，不太好展示。</p>
+<center>完结！</center></li>
+</ol>
+<div><strong>🚩推荐阅读</strong>（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）<ul><li><a href="https://albert-5.github.io/blogs/4b5e616e/">Camera-calibration</a></li></ul></div>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2021-09-22T14:16:19.965Z" itemprop="dateUpdated">2021-09-22 22:16:19</time>
+</span><br>
+
+
+        
+        版权声明：转载请注明出处<a href="/blogs/3ffaec4c/" target="_blank" rel="external">https://albert-5.github.io/blogs/3ffaec4c/</a>！
+        
+    </div>
+    
+    <footer>
+        <a href="https://albert-5.github.io/blogs">
+            <img src="/blogs/img/avatar.jpg" alt="Albert">
+            Albert
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/opencv/">opencv</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/计算机视觉/">计算机视觉</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/3ffaec4c/&title=《关于opencv的配置问题》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/3ffaec4c/&title=《关于opencv的配置问题》 — Albert's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/3ffaec4c/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《关于opencv的配置问题》 — Albert's Blog&url=https://albert-5.github.io/blogs/3ffaec4c/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/3ffaec4c/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/blogs/78ff7d86/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">c语言短路求值</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/blogs/a91eaa72/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Git学习笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "INtYRvGKRn1Ey9323UGJz7gk-gzGzoHsz",
+            appKey: "sruYEhxHh1hJxo04K2Gd8heb",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blogs/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blogs/img/wechat.jpg" data-alipay="/blogs/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/blogs/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Albert &copy; 2019 - 2022</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/3ffaec4c/&title=《关于opencv的配置问题》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/3ffaec4c/&title=《关于opencv的配置问题》 — Albert's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/3ffaec4c/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《关于opencv的配置问题》 — Albert's Blog&url=https://albert-5.github.io/blogs/3ffaec4c/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/3ffaec4c/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxUlEQVR42u3aSW7DMBAEQP//08o5SKR0c5EUoHgyYNkqXgYzTX4+8TpOVv7t2X9+dixcXNxp7nG5fj7TbuOMmGz4ly3h4uLeyL0uNPlr2t/WxQ4XF/fF3KRBaQsZLi7u/+XmDUq+GVxc3Hdyx6KNZDSaCVZwcXGf4uYp5b7PW/JdXFzcIe5RrlXEsYWLi3sPNy8o1w3H7mAFFxf3Tm5eqq4Hm+tjlTxO/eN/cHFxb+SOFaazzeThSL7tb4UMFxd3MzcpQG1suioAPX0vLi7uQ9y2oWkbl/a9uLi4d3KTh9p2Jw8+pmY1XFzcW7jtGJO/fkshw8XFfYibBBnXr8/rTxSd4OLiPsRtm5h2NMo3WRyy4uLiLuUmg0de2mbi0bGIFhcXdx+3vSA1dtzStkrL7pHh4uJOcPNLWm1gOlMQ60NWXFzcpdy8qK06ZB0LXnFxcXdzj3K1V7LGAtZ6MsPFxV3KbaOKsZI3U0AHN4OLizvNTYpXe4lq/reDjQ4uLu5Sbl5oZiLRxbMaLi7uK7ntMHMdmxYTGy4u7su4u6PVP4S4uLg3cvMr1+2x6FjTU58J4+LiLuXWpaQ8hsmfnxmZcHFxF3G/AB98w0JkpLscAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/blogs/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/blogs/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/blogs/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    <!-- //引入小心心特效 -->
+    <script src="https://cdn.jsdelivr.net/gh/Sanarous/files@1.151/js/clicklove.js"></script>
+    
+</body>
+</html>

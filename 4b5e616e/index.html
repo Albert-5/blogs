@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Camera-calibration | Albert&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="相机标定,计算机视觉">
+    <meta name="description" content="相机标定一、前提准备1、伪硬件   名称  数量     标定板8×10  1   手机  1   待标定照片  12   支架  1    手机固定在支架上，调整标定板位置，对其从不同角度进行拍照，所拍摄照片为11张。保存到文件夹后对其进行依次命名：*.jpg(如：1.jpg) 2、软件&amp;nbsp; 使用的编程语言：python&amp;nbsp; 工具包：opencv, numpy, glob 二、寻">
+<meta name="keywords" content="相机标定,计算机视觉">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Camera-calibration">
+<meta property="og:url" content="https://albert-5.github.io/blogs/4b5e616e/index.html">
+<meta property="og:site_name" content="Albert&#39;s Blog">
+<meta property="og:description" content="相机标定一、前提准备1、伪硬件   名称  数量     标定板8×10  1   手机  1   待标定照片  12   支架  1    手机固定在支架上，调整标定板位置，对其从不同角度进行拍照，所拍摄照片为11张。保存到文件夹后对其进行依次命名：*.jpg(如：1.jpg) 2、软件&amp;nbsp; 使用的编程语言：python&amp;nbsp; 工具包：opencv, numpy, glob 二、寻">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2021/10/09/SBd7WJi2rutq91Y.png">
+<meta property="og:image" content="https://i.loli.net/2021/10/09/ATCJK8ugYMjIZP6.png">
+<meta property="og:image" content="https://i.loli.net/2021/10/09/GyxJ2MjuhtoHRcC.png">
+<meta property="og:image" content="https://i.loli.net/2021/10/09/2SZNi8FDw17EYMy.png">
+<meta property="og:image" content="https://i.loli.net/2021/10/09/2RsQx96kDOi4Ur3.png">
+<meta property="og:image" content="https://i.loli.net/2021/10/09/7HoqQT4cuKAYSLF.png">
+<meta property="og:image" content="https://i.loli.net/2021/10/09/MkEvSUpTt7Zobjm.png">
+<meta property="og:updated_time" content="2021-11-06T08:22:24.375Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Camera-calibration">
+<meta name="twitter:description" content="相机标定一、前提准备1、伪硬件   名称  数量     标定板8×10  1   手机  1   待标定照片  12   支架  1    手机固定在支架上，调整标定板位置，对其从不同角度进行拍照，所拍摄照片为11张。保存到文件夹后对其进行依次命名：*.jpg(如：1.jpg) 2、软件&amp;nbsp; 使用的编程语言：python&amp;nbsp; 工具包：opencv, numpy, glob 二、寻">
+<meta name="twitter:image" content="https://i.loli.net/2021/10/09/SBd7WJi2rutq91Y.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Albert&#39;s Blog" href="/blogs/atom.xml">
+    
+    <link rel="shortcut icon" href="/blogs/favicon.ico">
+    <link rel="stylesheet" href="/blogs/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/blogs/img/brand.jpg)">
+      <div class="brand">
+        <a href="/blogs/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blogs/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Albert</h5>
+          <a href="mailto:981287080@qq.com" title="981287080@qq.com" class="mail">981287080@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://https://github.com/Albert-5" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Camera-calibration</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Camera-calibration</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-10-09T07:20:19.000Z" itemprop="datePublished" class="page-time">
+  2021-10-09
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blogs/categories/计算机视觉/">计算机视觉</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#相机标定"><span class="post-toc-text">相机标定</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、前提准备"><span class="post-toc-text">一、前提准备</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、伪硬件"><span class="post-toc-text">1、伪硬件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2、软件"><span class="post-toc-text">2、软件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、寻找标定棋盘并进行标定"><span class="post-toc-text">二、寻找标定棋盘并进行标定</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、python-opencv-的方案"><span class="post-toc-text">1、python + opencv 的方案</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2、具体实施"><span class="post-toc-text">2、具体实施</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3、相机相关参数"><span class="post-toc-text">3、相机相关参数</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Camera-calibration"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Camera-calibration</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-10-09 15:20:19" datetime="2021-10-09T07:20:19.000Z"  itemprop="datePublished">2021-10-09</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blogs/categories/计算机视觉/">计算机视觉</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="相机标定"><a href="#相机标定" class="headerlink" title="相机标定"></a>相机标定</h1><h2 id="一、前提准备"><a href="#一、前提准备" class="headerlink" title="一、前提准备"></a>一、前提准备</h2><h3 id="1、伪硬件"><a href="#1、伪硬件" class="headerlink" title="1、伪硬件"></a>1、伪硬件</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th></th>
+<th style="text-align:center">数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">标定板8×10</td>
+<td></td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">手机</td>
+<td></td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">待标定照片</td>
+<td></td>
+<td style="text-align:center">12</td>
+</tr>
+<tr>
+<td style="text-align:center">支架</td>
+<td></td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<p>手机固定在支架上，调整标定板位置，对其从不同角度进行拍照，所拍摄照片为11张。保存到文件夹后对其进行依次命名：*.jpg(如：1.jpg)</p>
+<h3 id="2、软件"><a href="#2、软件" class="headerlink" title="2、软件"></a>2、软件</h3><p>&nbsp; 使用的编程语言：<code>python</code><br>&nbsp; 工具包：<code>opencv</code>, <code>numpy</code>, <code>glob</code></p>
+<h2 id="二、寻找标定棋盘并进行标定"><a href="#二、寻找标定棋盘并进行标定" class="headerlink" title="二、寻找标定棋盘并进行标定"></a>二、寻找标定棋盘并进行标定</h2><h3 id="1、python-opencv-的方案"><a href="#1、python-opencv-的方案" class="headerlink" title="1、python + opencv 的方案"></a>1、<code>python + opencv</code> 的方案</h3><p> &nbsp;&nbsp;利用<code>opencv</code>寻找棋盘，所用到的函数如下：</p>
+<ul>
+<li>&nbsp;<code>cv2.TERM_CRITERIA_MAX_ITER | cv2.TERM_CRITERIA_EPS</code>：设置寻找亚像素点的终止迭代规则，前者为在指定迭代次数后停止算法，后者为要求的精度，在相机标定时才用的最大迭代次数为30次，最大精度为0.001。</li>
+<li>&nbsp;<code>images = glob.glob(r&#39;G:\biaoding\*.jpg&#39;)</code>：glob函数能够返回所有匹配到的文件路径列表，用来读取待标定的棋盘图像。</li>
+<li>&nbsp; <code>cv2.findChessboardCorners</code>：该函数用来找到棋盘，其返回值为角点，且会按一定顺序排列。</li>
+<li>&nbsp; <code>cv2.cornerSubPix</code>：在上述找到角点的前提下寻找亚像素点，目的是为了增强检测角点的精度。</li>
+<li>&nbsp; <code>cv2.drawChessboardCorners</code>：绘制找到的角点</li>
+<li>&nbsp; <code>retv, mtx, dist, rvecs, tvecs = cv2.calibrateCamera</code>：相机标定函数，经过以上的计算以及找角点后进行相机标定，返回值为相机矩阵，畸变系数，旋转以及变换向量。</li>
+</ul>
+<h3 id="2、具体实施"><a href="#2、具体实施" class="headerlink" title="2、具体实施"></a>2、具体实施</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> glob</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 采用循环找取亚像素点的参数，最大迭代次数采用30次，精度为0.001，两者同时满足时停止迭代</span></span><br><span class="line">criteria = (cv2.TERM_CRITERIA_MAX_ITER | cv2.TERM_CRITERIA_EPS, <span class="number">30</span>, <span class="number">0.001</span>)</span><br><span class="line"><span class="comment"># 所采用的棋盘规格8×10</span></span><br><span class="line">objp = np.zeros((<span class="number">7</span> * <span class="number">9</span>, <span class="number">3</span>), np.float32)</span><br><span class="line">objp[:, :<span class="number">2</span>] = np.mgrid[<span class="number">0</span>:<span class="number">9</span>, <span class="number">0</span>:<span class="number">7</span>].T.reshape(<span class="number">-1</span>, <span class="number">2</span>) <span class="comment"># 将世界坐标系建在标定板上，所有点的Z坐标全部为0</span></span><br><span class="line">obj_points = [] <span class="comment"># 坐标系中的三维点</span></span><br><span class="line">img_points = [] <span class="comment"># 图像平面中的二维点</span></span><br><span class="line"><span class="comment"># 从文件中依次读取照片</span></span><br><span class="line">images = glob.glob(<span class="string">r'G:\biaoding\*.jpg'</span>)</span><br><span class="line"><span class="keyword">for</span> fname <span class="keyword">in</span> images:</span><br><span class="line">  img = cv2.imread(fname)</span><br><span class="line">  cv2.namedWindow(<span class="string">'img'</span>, <span class="number">0</span>)</span><br><span class="line">  cv2.resizeWindow(<span class="string">'img'</span>, <span class="number">600</span>, <span class="number">600</span>)</span><br><span class="line">  cv2.imshow(<span class="string">'img'</span>,img)</span><br><span class="line">  cv2.waitKey()</span><br><span class="line">  <span class="comment"># cv2.destroyAllWindows()</span></span><br><span class="line">  gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</span><br><span class="line">  size = gray.shape[::<span class="number">-1</span>]</span><br><span class="line">  <span class="comment"># print(size)</span></span><br><span class="line">  <span class="comment"># findchessboardcorner函数里寻找棋盘图的内角点</span></span><br><span class="line">  retv, corners = cv2.findChessboardCorners(gray, (<span class="number">7</span>, <span class="number">9</span>), <span class="literal">None</span>)</span><br><span class="line">  print(retv)</span><br><span class="line">  <span class="keyword">if</span> retv:</span><br><span class="line">    obj_points.append(objp)</span><br><span class="line">    <span class="comment"># 在原角点的基础上寻找亚像素角点</span></span><br><span class="line">    corners2 = cv2.cornerSubPix(gray, corners, (<span class="number">6</span>, <span class="number">6</span>), (<span class="number">-1</span>, <span class="number">-1</span>), criteria) </span><br><span class="line">    print(corners2)</span><br><span class="line">    <span class="keyword">if</span> [corners2]:</span><br><span class="line">      img_points.append(corners2)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      img_points.append(corners)</span><br><span class="line">    <span class="comment"># 绘制找到的角点</span></span><br><span class="line">    cv2.drawChessboardCorners(img, (<span class="number">7</span>, <span class="number">9</span>), corners, retv)</span><br><span class="line">    cv2.namedWindow(<span class="string">'img'</span>, <span class="number">0</span>)</span><br><span class="line">    cv2.resizeWindow(<span class="string">'img'</span>, <span class="number">600</span>, <span class="number">600</span>)</span><br><span class="line">    cv2.imshow(<span class="string">'img'</span>, img)</span><br><span class="line">    cv2.waitKey(<span class="number">20000</span>)</span><br></pre></td></tr></table></figure>
+<p>  &nbsp; 待标定图像如下所示：<br>  <img src="https://i.loli.net/2021/10/09/SBd7WJi2rutq91Y.png" alt="标定图像.png"></p>
+<p>找到棋牌并进行标定后的图片如下图所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">标定前</th>
+<th></th>
+<th style="text-align:center">标定后</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://i.loli.net/2021/10/09/ATCJK8ugYMjIZP6.png" alt="4.png"></td>
+<td></td>
+<td style="text-align:center"><img src="https://i.loli.net/2021/10/09/GyxJ2MjuhtoHRcC.png" alt="4（4）.png"></td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="https://i.loli.net/2021/10/09/2SZNi8FDw17EYMy.png" alt="5.png"></td>
+<td></td>
+<td style="text-align:center"><img src="https://i.loli.net/2021/10/09/2RsQx96kDOi4Ur3.png" alt="5（5）.png"></td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="https://i.loli.net/2021/10/09/7HoqQT4cuKAYSLF.png" alt="6.png"></td>
+<td></td>
+<td style="text-align:center"><img src="https://i.loli.net/2021/10/09/MkEvSUpTt7Zobjm.png" alt="6（6）.png"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="3、相机相关参数"><a href="#3、相机相关参数" class="headerlink" title="3、相机相关参数"></a>3、相机相关参数</h3><p>相机矩阵Mtx：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="number">1.86761254e+04</span> <span class="number">0.00000000e+00</span> <span class="number">4.09207342e+02</span>]</span><br><span class="line">[<span class="number">0.00000000e+00</span> <span class="number">1.77781655e+03</span> <span class="number">4.23180100e+02</span>]</span><br><span class="line">[<span class="number">0.00000000e+00</span> <span class="number">0.00000000e+00</span> <span class="number">1.00000000e+00</span>]]</span><br></pre></td></tr></table></figure>
+<p>畸变系数dist:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dist:</span><br><span class="line"> [[<span class="number">-0.05541607</span> <span class="number">-0.17312714</span>  <span class="number">0.0776916</span>  <span class="number">-0.0767596</span>   <span class="number">0.07245637</span>]]</span><br></pre></td></tr></table></figure>
+<p> 外参旋转向量:</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[[ <span class="number">2.10761526</span>],</span><br><span class="line"> [<span class="number">-0.5901612</span> ],</span><br><span class="line"> [<span class="number">-2.10187724</span>]]</span><br></pre></td></tr></table></figure>
+<p>外参平移向量:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[[ <span class="number">1.32373017</span>],</span><br><span class="line"> [<span class="number">16.72137644</span>],</span><br><span class="line"> [<span class="number">57.99935184</span>]]</span><br></pre></td></tr></table></figure>
+<div><strong>🚩推荐阅读</strong>（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）<ul><li><a href="https://albert-5.github.io/blogs/3ffaec4c/">关于opencv的配置问题</a></li></ul></div>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2021-11-06T08:22:24.375Z" itemprop="dateUpdated">2021-11-06 16:22:24</time>
+</span><br>
+
+
+        
+        版权声明：转载请注明出处<a href="/blogs/4b5e616e/" target="_blank" rel="external">https://albert-5.github.io/blogs/4b5e616e/</a>！
+        
+    </div>
+    
+    <footer>
+        <a href="https://albert-5.github.io/blogs">
+            <img src="/blogs/img/avatar.jpg" alt="Albert">
+            Albert
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/相机标定/">相机标定</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/计算机视觉/">计算机视觉</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/4b5e616e/&title=《Camera-calibration》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/4b5e616e/&title=《Camera-calibration》 — Albert's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/4b5e616e/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Camera-calibration》 — Albert's Blog&url=https://albert-5.github.io/blogs/4b5e616e/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/4b5e616e/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/blogs/cb33e42c/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">排序算法之选择排序</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/blogs/78ff7d86/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">c语言短路求值</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "INtYRvGKRn1Ey9323UGJz7gk-gzGzoHsz",
+            appKey: "sruYEhxHh1hJxo04K2Gd8heb",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blogs/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blogs/img/wechat.jpg" data-alipay="/blogs/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/blogs/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Albert &copy; 2019 - 2022</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/4b5e616e/&title=《Camera-calibration》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/4b5e616e/&title=《Camera-calibration》 — Albert's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/4b5e616e/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Camera-calibration》 — Albert's Blog&url=https://albert-5.github.io/blogs/4b5e616e/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/4b5e616e/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwklEQVR42u3ay2rDQAwFUP//T6cQuiiUuFcajW3KmVWgiea4C6GHjyM+r/f5+Tk5v3/7KebwwcXFXeauXHkeoRr//Du4uLjXc/PklaSk5OJmssPFxX0YN/lrkvJwcXH/E/f8sqRwSaLh4uI+h1ttTj5FqDZLG3s1XFzcBW5vYDr7eft8FxcXd2grkSSUaoPUW8l8/woXF/cSbnJNMhhNyqCpdggXF3c3d7ZFqZYv1UfCxcW9hlstVpJlavKo1VHIH0kNFxd3G7c6EOk9Ri9RDsxvcHFxl7krgWZxERoXF3eU2ytKesOOPCEWGh5cXNxt3GrVk4PyyIXJLi4u7mZuEvr85YkqfWWAgouL+wTuSrmTFC7NFztwcXE3c6vD0KnVafNfgIuLewk3T2T59b3v54UULi7ubu76ErT3AHk6w8XFvYubX/ZqnWPh4OLi3sXtXVxNf9WhyZHscnFxcTdwVxarvZe68pjVcQwuLu4sN0le+dI0SZTVVgoXF/cu7tTwojCpLS5jcHFxn8nNy5pqi1WIiYuL+0huXpTkQ9jCMgYXF/dCbrVR6a1a86JnYCyCi4u7wJ0amPZeyKg2Ubi4uJu5X+V/JQsVJSGlAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/blogs/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/blogs/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/blogs/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    <!-- //引入小心心特效 -->
+    <script src="https://cdn.jsdelivr.net/gh/Sanarous/files@1.151/js/clicklove.js"></script>
+    
+</body>
+</html>

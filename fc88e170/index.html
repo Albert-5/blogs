@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Linux学习笔记六 | Albert&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="学习笔记,Linux">
+    <meta name="description" content="Linux学习笔记六Linux任务计划crontab周期性的清理/tmp、周期性的去备份一次数据库、周期性的分析日志等，因此需要利用Linux系统的计划工具–crontab（用于设置周期性被执行的命令）。 crontab命令从输入设备读取指令，并将其存放于crontab文件中，以供之后读取和执行。通常情况下，crontab存储的指令被守护进程激活，crond为其守护进程，crond常常在后台运行，">
+<meta name="keywords" content="学习笔记,Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux学习笔记六">
+<meta property="og:url" content="https://albert-5.github.io/blogs/fc88e170/index.html">
+<meta property="og:site_name" content="Albert&#39;s Blog">
+<meta property="og:description" content="Linux学习笔记六Linux任务计划crontab周期性的清理/tmp、周期性的去备份一次数据库、周期性的分析日志等，因此需要利用Linux系统的计划工具–crontab（用于设置周期性被执行的命令）。 crontab命令从输入设备读取指令，并将其存放于crontab文件中，以供之后读取和执行。通常情况下，crontab存储的指令被守护进程激活，crond为其守护进程，crond常常在后台运行，">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2022-02-14T07:01:00.456Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux学习笔记六">
+<meta name="twitter:description" content="Linux学习笔记六Linux任务计划crontab周期性的清理/tmp、周期性的去备份一次数据库、周期性的分析日志等，因此需要利用Linux系统的计划工具–crontab（用于设置周期性被执行的命令）。 crontab命令从输入设备读取指令，并将其存放于crontab文件中，以供之后读取和执行。通常情况下，crontab存储的指令被守护进程激活，crond为其守护进程，crond常常在后台运行，">
+    
+        <link rel="alternate" type="application/atom+xml" title="Albert&#39;s Blog" href="/blogs/atom.xml">
+    
+    <link rel="shortcut icon" href="/blogs/favicon.ico">
+    <link rel="stylesheet" href="/blogs/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/blogs/img/brand.jpg)">
+      <div class="brand">
+        <a href="/blogs/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blogs/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Albert</h5>
+          <a href="mailto:981287080@qq.com" title="981287080@qq.com" class="mail">981287080@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://https://github.com/Albert-5" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Linux学习笔记六</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Linux学习笔记六</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-02-13T02:22:46.000Z" itemprop="datePublished" class="page-time">
+  2022-02-13
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blogs/categories/Linux学习笔记/">Linux学习笔记</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Linux学习笔记六"><span class="post-toc-text">Linux学习笔记六</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Linux任务计划crontab"><span class="post-toc-text">Linux任务计划crontab</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#命令执行顺序控制和管道"><span class="post-toc-text">命令执行顺序控制和管道</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#顺序执行多条命令"><span class="post-toc-text">顺序执行多条命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#有选择的执行命令"><span class="post-toc-text">有选择的执行命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#管道"><span class="post-toc-text">管道</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cut命令打印输出文件"><span class="post-toc-text">cut命令打印输出文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#grep命令–查找"><span class="post-toc-text">grep命令–查找</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#wc命令"><span class="post-toc-text">wc命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sort排序"><span class="post-toc-text">sort排序</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Linux学习笔记六"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Linux学习笔记六</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-02-13 10:22:46" datetime="2022-02-13T02:22:46.000Z"  itemprop="datePublished">2022-02-13</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blogs/categories/Linux学习笔记/">Linux学习笔记</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Linux学习笔记六"><a href="#Linux学习笔记六" class="headerlink" title="Linux学习笔记六"></a>Linux学习笔记六</h1><h2 id="Linux任务计划crontab"><a href="#Linux任务计划crontab" class="headerlink" title="Linux任务计划crontab"></a>Linux任务计划crontab</h2><p>周期性的清理<code>/tmp</code>、周期性的去备份一次数据库、周期性的分析日志等，因此需要利用Linux系统的计划工具–crontab（用于设置周期性被执行的命令）。</p>
+<p>crontab命令从输入设备读取指令，并将其存放于crontab文件中，以供之后读取和执行。通常情况下，crontab存储的指令被守护进程激活，crond为其守护进程，crond常常在后台运行，每一分钟会检查一次是否由预定的作业需要执行。</p>
+<p>crontab指令格式：</p>
+<blockquote>
+<p># Example of job definition: </p>
+<p>#.—————- minute (0 - 59) </p>
+<p>#|  .————- hour (0 - 23) </p>
+<p>#|  |  .———- day of month (1 - 31) </p>
+<p>#|  |  |  .——- month (1 - 12) OR jan,feb,mar,apr … </p>
+<p>#|  |  |  |  .—- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</p>
+<p>#|  |  |  |  | # <em>  </em>  <em>  </em>  * user-name command to be executed</p>
+</blockquote>
+<p><strong>crontab的使用</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
+<p>以上命令来添加一个计划任务。</p>
+<p>然后通过以下命令来查看添加了哪些内容：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -l</span><br></pre></td></tr></table></figure>
+<p>确保<code>cron</code>是否成功在后台启动的方法：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep cron</span><br><span class="line"><span class="meta">#</span><span class="bash"> or</span></span><br><span class="line">pgrep cron</span><br></pre></td></tr></table></figure>
+<p>在不需要这个任务时可以使用以下命令来删除一个任务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -r</span><br></pre></td></tr></table></figure>
+<h2 id="命令执行顺序控制和管道"><a href="#命令执行顺序控制和管道" class="headerlink" title="命令执行顺序控制和管道"></a>命令执行顺序控制和管道</h2><h3 id="顺序执行多条命令"><a href="#顺序执行多条命令" class="headerlink" title="顺序执行多条命令"></a>顺序执行多条命令</h3><p><strong>安装软件</strong></p>
+<p>使用<code>apt-get</code>安装软件，然后安装完成后立即运行安装的软件或命令工具，如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install some-tool</span><br><span class="line">some-tool</span><br></pre></td></tr></table></figure>
+<p>但要是一次性输入完，让它自己去依次执行各个命令，简单的顺序执行可以使用<code>;</code>来完成：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update;sudo apt-get install some-tool;some-tool</span><br></pre></td></tr></table></figure>
+<h3 id="有选择的执行命令"><a href="#有选择的执行命令" class="headerlink" title="有选择的执行命令"></a>有选择的执行命令</h3><p>即上一条命令执行成功才继续下一条，或者不成功又该做出其它处理。例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which cowsay&gt;/dev/null &amp;&amp; cowsay -f head-in ohch~</span><br></pre></td></tr></table></figure>
+<p>上面的<code>&amp;&amp;</code>就是用来实现选择性执行的，它表示如果前面的命令执行结果（不是表示终端输出的内容而是表示命令执行状态的结果）返回0则执行后面的，否则不执行，可以从<code>$?</code>环境变量获取上一次命令的返回结果。</p>
+<h3 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h3><p>管道是一种通信机制，通常用于进程间的通信（也可以通过socket进行网络通信），它表现出来的形式就是将前面每一个进程的输出（stdout）直接作为下一个进程的输入（stdin）。</p>
+<p>其中管道又分为<strong>匿名管道</strong>和<strong>具名管道</strong>。匿名管道在使用时通常是用分隔符<code>|</code>表示。</p>
+<p>查看<code>/etc</code>目录下有哪些文件和目录，使用<code>ls</code>来查看：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -al /etc</span><br></pre></td></tr></table></figure>
+<p>可是内容太多，屏幕并不能完全显示，这时就需要使用滚动条或者快捷键滚动窗口来查看，但也可以使用管道：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -al /etc | less</span><br></pre></td></tr></table></figure>
+<p>通过管道将前一个命令(<code>ls</code>)的输出作为下一个命令(<code>less</code>)的输入，然后就可以一行一行的看。</p>
+<h3 id="cut命令打印输出文件"><a href="#cut命令打印输出文件" class="headerlink" title="cut命令打印输出文件"></a><code>cut</code>命令打印输出文件</h3><p>打印 <code>/etc/passwd</code> 文件中以 <code>:</code> 为分隔符的第 1 个字段和第 6 个字段分别表示用户名和其家目录：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cut /etc/passwd -d ':' -f 1,6</span><br></pre></td></tr></table></figure>
+<p>打印 <code>/etc/passwd</code> 文件中每一行的前 N 个字符：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 前五个（包含第五个）</span></span><br><span class="line">cut /etc/passwd -c -5</span><br><span class="line"><span class="comment"># 前五个之后的（包含第五个）</span></span><br><span class="line">cut /etc/passwd -c 5-</span><br><span class="line"><span class="comment"># 第五个</span></span><br><span class="line">cut /etc/passwd -c 5</span><br><span class="line"><span class="comment"># 2 到 5 之间的（包含第五个）</span></span><br><span class="line">cut /etc/passwd -c 2-5</span><br></pre></td></tr></table></figure>
+<h3 id="grep命令–查找"><a href="#grep命令–查找" class="headerlink" title="grep命令–查找"></a>grep命令–查找</h3><p>一般形式为：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep [命令选项]... 用于匹配的表达式 [文件]</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -rnI "shiyanlou" ~</span><br></pre></td></tr></table></figure>
+<p><code>-r</code>参数表示递归搜索子目录中的文件，<code>-n</code>表示打印匹配项行号，<code>-I</code>表示忽略二进制文件。</p>
+<h3 id="wc命令"><a href="#wc命令" class="headerlink" title="wc命令"></a>wc命令</h3><p>该命令用于统计并输出一个文件中的行、单词和字节的数目。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 行数</span></span><br><span class="line">wc -l /etc/passwd</span><br><span class="line"><span class="meta">#</span><span class="bash"> 单词数</span></span><br><span class="line">wc -w /etc/passwd</span><br><span class="line"><span class="meta">#</span><span class="bash"> 字节数</span></span><br><span class="line">wc -c /etc/passwd</span><br><span class="line"><span class="meta">#</span><span class="bash"> 字符数</span></span><br><span class="line">wc -m /etc/passwd</span><br><span class="line"><span class="meta">#</span><span class="bash"> 最长行字节数</span></span><br><span class="line">wc -L /etc/passwd</span><br></pre></td></tr></table></figure>
+<h3 id="sort排序"><a href="#sort排序" class="headerlink" title="sort排序"></a>sort排序</h3><p>该功能是将输入按照一定方式排序，然后再输出，它支持的排序有按字典排序、数字排序、按月份排序、随机排序、反转排序和指定特定字段进行排序。</p>
+<p>默认为字典排序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/passwd | sort</span><br></pre></td></tr></table></figure>
+<p>反转排序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/passwd | sort -r</span><br></pre></td></tr></table></figure>
+<p>按特定字段排序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/passwd | sort -t<span class="string">':'</span> -k 3</span><br></pre></td></tr></table></figure>
+<p><code>-t</code>参数用于指定字段的分隔符；<code>-k</code>字段号用于指定对哪一个字段进行排序。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2022-02-14T07:01:00.456Z" itemprop="dateUpdated">2022-02-14 15:01:00</time>
+</span><br>
+
+
+        
+        版权声明：转载请注明出处<a href="/blogs/fc88e170/" target="_blank" rel="external">https://albert-5.github.io/blogs/fc88e170/</a>！
+        
+    </div>
+    
+    <footer>
+        <a href="https://albert-5.github.io/blogs">
+            <img src="/blogs/img/avatar.jpg" alt="Albert">
+            Albert
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/学习笔记/">学习笔记</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/fc88e170/&title=《Linux学习笔记六》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/fc88e170/&title=《Linux学习笔记六》 — Albert's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/fc88e170/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Linux学习笔记六》 — Albert's Blog&url=https://albert-5.github.io/blogs/fc88e170/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/fc88e170/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/blogs/4a17b156/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Hello World</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/blogs/fa912973/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Linux学习笔记五</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "INtYRvGKRn1Ey9323UGJz7gk-gzGzoHsz",
+            appKey: "sruYEhxHh1hJxo04K2Gd8heb",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blogs/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blogs/img/wechat.jpg" data-alipay="/blogs/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/blogs/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Albert &copy; 2019 - 2022</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/fc88e170/&title=《Linux学习笔记六》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/fc88e170/&title=《Linux学习笔记六》 — Albert's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/fc88e170/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Linux学习笔记六》 — Albert's Blog&url=https://albert-5.github.io/blogs/fc88e170/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/fc88e170/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAByUlEQVR42u3ay2rDMBAF0Pz/T6fQVaG1c2f0cuFoFRKjHHkxSHf0esXj/T3uP/9+/ue4n3PywMXFHea+b8cVMf8mn//+GVxc3P3cpHglpSdZTLUg4uLiPpmbb1Cqc+Li4v5f7hW6+uv9FgoXF/c53PxwkkyaPL/8rIaLizvAnRWYjnw+kO/i4uK2uhK9cLMXs0Zz4uLibuFWI4/qAnozfChzuLi4i7l5qDEesFZD1csShouLu52bl6peYepFIYUdGS4u7iRu8sezgtFebPqht4OLi7uMW0X3LlhUj0x/pDi4uLiLuUk5W/GX+WuKujq4uLhTudWtSR5xRu+pGqng4uJu4SatlF7zY1Zx/EOIi4u7mJuXm96mpNequVw8Li7uIW7eXKleuxy5IYKLi7uTW71WlRyNqo2TasyKi4u7mlvF9VqweUSLi4v7HO7Itct8Yb2Bi4t7ipuPalxSDVKb7wMXF3cqt1pQqq2Xast2VknFxcUd5ybFKz/wVA9OSciCi4t7ilsNL3qhSa+hG/2Mi4t7iJsfcqpHrLxhg4uL+0xuTk+WVL6QgYuLu5GbH1RGYpR8zgmxCC4u7gB3PDDNo9K8kOHi4h7ifgEnd7R7FjbwDAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/blogs/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/blogs/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/blogs/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    <!-- //引入小心心特效 -->
+    <script src="https://cdn.jsdelivr.net/gh/Sanarous/files@1.151/js/clicklove.js"></script>
+    
+</body>
+</html>

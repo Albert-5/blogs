@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>排序算法之快速排序 | Albert&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="python,快速排序">
+    <meta name="description" content="快速排序–一种使用D&amp;amp;C的排序算法算法原理 快速排序是对冒泡排序算法的改进，基本思想是：选择一基准元素，以此将剩余元素中的小于该基准元素的值放在左边，大于该基准元素的值放在右边；然后再在左侧序列和右侧序列做同样的处理操作；以此类推，直至各个序列都剩余一个元素时，即排序完成。  算法实现步骤 首先设定一基准值（pivot），通过该基准值将待排序序列分成左右两部分。 将小于或等于基准值的元素放">
+<meta name="keywords" content="python,快速排序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序算法之快速排序">
+<meta property="og:url" content="https://albert-5.github.io/blogs/77638675/index.html">
+<meta property="og:site_name" content="Albert&#39;s Blog">
+<meta property="og:description" content="快速排序–一种使用D&amp;amp;C的排序算法算法原理 快速排序是对冒泡排序算法的改进，基本思想是：选择一基准元素，以此将剩余元素中的小于该基准元素的值放在左边，大于该基准元素的值放在右边；然后再在左侧序列和右侧序列做同样的处理操作；以此类推，直至各个序列都剩余一个元素时，即排序完成。  算法实现步骤 首先设定一基准值（pivot），通过该基准值将待排序序列分成左右两部分。 将小于或等于基准值的元素放">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-11-06T08:56:36.008Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="排序算法之快速排序">
+<meta name="twitter:description" content="快速排序–一种使用D&amp;amp;C的排序算法算法原理 快速排序是对冒泡排序算法的改进，基本思想是：选择一基准元素，以此将剩余元素中的小于该基准元素的值放在左边，大于该基准元素的值放在右边；然后再在左侧序列和右侧序列做同样的处理操作；以此类推，直至各个序列都剩余一个元素时，即排序完成。  算法实现步骤 首先设定一基准值（pivot），通过该基准值将待排序序列分成左右两部分。 将小于或等于基准值的元素放">
+    
+        <link rel="alternate" type="application/atom+xml" title="Albert&#39;s Blog" href="/blogs/atom.xml">
+    
+    <link rel="shortcut icon" href="/blogs/favicon.ico">
+    <link rel="stylesheet" href="/blogs/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/blogs/img/brand.jpg)">
+      <div class="brand">
+        <a href="/blogs/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blogs/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Albert</h5>
+          <a href="mailto:981287080@qq.com" title="981287080@qq.com" class="mail">981287080@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://https://github.com/Albert-5" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">排序算法之快速排序</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">排序算法之快速排序</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-10-18T07:27:47.000Z" itemprop="datePublished" class="page-time">
+  2021-10-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blogs/categories/排序算法/">排序算法</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#快速排序–一种使用D-amp-C的排序算法"><span class="post-toc-text">快速排序–一种使用D&amp;C的排序算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法原理"><span class="post-toc-text">算法原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法实现步骤"><span class="post-toc-text">算法实现步骤</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码实现"><span class="post-toc-text">代码实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关于复杂度"><span class="post-toc-text">关于复杂度</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-排序算法之快速排序"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">排序算法之快速排序</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-10-18 15:27:47" datetime="2021-10-18T07:27:47.000Z"  itemprop="datePublished">2021-10-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blogs/categories/排序算法/">排序算法</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="快速排序–一种使用D-amp-C的排序算法"><a href="#快速排序–一种使用D-amp-C的排序算法" class="headerlink" title="快速排序–一种使用D&amp;C的排序算法"></a>快速排序–一种使用<code>D&amp;C</code>的排序算法</h1><h2 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h2><blockquote>
+<p>快速排序是对冒泡排序算法的改进，基本思想是：选择一<code>基准元素</code>，以此将剩余元素中的小于该基准元素的值放在左边，大于该基准元素的值放在右边；然后再在左侧序列和右侧序列做同样的处理操作；以此类推，直至各个序列都剩余一个元素时，即排序完成。</p>
+</blockquote>
+<h2 id="算法实现步骤"><a href="#算法实现步骤" class="headerlink" title="算法实现步骤"></a>算法实现步骤</h2><ul>
+<li>首先设定一基准值（pivot），通过该基准值将待排序序列分成左右两部分。</li>
+<li>将小于或等于基准值的元素放在序列左边，将大于基准值的元素放在序列的右边。此时左边序列的元素都是小于基准值的，右边的元素都是大于基准值的，这个基准值就叫做<code>分区(partition)操作</code>。</li>
+<li>此时，左边和右边的序列均可看作是新的序列，分别对左边、右边的序列进行基准值的选择，将序列再次分成两部分，同样的，左边部分的元素值小于基准值，右边部分的元素值大于基准值。</li>
+<li>重复上述操作，通过<code>递归-recurive</code>将左侧部分排好序后，在递归对右边进行排序，当左右两个部分个数据排序完成后，整个序列再次组合加起来就形成了一个有序的序列了。<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quicksort</span><span class="params">(array)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(array) &lt; <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> array</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        pivot = array[<span class="number">0</span>]</span><br><span class="line">        less = [i <span class="keyword">for</span> i <span class="keyword">in</span> array[<span class="number">1</span>:] <span class="keyword">if</span> i &lt;= pivot]</span><br><span class="line">        greater = [i <span class="keyword">for</span> i <span class="keyword">in</span> array[<span class="number">1</span>:] <span class="keyword">if</span> i &gt; pivot]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> quicksort(less) + [pivot] + quicksort(greater)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(quicksort([<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">12</span>, <span class="number">34</span>, <span class="number">9</span>]))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="关于复杂度"><a href="#关于复杂度" class="headerlink" title="关于复杂度"></a>关于复杂度</h2><p>快速排序算法的性能高度依赖于基准值的选取。在上述代码中是将第一个元素作为基准值，且要处理的数据是有序的。它并不会检查数据的有序性，只会按部就班的进行排序操作。<br>最糟糕情况下，所有的元素都是已经排好序的，但此时算法仍会按照步骤进行排序，且选择的基准值是第一个元素，所花费的时间较长，复杂度为<code>O(n²)</code>；最好的情况是已排好序的序列，每次选取序列的中间位置元素作为基准值，这样复杂度大大减小，为<code>O(nlogn)</code>。</p>
+<p><a href="https://visualgo.net/zh/sorting" target="_blank" rel="noopener">快速排序算法动图展示</a></p>
+<div><strong>🚩推荐阅读</strong>（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）<ul><li><a href="https://albert-5.github.io/blogs/2f6ec745/">LDA线性判别分析</a></li><li><a href="https://albert-5.github.io/blogs/cb33e42c/">排序算法之选择排序</a></li><li><a href="https://albert-5.github.io/blogs/573d89ae/">豆瓣电影top250</a></li><li><a href="https://blog.naaln.com/2015/07/of-python-zen/">zen of python</a></li><li><a href="https://blog.naaln.com/2015/07/python-learning-notes-variable-objects-and-immutable-objects/">Python学习笔记——可变对象和不可变对象</a></li></ul></div>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2021-11-06T08:56:36.008Z" itemprop="dateUpdated">2021-11-06 16:56:36</time>
+</span><br>
+
+
+        
+        版权声明：转载请注明出处<a href="/blogs/77638675/" target="_blank" rel="external">https://albert-5.github.io/blogs/77638675/</a>！
+        
+    </div>
+    
+    <footer>
+        <a href="https://albert-5.github.io/blogs">
+            <img src="/blogs/img/avatar.jpg" alt="Albert">
+            Albert
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/快速排序/">快速排序</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/77638675/&title=《排序算法之快速排序》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/77638675/&title=《排序算法之快速排序》 — Albert's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/77638675/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《排序算法之快速排序》 — Albert's Blog&url=https://albert-5.github.io/blogs/77638675/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/77638675/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/blogs/70de7154/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">深度优先和广度优先搜索算法</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/blogs/2f6ec745/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">LDA线性判别分析</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "INtYRvGKRn1Ey9323UGJz7gk-gzGzoHsz",
+            appKey: "sruYEhxHh1hJxo04K2Gd8heb",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blogs/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blogs/img/wechat.jpg" data-alipay="/blogs/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/blogs/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Albert &copy; 2019 - 2022</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/77638675/&title=《排序算法之快速排序》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/77638675/&title=《排序算法之快速排序》 — Albert's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/77638675/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《排序算法之快速排序》 — Albert's Blog&url=https://albert-5.github.io/blogs/77638675/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/77638675/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABvUlEQVR42u3awa6DMAwEwP7/T/dJ79QL7S4OoaomJwQIJjlYjp3HIx7P//F6nd95vX/0zcUDFxd3zH2+HUefTp4mIzfg4uLu586DVxJz8gkf3sfFxf0ybkJJJoCLi/tL3PYHSUKDi4v7zdx2c9IGuKN3Ltyr4eLiDrjnCqZrry+v7+Li4i7qSrQJSl4iOfl3XFzcLdykTfL+fvL7vJgShTlcXNwt3LZUurbR0jZgcHFxr+bmRy7OvbmqFPIhI8PFxV3KbT+XBKn2zTZJwsXF3cnNU5M8PZrj6jXGxcW9gJu8eq7YMW/N4uLi7uHm7c8W0a5TXdnFxcW9jJufcEimNympjLpAuLi4F3DblmoepCYbG1xc3Lu4eYipWx1lWSRaOFxc3C3cZKvTFjdbbps84eLiXs2dtDlXBaaivIKLi7uR2xZMkwA3b9bi4uLey83HpACat2TqxgkuLu5S7vy41bnU51xbFxcXdyc3D16rEqC20YKLi3sX91zxop1k3nSpH+Pi4t7EbY9rTEonh09xcXG/mJunJu0m58PS4OLibuTOD2m1G6ckkI3KIri4uANuWzCdH9HIv4yLi7ud+wemNLR7RDoHswAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/blogs/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/blogs/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/blogs/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    <!-- //引入小心心特效 -->
+    <script src="https://cdn.jsdelivr.net/gh/Sanarous/files@1.151/js/clicklove.js"></script>
+    
+</body>
+</html>
