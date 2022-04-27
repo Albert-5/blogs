@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>manim使用手册 | Albert&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="manim">
+    <meta name="description" content="manim 的基础操作当我们完成了manim的安装后，我们使用 manimgl example_scenes.py 命令来查看manim的安装，当执行此命令后，系统会提示需要选择哪个场景来运行，毕竟manim是使用场景来区分每个代码类，当我们选择其对应的场景后，若manim安装完全正确，此时屏幕上会弹出一个运行窗口，实时渲染代码生成的视频，当然你也可以从cmd窗口中看到当前执行的场景特效，具体执行">
+<meta name="keywords" content="manim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="manim使用手册">
+<meta property="og:url" content="https://albert-5.github.io/blogs/ba616724/index.html">
+<meta property="og:site_name" content="Albert&#39;s Blog">
+<meta property="og:description" content="manim 的基础操作当我们完成了manim的安装后，我们使用 manimgl example_scenes.py 命令来查看manim的安装，当执行此命令后，系统会提示需要选择哪个场景来运行，毕竟manim是使用场景来区分每个代码类，当我们选择其对应的场景后，若manim安装完全正确，此时屏幕上会弹出一个运行窗口，实时渲染代码生成的视频，当然你也可以从cmd窗口中看到当前执行的场景特效，具体执行">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s2.loli.net/2022/04/27/GHV8qcitSXvD5MZ.png">
+<meta property="og:image" content="https://s2.loli.net/2022/04/27/FBoV9iRqrWaCxHt.png">
+<meta property="og:image" content="https://s2.loli.net/2022/04/27/RGosPMrlmqiL1Fc.jpg">
+<meta property="og:updated_time" content="2022-04-27T10:07:12.130Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="manim使用手册">
+<meta name="twitter:description" content="manim 的基础操作当我们完成了manim的安装后，我们使用 manimgl example_scenes.py 命令来查看manim的安装，当执行此命令后，系统会提示需要选择哪个场景来运行，毕竟manim是使用场景来区分每个代码类，当我们选择其对应的场景后，若manim安装完全正确，此时屏幕上会弹出一个运行窗口，实时渲染代码生成的视频，当然你也可以从cmd窗口中看到当前执行的场景特效，具体执行">
+<meta name="twitter:image" content="https://s2.loli.net/2022/04/27/GHV8qcitSXvD5MZ.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Albert&#39;s Blog" href="/blogs/atom.xml">
+    
+    <link rel="shortcut icon" href="/blogs/img/favicon.ico">
+    <link rel="stylesheet" href="/blogs/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/blogs/img/brand.jpg)">
+      <div class="brand">
+        <a href="/blogs/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blogs/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Albert</h5>
+          <a href="mailto:981287080@qq.com" title="981287080@qq.com" class="mail">981287080@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://https://github.com/Albert-5" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blogs/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">manim使用手册</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">manim使用手册</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-04-27T09:57:52.000Z" itemprop="datePublished" class="page-time">
+  2022-04-27
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blogs/categories/manim/">manim</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#manim-的基础操作"><span class="post-toc-text">manim 的基础操作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tex"><span class="post-toc-text">tex</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-manim使用手册"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">manim使用手册</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-04-27 17:57:52" datetime="2022-04-27T09:57:52.000Z"  itemprop="datePublished">2022-04-27</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blogs/categories/manim/">manim</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="manim-的基础操作"><a href="#manim-的基础操作" class="headerlink" title="manim 的基础操作"></a>manim 的基础操作</h2><p>当我们完成了manim的安装后，我们使用 manimgl example_scenes.py 命令来查看manim的安装，当执行此命令后，系统会提示需要选择哪个场景来运行，毕竟manim是使用场景来区分每个代码类，当我们选择其对应的场景后，若manim安装完全正确，此时屏幕上会弹出一个运行窗口，实时渲染代码生成的视频，当然你也可以从cmd窗口中看到当前执行的场景特效，具体执行代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">manimgl example_scenes.py</span><br><span class="line">Warning: Using the default configuration file, which you can modify in e:\学习\python\python_manim\lib\site-packages\manimlib\default_config.yml</span><br><span class="line">If you want to create a local configuration file, you can create a file named custom_config.yml, or run manimgl --config</span><br><span class="line">01: AnimatingMethods</span><br><span class="line">02: ControlsExample</span><br><span class="line">03: CoordinateSystemExample</span><br><span class="line">04: GraphExample</span><br><span class="line">05: InteractiveDevelopment</span><br><span class="line">06: OpeningManimExample</span><br><span class="line">07: SurfaceExample</span><br><span class="line">08: TexTransformExample</span><br><span class="line">09: TextExample</span><br><span class="line">10: UpdatersExample</span><br><span class="line">That module has multiple scenes, which ones would you like to render?</span><br><span class="line">Scene Name or Number: 06</span><br><span class="line">Animation 6: FadeOutNumberPlane, etc.:   0%|   | 0/45 [00:00&lt;?, ?it/s] Warning: The value of the pressed key is too large.</span><br><span class="line">Animation 6: FadeOutNumberPlane, etc.:  69%|#############################6             | 31/45 [00:01&lt;00:00, 22.30it/s]</span><br></pre></td></tr></table></figure>
+<p>在执行代码时，我们可以通过如下按键查看不同视角的代码视频</p>
+<ul>
+<li>滚动鼠标中键可上下移动屏幕。</li>
+<li>在滚动鼠标中键的同时按住Z键，可缩放屏幕。</li>
+<li>按住s键并移动鼠标，可平移屏幕。</li>
+<li>按住d键并移动鼠标，可改变三维视角。</li>
+<li>最后，可以通过按 q键，关闭窗口并退出程序。</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/04/27/GHV8qcitSXvD5MZ.png" alt="SurfaceExample.png" title>
+                </div>
+                <div class="image-caption">SurfaceExample.png</div>
+            </figure>
+<p>manim操作</p>
+<p><strong>manim 的特殊CLI 标签</strong></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/04/27/FBoV9iRqrWaCxHt.png" alt="GraphExample.png" title>
+                </div>
+                <div class="image-caption">GraphExample.png</div>
+            </figure>
+<p>manim</p>
+<p>通过简单的代码指令manimgl example_scenes.py GraphExample，便可以运行example_scenes.py 代码下的GraphExample场景，此时我们只能通过程序打开的窗口查看实际运行的效果，但是我们若想另存为视频或者图片，该如何操作那？</p>
+<p>manim为我们提供了很多有用的flag标签，我们可以在执行以上代码指令后面添加我们 需要的CLI标签，以便能够达到我们想要的效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">flag           缩写              功能</span><br><span class="line">--help      -h           显示帮助信息并退出</span><br><span class="line"> --write_file  -w 将场景渲染为电影文件</span><br><span class="line">--skip_animations    -s   跳到最后一帧</span><br><span class="line">--low_quality   -l     以低质量渲染（为了更快的渲染）</span><br><span class="line">--medium_quality   -m 以中等质量渲染</span><br><span class="line"> --hd                          以 1080p 质量渲染</span><br><span class="line">--uhd                        以 4k 质量渲染</span><br><span class="line">--full_scree  -f         全屏显示窗口</span><br><span class="line">--save_pngs   -g     将每一帧保存为 png</span><br><span class="line">--save_as_gif  -i      将视频保存为 gif</span><br><span class="line">--transparent -t   渲染为带有 Alpha 通道的电影文件</span><br><span class="line">--quiet           -q   消去视频声音</span><br><span class="line">--write_all    -a    从文件中写入所有场景</span><br><span class="line">--open    -o       完成后自动打开保存的文件</span><br><span class="line">--finder                在finder中显示输出文件</span><br><span class="line">--config                自动配置指南</span><br><span class="line">--file_name FILE_NAME        电影或图像文件的名称</span><br><span class="line">--start_at_animation_number      不是从第一个动画开始渲染，而是从另一个动画开始渲染</span><br><span class="line">START_AT_ANIMATION_NUMBER -n   由其索引指定。如果您传入两个逗号分隔值，例如“3,6”，它将在第二个值处结束渲染。</span><br><span class="line">--resolution RESOLUTION     -r  分辨率，以“WxH”传递，例如“1920x1080”</span><br><span class="line">--frame_rate FRAME_RATE      帧率，整数形式</span><br><span class="line">  --color COLOR    -c  背景颜色</span><br><span class="line">--leave_progress_bars    在终端中显示进度条</span><br><span class="line">--video_dir VIDEO_DIR   写视频的目录</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">flag</th>
+<th style="text-align:center">缩写</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">–help</td>
+<td style="text-align:center">-h</td>
+<td style="text-align:center">显示帮助信息并退出</td>
+</tr>
+<tr>
+<td style="text-align:center">–write</td>
+<td style="text-align:center">-w</td>
+<td style="text-align:center">将场景渲染为电影文件</td>
+</tr>
+<tr>
+<td style="text-align:center">–skip_animations</td>
+<td style="text-align:center">-s</td>
+<td style="text-align:center">调到最后一帧</td>
+</tr>
+<tr>
+<td style="text-align:center">–low_quality</td>
+<td style="text-align:center">-l</td>
+<td style="text-align:center">以低质量渲染</td>
+</tr>
+<tr>
+<td style="text-align:center">–medium_quality</td>
+<td style="text-align:center">-m</td>
+<td style="text-align:center">以中等质量渲染</td>
+</tr>
+<tr>
+<td style="text-align:center">–hd</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">以1080p质量渲染</td>
+</tr>
+<tr>
+<td style="text-align:center">–uhd</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">4k质量渲染</td>
+</tr>
+<tr>
+<td style="text-align:center">–full_screen</td>
+<td style="text-align:center">-f</td>
+<td style="text-align:center">全屏显示窗口</td>
+</tr>
+<tr>
+<td style="text-align:center">–save_pngs</td>
+<td style="text-align:center">-g</td>
+<td style="text-align:center">将每一帧保存为png</td>
+</tr>
+<tr>
+<td style="text-align:center">–save_as_gif</td>
+<td style="text-align:center">-i</td>
+<td style="text-align:center">将视频保存为gif</td>
+</tr>
+<tr>
+<td style="text-align:center">–transparent</td>
+<td style="text-align:center">-t</td>
+<td style="text-align:center">渲染为带有Alpha通道的电影文件</td>
+</tr>
+<tr>
+<td style="text-align:center">–quiet</td>
+<td style="text-align:center">-q</td>
+<td style="text-align:center">消去视频声音</td>
+</tr>
+<tr>
+<td style="text-align:center">–write_all</td>
+<td style="text-align:center">-a</td>
+<td style="text-align:center">从文件中写入所有场景</td>
+</tr>
+<tr>
+<td style="text-align:center">–open</td>
+<td style="text-align:center">-o</td>
+<td style="text-align:center">完成后自动打开保存的文件</td>
+</tr>
+<tr>
+<td style="text-align:center">–finder</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">在finder中显示输出文件</td>
+</tr>
+<tr>
+<td style="text-align:center">–config</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">自动配置指南</td>
+</tr>
+<tr>
+<td style="text-align:center">–file_name FILE_NAME</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">电影或图像文件的名称</td>
+</tr>
+<tr>
+<td style="text-align:center">–start_at_animation_number</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">不是从第一个动画开始渲染，而是从另一个动画开始渲染</td>
+</tr>
+<tr>
+<td style="text-align:center">–resolution RESOLUTION</td>
+<td style="text-align:center">-r</td>
+<td style="text-align:center">分辨率，以“W×H”格式，如，1920×1080</td>
+</tr>
+<tr>
+<td style="text-align:center">–color COLOR</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">背景颜色</td>
+</tr>
+<tr>
+<td style="text-align:center">–leave_progress_bars</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">在终端中显示进度条</td>
+</tr>
+<tr>
+<td style="text-align:center">–video_dir VIDEO_DIR</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">写视频的目录</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<p>flag标签</p>
+<p><strong>manim 的custom_config配置文件</strong></p>
+<p>当我们安装完成manim后，manim引擎会自动建立一个默认的配置文件default_config.yml，此文件配置了一些我们常用的配置，当然若自己想设计一个属于自己的配置文件，可以在脚本同目录下建立一个custom_config.yml配置文件，当代码运行时，会首先选择custom_config.yml配置进行系统的配置运行，否则使用默认配置文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">manim/</span><br><span class="line">├── manimlib/</span><br><span class="line">│   ├── animation/</span><br><span class="line">│   ├── ...</span><br><span class="line">│   ├── default_config.yml</span><br><span class="line">│   └── window.py</span><br><span class="line">├── project/</span><br><span class="line">│   ├── code.py</span><br><span class="line">│   └── custom_config.yml</span><br><span class="line">└── custom_config.yml</span><br></pre></td></tr></table></figure>
+<p>配置文件中定义了不同的使用功能，主要代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">directories:</span><br><span class="line">  mirror_module_path: False</span><br><span class="line">  output: &quot;./video&quot;</span><br><span class="line">  raster_images: &quot;&quot;</span><br><span class="line">  vector_images: &quot;&quot;</span><br><span class="line">  sounds: &quot;&quot;</span><br><span class="line">  temporary_storage: &quot;&quot;</span><br><span class="line">tex:</span><br><span class="line">  executable: &quot;latex&quot;</span><br><span class="line">  template_file: &quot;tex_template.tex&quot; </span><br><span class="line">  intermediate_filetype: &quot;dvi&quot;</span><br><span class="line">  text_to_replace: &quot;[tex_expression]&quot;</span><br><span class="line">universal_import_line: &quot;from manimlib import *&quot;</span><br><span class="line">style:</span><br><span class="line">  font: &quot;Consolas&quot;</span><br><span class="line">  background_color: &quot;#333333&quot;</span><br><span class="line">window_position: UR</span><br><span class="line">window_monitor: 0</span><br><span class="line">break_into_partial_movies: False</span><br><span class="line">camera_qualities:</span><br><span class="line">  low:</span><br><span class="line">    resolution: &quot;854x480&quot;</span><br><span class="line">    frame_rate: 30</span><br><span class="line">  medium:</span><br><span class="line">    resolution: &quot;1280x720&quot;</span><br><span class="line">    frame_rate: 60</span><br><span class="line">  high:</span><br><span class="line">    resolution: &quot;1920x1080&quot;</span><br><span class="line">    frame_rate: 60</span><br><span class="line">  ultra_high:</span><br><span class="line">    resolution: &quot;3840x2160&quot;</span><br><span class="line">    frame_rate: 80</span><br><span class="line">  default_quality: &quot;low&quot;</span><br></pre></td></tr></table></figure>
+<p>manim</p>
+<ul>
+<li>mirror_module_path(True或False) 是否在output路径下创建一个以运行文件名称命名的文件夹，并将输出(images/ 或videos/)保存在其中。</li>
+<li>output输出文件路径，视频将保存在其videos/下的文件夹中，图片将保存在其images/下的文件夹中。例如，如果你设置output为”/…/manim/output”和 mirror_module_path为False，那么你Scene1在代码文件中导出并保存了最后一帧，那么最终的目录结构将是这样的：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">manim/</span><br><span class="line">    ├── manimlib/</span><br><span class="line">    │   ├── animation/</span><br><span class="line">    │   ├── ...</span><br><span class="line">    │   ├── default_config.yml</span><br><span class="line">    │   └── window.py</span><br><span class="line">    ├── output/</span><br><span class="line">    │   ├── images</span><br><span class="line">    │   │   └── Scene1.png</span><br><span class="line">    │   └── videos</span><br><span class="line">    │       └── Scene1.mp4</span><br><span class="line">    ├── code.py</span><br><span class="line">    └── custom_config.yml</span><br></pre></td></tr></table></figure>
+<p>但是如果你设置mirror_module_path为True，目录结构将是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">manim/</span><br><span class="line">    ├── manimlib/</span><br><span class="line">    │   ├── animation/</span><br><span class="line">    │   ├── ...</span><br><span class="line">    │   ├── default_config.yml</span><br><span class="line">    │   └── window.py</span><br><span class="line">    ├── output/</span><br><span class="line">    │   └── code/</span><br><span class="line">    │       ├── images</span><br><span class="line">    │       │   └── Scene1.png</span><br><span class="line">    │       └── videos</span><br><span class="line">    │           └── Scene1.mp4</span><br><span class="line">    ├── code.py</span><br><span class="line">    └── custom_config.yml</span><br></pre></td></tr></table></figure>
+<ul>
+<li>raster_images用于存储代码中使用的光栅图像的目录（包括 .jpg、.png和.gif），将由ImageMobject读取.</li>
+<li>vector_images用于存储代码中使用的矢量图的目录（包括 .svg和.xdv），将由SVGMobject读取.</li>
+<li>sounds用于存储要使用的声音文件的目录Scene.add_sound()（包括.wav和.mp3）。</li>
+<li>temporary_storage存放临时生成的缓存文件的目录，包括 Tex缓存、Text缓存和对象点的存储。</li>
+</ul>
+<p>manim实例</p>
+<h2 id="tex"><a href="#tex" class="headerlink" title="tex"></a>tex</h2><ul>
+<li>executable用于编译 LaTeX 的可执行程序（latex）xelatex -no-pdf</li>
+<li>template_file使用的 LaTeX 模板，在 manimlib/tex_templates</li>
+<li>intermediate_filetype编译后生成的中间向量文件的类型</li>
+<li>text_to_replace模板中要替换的文本</li>
+</ul>
+<p><strong>universal_import_line</strong></p>
+<p>导入直接进入交互模式时需要执行的行。</p>
+<p><strong>style</strong></p>
+<ul>
+<li>font文本的默认字体</li>
+<li>background_color默认背景色</li>
+</ul>
+<p><strong>window_position</strong></p>
+<p>播放窗口在显示器上的相对位置（两个字符，第一个字符表示上（U）/中（O）/下（D），第二个字符表示左（L）/中（O）/右（R） ))。</p>
+<p><strong>break_into_partial_movies</strong></p>
+<p>如果设置为True，那么很多小文件将对应于每个写入Scene.play和Scene.wait调用，然后这些文件将被合并，以形成完整的场景。</p>
+<p><strong>camera_qualities：输出视频的质量</strong></p>
+<ul>
+<li>low低质量（默认为 480p，15帧）</li>
+<li>medium中等质量（默认为 720p，30帧）</li>
+<li>high高质量（默认为 1080p，30帧）</li>
+<li>ultra_high超高画质（默认为 4K ，60帧）</li>
+<li>default_quality默认质量（以上四种之一）</li>
+</ul>
+<p>当然，我们在运行manim的时候主要是一个预览的功能，这里default_quality建议选择low，这样会提高代码运行效率，最后我们输出视频时可以加flag标签来控制视频的输入质量，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">manimgl example_scenes.py GraphExample -w --uhd</span><br><span class="line">便是保存4k高清画质的视频文件</span><br></pre></td></tr></table></figure>
+<p>本期我们分享了manim的基础操作与配置，后期我们将分享manim动画的基础知识，打造属于自己的manim动画效果</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/04/27/RGosPMrlmqiL1Fc.jpg" alt="manim.jpg" title>
+                </div>
+                <div class="image-caption">manim.jpg</div>
+            </figure>
+<p>官方社区 <a href="https://docs.manim.community/" target="_blank" rel="noopener">https://docs.manim.community/</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2022-04-27T10:07:12.130Z" itemprop="dateUpdated">2022-04-27 18:07:12</time>
+</span><br>
+
+
+        
+        版权声明：转载请注明出处<a href="/blogs/ba616724/" target="_blank" rel="external">https://albert-5.github.io/blogs/ba616724/</a>！
+        
+    </div>
+    
+    <footer>
+        <a href="https://albert-5.github.io/blogs">
+            <img src="/blogs/img/avatar.jpg" alt="Albert">
+            Albert
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/manim/">manim</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/ba616724/&title=《manim使用手册》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/ba616724/&title=《manim使用手册》 — Albert's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/ba616724/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《manim使用手册》 — Albert's Blog&url=https://albert-5.github.io/blogs/ba616724/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/ba616724/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/blogs/f73eae91/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">hello_world</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "INtYRvGKRn1Ey9323UGJz7gk-gzGzoHsz",
+            appKey: "sruYEhxHh1hJxo04K2Gd8heb",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blogs/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blogs/img/wechat.jpg" data-alipay="/blogs/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/blogs/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Albert &copy; 2019 - 2022</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/ba616724/&title=《manim使用手册》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/ba616724/&title=《manim使用手册》 — Albert's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/ba616724/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《manim使用手册》 — Albert's Blog&url=https://albert-5.github.io/blogs/ba616724/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/ba616724/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABtklEQVR42u3aS27DMAwFwNz/0ukBCjuPpMUGxWgVBI40zoIQP69XvN7xunr+as/XiYWLizvmVo//fdj9r66I9ztcviouLu4i9z7QJAffU/LPH2y4uLhfyb0PNPcXF1xc3P/K7YW26v64uLjfwE2Sn5yeVzMO5mq4uLgDbl6lPPf5SH0XFxe3xX0X11Nl1t7CxcXd4U4uKPOQVz0XFxd3h9sLMclr5JTCX4OLi/tH3ORqUi135vt8KKDg4uKucCdbT5KcSSEGFxd3k9tLV5JWa/WVPuRquLi4h7n54EXCXU1+cHFxj3F7TZEcnV+hCnEXFxd3hVsdn3pq6GpSOsHFxT3HzYsUUbc2bsdWQyQuLu4mdxK8nhqwGFV2cXFxD3OTRGU+sJU3ZgpzZLi4uMe4TwWy3lBXYcwLFxd3nTv5plowrbZYcHFxd7jv4kouN71xrihNwsXFXeH2yqNPHdNrzeLi4u5w8/GLasG0V1Jpjlzg4uIe4PbaJNXLzWO5Gi4u7ldye1ef3rgGLi7u93Pn7dUoYF09iYuLu8hNkp8E3SuYFv4sXFzcFe6kuDkZrchfDxcXd5H7Awa0uWh/p3t3AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/blogs/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/blogs/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/blogs/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    <!-- //引入小心心特效 -->
+    <script src="https://cdn.jsdelivr.net/gh/Sanarous/files@1.151/js/clicklove.js"></script>
+    
+</body>
+</html>
