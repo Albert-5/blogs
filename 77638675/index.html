@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="python,快速排序">
-    <meta name="description" content="快速排序–一种使用D&amp;amp;C的排序算法算法原理 快速排序是对冒泡排序算法的改进，基本思想是：选择一基准元素，以此将剩余元素中的小于该基准元素的值放在左边，大于该基准元素的值放在右边；然后再在左侧序列和右侧序列做同样的处理操作；以此类推，直至各个序列都剩余一个元素时，即排序完成。  算法实现步骤 首先设定一基准值（pivot），通过该基准值将待排序序列分成左右两部分。 将小于或等于基准值的元素放">
+    <meta name="description" content="快速排序—一种使用D&amp;amp;C的排序算法算法原理 快速排序是对冒泡排序算法的改进，基本思想是：选择一基准元素，以此将剩余元素中的小于该基准元素的值放在左边，大于该基准元素的值放在右边；然后再在左侧序列和右侧序列做同样的处理操作；以此类推，直至各个序列都剩余一个元素时，即排序完成。  算法实现步骤 首先设定一基准值（pivot），通过该基准值将待排序序列分成左右两部分。 将小于或等于基准值的元素放">
 <meta name="keywords" content="python,快速排序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序算法之快速排序">
 <meta property="og:url" content="https://albert-5.github.io/blogs/77638675/index.html">
 <meta property="og:site_name" content="Albert&#39;s Blog">
-<meta property="og:description" content="快速排序–一种使用D&amp;amp;C的排序算法算法原理 快速排序是对冒泡排序算法的改进，基本思想是：选择一基准元素，以此将剩余元素中的小于该基准元素的值放在左边，大于该基准元素的值放在右边；然后再在左侧序列和右侧序列做同样的处理操作；以此类推，直至各个序列都剩余一个元素时，即排序完成。  算法实现步骤 首先设定一基准值（pivot），通过该基准值将待排序序列分成左右两部分。 将小于或等于基准值的元素放">
+<meta property="og:description" content="快速排序—一种使用D&amp;amp;C的排序算法算法原理 快速排序是对冒泡排序算法的改进，基本思想是：选择一基准元素，以此将剩余元素中的小于该基准元素的值放在左边，大于该基准元素的值放在右边；然后再在左侧序列和右侧序列做同样的处理操作；以此类推，直至各个序列都剩余一个元素时，即排序完成。  算法实现步骤 首先设定一基准值（pivot），通过该基准值将待排序序列分成左右两部分。 将小于或等于基准值的元素放">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2021-11-06T08:56:36.008Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法之快速排序">
-<meta name="twitter:description" content="快速排序–一种使用D&amp;amp;C的排序算法算法原理 快速排序是对冒泡排序算法的改进，基本思想是：选择一基准元素，以此将剩余元素中的小于该基准元素的值放在左边，大于该基准元素的值放在右边；然后再在左侧序列和右侧序列做同样的处理操作；以此类推，直至各个序列都剩余一个元素时，即排序完成。  算法实现步骤 首先设定一基准值（pivot），通过该基准值将待排序序列分成左右两部分。 将小于或等于基准值的元素放">
+<meta name="twitter:description" content="快速排序—一种使用D&amp;amp;C的排序算法算法原理 快速排序是对冒泡排序算法的改进，基本思想是：选择一基准元素，以此将剩余元素中的小于该基准元素的值放在左边，大于该基准元素的值放在右边；然后再在左侧序列和右侧序列做同样的处理操作；以此类推，直至各个序列都剩余一个元素时，即排序完成。  算法实现步骤 首先设定一基准值（pivot），通过该基准值将待排序序列分成左右两部分。 将小于或等于基准值的元素放">
     
         <link rel="alternate" type="application/atom+xml" title="Albert&#39;s Blog" href="/atom.xml">
     
@@ -174,7 +174,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#快速排序–一种使用D-amp-C的排序算法"><span class="post-toc-text">快速排序–一种使用D&amp;C的排序算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法原理"><span class="post-toc-text">算法原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法实现步骤"><span class="post-toc-text">算法实现步骤</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码实现"><span class="post-toc-text">代码实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关于复杂度"><span class="post-toc-text">关于复杂度</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#快速排序—一种使用D-amp-C的排序算法"><span class="post-toc-text">快速排序—一种使用D&amp;C的排序算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法原理"><span class="post-toc-text">算法原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法实现步骤"><span class="post-toc-text">算法实现步骤</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码实现"><span class="post-toc-text">代码实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关于复杂度"><span class="post-toc-text">关于复杂度</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -200,7 +200,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="快速排序–一种使用D-amp-C的排序算法"><a href="#快速排序–一种使用D-amp-C的排序算法" class="headerlink" title="快速排序–一种使用D&amp;C的排序算法"></a>快速排序–一种使用<code>D&amp;C</code>的排序算法</h1><h2 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h2><blockquote>
+            <h1 id="快速排序—一种使用D-amp-C的排序算法"><a href="#快速排序—一种使用D-amp-C的排序算法" class="headerlink" title="快速排序—一种使用D&amp;C的排序算法"></a>快速排序—一种使用<code>D&amp;C</code>的排序算法</h1><h2 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h2><blockquote>
 <p>快速排序是对冒泡排序算法的改进，基本思想是：选择一<code>基准元素</code>，以此将剩余元素中的小于该基准元素的值放在左边，大于该基准元素的值放在右边；然后再在左侧序列和右侧序列做同样的处理操作；以此类推，直至各个序列都剩余一个元素时，即排序完成。</p>
 </blockquote>
 <h2 id="算法实现步骤"><a href="#算法实现步骤" class="headerlink" title="算法实现步骤"></a>算法实现步骤</h2><ul>

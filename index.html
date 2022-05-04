@@ -162,6 +162,73 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-基于Sphinx和furo的个人笔记文档网站搭建教程"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2022-05-04 16:33:35" datetime="2022-05-04T08:33:35.000Z"  itemprop="datePublished">2022-05-04</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/notes/">notes</a></li></ul>
+
+
+
+        <!-- 添加的置顶 -->
+        
+            <span><icon class="icon icon-thumb-tack icon-pr"></icon><font color="ff4081">置顶</font></span>
+        
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/4574b265/">基于Sphinx和furo的个人笔记文档网站搭建教程</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Sphinx + Github个人笔记
+准备条件
+github账号
+使用github进行文档版本管理
+
+安装Python
+有很多博客可以参考，自行百度
+
+
+Sphinx创建文档Sphinx是一个基于Python的文档生成项目，开始是用来生成 Python 官方文档的工具，更多介绍可参考官网：https://www.sphinx.org.cn/ 。
+
+安装Sphinx
+Github地址为：https://github.com/sphinx-doc/sphinx
+当然也可以在命令窗口进行pip安装：
+1pip install -U sphinx
+
+创建文档
+github上新建一个仓库，这个仓...
+    
+
+        <a href="/4574b265/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/">note</a></li></ul>
+
+    </div>
+    
+</article>
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-manim使用手册"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -303,14 +370,14 @@ Markdown...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        领扣–引领新时尚
+        领扣—引领新时尚
 1. 两数之和问题给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
 你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
 示例:
 
 给定 nums = [2, 7, 11, 15], target = 9因为 nums[0] + nums[1] = 2 + 7 = 9所以返回 [0, 1]
 
-解法1–暴力解法
+解法1—暴力解法
 思路：
 
 给定一个数组和一个特定的目标值，对每一个数进行遍历，然后利用两层循环遍历的值进行if条件判断，如果相等，则返回下标；否则返回None.
@@ -365,8 +432,9 @@ Markdown...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        LDA线性判别分析基本概念线性分类： 指存在一个线性方程可以把待分类样本分离开，或者用一个超平面将正负样本分开，表达式为$$y=w^\mathrm T+b$$所谓超平面即是区分样本点的一个决策面，在二维世界中，可以理解为一条直线，如一次函数。非线性分类： 指不存在一个线性分类能将样本分隔开，可以是一个曲面，也可以是多个超平面的组合。
-LDA思想核心思想：类内小，类间大线性判别分析（Linear Discrimination Analysis, LDA）是一种监督学习的线性降维方法，即每个样本都是由类别的输出。其主要思想是”投影后类内方差最小，类间方差最大“，我们知道，对于一组数据来说，均...
+        LDA线性判别分析基本概念线性分类： 指存在一个线性方程可以把待分类样本分离开，或者用一个超平面将正负样本分开，表达式为
+y=w^\mathrm T+b所谓超平面即是区分样本点的一个决策面，在二维世界中，可以理解为一条直线，如一次函数。非线性分类： 指不存在一个线性分类能将样本分隔开，可以是一个曲面，也可以是多个超平面的组合。
+LDA思想核心思想：类内小，类间大线性判别分析（Linear Discrimination Analysis, LDA）是一种监督学习的线性降维方法，即每个样本都是由类别的输出。其主要思想是”投影后类内方差最小，类间方差最大“，我们知道，对于一组数据来说，均值决定...
     
 
         <a href="/2f6ec745/" class="post-more waves-effect waves-button">
@@ -419,6 +487,7 @@ LDA思想核心思想：类内小，类间大线性判别分析（Linear Discrim
         相机标定一、前提准备1、伪硬件
 
 
+
 名称
 
 数量
@@ -447,11 +516,12 @@ LDA思想核心思想：类内小，类间大线性判别分析（Linear Discrim
 
 
 
+
 手机固定在支架上，调整标定板位置，对其从不同角度进行拍照，所拍摄照片为11张。保存到文件夹后对其进行依次命名：*.jpg(如：1.jpg)
 2、软件&nbsp; 使用的编程语言：python&nbsp; 工具包：opencv, numpy, glob
 二、寻找标定棋盘并进行标定1、python + opencv 的方案 &nbsp;&nbsp;利用opencv寻找棋盘，所用到的函数如下：
 
-&nbsp;cv2.TERM_CRITERIA_MAX_I...
+&nbsp;cv2.TERM_CRITERIA_MAX...
     
 
         <a href="/4b5e616e/" class="post-more waves-effect waves-button">
@@ -547,6 +617,7 @@ LDA思想核心思想：类内小，类间大线性判别分析（Linear Discrim
 
 
 
+
 文件后缀名
 说明
 
@@ -587,7 +658,6 @@ tar 打包，gzip 程序压缩的文件
 
 *.tar.xz
 tar 打包，xz 程序压缩的文件
-
 
 ...
     
@@ -703,106 +773,6 @@ FHS标准： FHS（Filesystem Hierarchy Standard）中文全称为文件系统�
     
 
         <a href="/e9fdb125/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
-
-    </div>
-    
-</article>
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Linux学习笔记一"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2022-02-07 10:40:09" datetime="2022-02-07T02:40:09.000Z"  itemprop="datePublished">2022-02-07</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux学习笔记/">Linux学习笔记</a></li></ul>
-
-
-
-        <!-- 添加的置顶 -->
-        
-            <span><icon class="icon icon-thumb-tack icon-pr"></icon><font color="ff4081">置顶</font></span>
-        
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/d27d9f8c/">Linux学习笔记一</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        Linux学习笔记一基础Linux基础Ctrl相关操作常用按键
-
-
-按键
-作用
-
-
-
-
-Ctrl D
-键盘输入结束或退出终端
-
-
-Ctrl S
-暂停当前程序，暂停后按下任意键恢复运行
-
-
-Ctrl Z 
-将当前程序放到后台运行，恢复到前台为命令fg
-
-
-Ctrl a
-将光标移至输入行头，相当于Home键
-
-
-Ctrl e
-将光标移至行末，相当于End键
-
-
-Ctrl k
-删除从光标所在位置到行末
-
-
-Alt Backspace
-向前删除一个词
-
-
-Shift PgUp
-将终端显示向上滚动
-
-
-Shift PgDn
-将终端显示向下滚动
-
-
-Ctrl C
-终止程序运行
-
-
-
-历史输入命令使用...
-    
-
-        <a href="/d27d9f8c/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
