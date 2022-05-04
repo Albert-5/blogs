@@ -25,7 +25,7 @@
 <meta name="keywords" content="note">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于Sphinx和furo的个人笔记文档网站搭建教程">
-<meta property="og:url" content="https://albert-5.github.io/blogs/4574b265/index.html">
+<meta property="og:url" content="https://albert-5.cn/4574b265/index.html">
 <meta property="og:site_name" content="Albert&#39;s Blog">
 <meta property="og:description" content="Sphinx + Github个人笔记 准备条件 github账号 使用github进行文档版本管理  安装Python 有很多博客可以参考，自行百度   Sphinx创建文档Sphinx是一个基于Python的文档生成项目，开始是用来生成 Python 官方文档的工具，更多介绍可参考官网：https://www.sphinx.org.cn/ 。  安装Sphinx Github地址为：https">
 <meta property="og:locale" content="zh-CN">
@@ -217,7 +217,7 @@
 <p>Github地址为：<a href="https://github.com/sphinx-doc/sphinx" target="_blank" rel="noopener">https://github.com/sphinx-doc/sphinx</a></p>
 <p>当然也可以在命令窗口进行<code>pip</code>安装：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -U sphinx</span><br></pre></td></tr></table></figure>
-<ol start="2">
+<ol>
 <li><p>创建文档</p>
 <p>github上新建一个仓库，这个仓库就是托管自己文档的仓库，没有的话就新建一个；然后将其克隆到本地，在项目根目录下创建一个<code>docs</code>目录，cd进入到该目录，执行命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">Albert@DESKTOP-P96RPMS MINGW64 /g/Note/docs</span><br><span class="line">$ sphinx-quickstart</span><br><span class="line">Welcome to the Sphinx 4.5.0 quickstart utility.</span><br><span class="line"></span><br><span class="line">Please enter values <span class="keyword">for</span> the following settings (just press Enter to</span><br><span class="line">accept a default value, <span class="keyword">if</span> one is given <span class="keyword">in</span> brackets).</span><br><span class="line"></span><br><span class="line">Selected root path: .</span><br><span class="line"></span><br><span class="line">You have two options <span class="keyword">for</span> placing the build directory <span class="keyword">for</span> Sphinx output.</span><br><span class="line">Either, you use a directory <span class="string">"_build"</span> within the root path, or you separate</span><br><span class="line"><span class="string">"source"</span> and <span class="string">"build"</span> directories within the root path.</span><br><span class="line">&gt; Separate <span class="built_in">source</span> and build directories (y/n) [n]: y</span><br><span class="line"></span><br><span class="line">The project name will occur <span class="keyword">in</span> several places <span class="keyword">in</span> the built documentation.</span><br><span class="line">&gt; Project name: Notes</span><br><span class="line">&gt; Author name(s): albert</span><br><span class="line">&gt; Project release []: 0.1.0</span><br><span class="line"></span><br><span class="line">If the documents are to be written <span class="keyword">in</span> a language other than English,</span><br><span class="line">you can select a language here by its language code. Sphinx will <span class="keyword">then</span></span><br><span class="line">translate text that it generates into that language.</span><br><span class="line"></span><br><span class="line">For a list of supported codes, see</span><br><span class="line">https://www.sphinx-doc.org/en/master/usage/configuration.html<span class="comment">#confval-language.</span></span><br><span class="line">&gt; Project language [en]: zh_CN</span><br><span class="line"></span><br><span class="line">Creating file G:\Note\docs\<span class="built_in">source</span>\conf.py.</span><br><span class="line">Creating file G:\Note\docs\<span class="built_in">source</span>\index.rst.</span><br><span class="line">Creating file G:\Note\docs\Makefile.</span><br><span class="line">Creating file G:\Note\docs\make.bat.</span><br><span class="line"></span><br><span class="line">Finished: An initial directory structure has been created.</span><br></pre></td></tr></table></figure>
@@ -231,7 +231,7 @@
 <li>source/conf.py 项目配置文件，上面的配置可以在这里面修改</li>
 <li>source/index.rst 首页</li>
 </ul>
-<ol start="3">
+<ol>
 <li><p>编译</p>
 <p>对<code>index.rst</code>文件进行编译生成HTML以及相关静态文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Running Sphinx v4.5.0</span><br><span class="line">loading translations [zh_CN]... <span class="keyword">done</span></span><br><span class="line">making output directory... <span class="keyword">done</span></span><br><span class="line">building [mo]: targets <span class="keyword">for</span> 0 po files that are out of date</span><br><span class="line">building [html]: targets <span class="keyword">for</span> 1 <span class="built_in">source</span> files that are out of date</span><br><span class="line">updating environment: [new config] 1 added, 0 changed, 0 removed</span><br><span class="line">reading sources... [100%] index</span><br><span class="line">looking <span class="keyword">for</span> now-outdated files... none found</span><br><span class="line">pickling environment... <span class="keyword">done</span></span><br><span class="line">checking consistency... <span class="keyword">done</span></span><br><span class="line">preparing documents... <span class="keyword">done</span></span><br><span class="line">writing output... [100%] index</span><br><span class="line">generating indices... genindex <span class="keyword">done</span></span><br><span class="line">writing additional pages... search <span class="keyword">done</span></span><br><span class="line">copying static files... <span class="keyword">done</span></span><br><span class="line">copying extra files... <span class="keyword">done</span></span><br><span class="line">dumping search index <span class="keyword">in</span> Chinese (code: zh)... <span class="keyword">done</span></span><br><span class="line">dumping object inventory... <span class="keyword">done</span></span><br><span class="line">build succeeded.</span><br><span class="line"></span><br><span class="line">The HTML pages are <span class="keyword">in</span> build\html.</span><br></pre></td></tr></table></figure>
@@ -311,12 +311,12 @@
 
 
         
-        版权声明：转载请注明出处<a href="/4574b265/" target="_blank" rel="external">https://albert-5.github.io/blogs/4574b265/</a>！
+        版权声明：转载请注明出处<a href="/4574b265/" target="_blank" rel="external">https://albert-5.cn/4574b265/</a>！
         
     </div>
     
     <footer>
-        <a href="https://albert-5.github.io/blogs">
+        <a href="https://albert-5.cn">
             <img src="/img/avatar.jpg" alt="Albert">
             Albert
         </a>
@@ -342,7 +342,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/4574b265/&title=《基于Sphinx和furo的个人笔记文档网站搭建教程》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.cn/4574b265/&title=《基于Sphinx和furo的个人笔记文档网站搭建教程》 — Albert's Blog&pic=https://albert-5.cn/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -352,22 +352,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/4574b265/&title=《基于Sphinx和furo的个人笔记文档网站搭建教程》 — Albert's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.cn/4574b265/&title=《基于Sphinx和furo的个人笔记文档网站搭建教程》 — Albert's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/4574b265/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.cn/4574b265/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《基于Sphinx和furo的个人笔记文档网站搭建教程》 — Albert's Blog&url=https://albert-5.github.io/blogs/4574b265/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《基于Sphinx和furo的个人笔记文档网站搭建教程》 — Albert's Blog&url=https://albert-5.cn/4574b265/&via=https://albert-5.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/4574b265/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.cn/4574b265/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -516,7 +516,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/4574b265/&title=《基于Sphinx和furo的个人笔记文档网站搭建教程》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.cn/4574b265/&title=《基于Sphinx和furo的个人笔记文档网站搭建教程》 — Albert's Blog&pic=https://albert-5.cn/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -526,22 +526,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/4574b265/&title=《基于Sphinx和furo的个人笔记文档网站搭建教程》 — Albert's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.cn/4574b265/&title=《基于Sphinx和furo的个人笔记文档网站搭建教程》 — Albert's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/4574b265/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.cn/4574b265/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《基于Sphinx和furo的个人笔记文档网站搭建教程》 — Albert's Blog&url=https://albert-5.github.io/blogs/4574b265/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《基于Sphinx和furo的个人笔记文档网站搭建教程》 — Albert's Blog&url=https://albert-5.cn/4574b265/&via=https://albert-5.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/4574b265/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.cn/4574b265/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -552,7 +552,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABzklEQVR42u3aQW7DMAwEwPz/0y7QU4HCzpKU1KAYnYzYiScXQlzq9YrX9b3uPv959/f13Sd3v7lg4eLijrnX46q+pvdMYsDFxT3PfS5ed1++gpWXvKiA4uLifhg3v/v8Z3Bxcf8rN9nQJIUPFxf3k7l50eltWZJSuLhXw8XFHXCrgemO6435Li4ubpF7FVdegKqlKno7Li7uEW6vIamOWvMRS/Q8Li7uZu4kKn0erqxCL0t2cXFxW+hkpDofl/aGtbi4uCe5VVayJerFptEGCxcX9wh3dAyi1fz0hii3LRAuLu42blK2nl9ztPnBxcU9njMkiF7D0xuyFk6L4OLiLuXOk8k8g8nbrdHhDFxc3DE3Dzjygxd5+Wv2ari4uJu5+c/lTVFvQFve3ODi4m7gVgtQtZnJD3FGwSsuLu4fcfNNSW/6OYlicXFxz3DnY9S8XammMlE4gouLu4F7FVc1SM0HLVHThYuLe4RbLSuT8jcZ0+Li4p7n9opXb+5ZLWRvwhFcXNzN3GrMMYlKR70aLi7uh3Enr893KW+aH1xc3I/n9lqaJHId9WG4uLiLuHnzkx/Jykth+ZgmLi7uZm41MO2NWvNIpXeYAxcXdxH3C6c5e4oYNPTTAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABzElEQVR42u3aS47CMBAFQO5/6Yw02xDTzx2bIJVXCBlTyaLl/rxe5XX8r8qe887z91c7b1u4uLht7jFcZ25lTwU6/v7ykXBxcTdyx8FrHKTS0HZ1fimA4uLiPoxbCWpzRFxc3N/lVgJZBY2Li/sr3EryM1f4mNt/Q66Gi4vb4KYF0xWfF9Z3cXFxQ+4RrnqjJQ1VpX/HxcXdwh3/WaUAGiQtYXJ1eQIuLu5ibtoIqTxGWjoJTsPFxd3IrV9i6m2S/rXmzcm4uLhbuBXQ3ODFmJsmSMH7w8XFbXPTS0mKm6t8Xl6GcHFxt3A7BYtxgyRtkbYaq7i4uAu4c4lNejEal1eC5isuLu52bv3H9QGLubLspQEXF3cxNy5Ttuem0oYKLi7ut7iT8S9sn3QmRHBxcXdyO6y0AFq/SH24JOHi4i7m1pOTSmG0X1jBxcV9DjcdlUgvMXOpFC4u7ne59ZUORqSv4Ia6Cy4ubpvbGcioj2vcdSYuLu5O7l0Xl7nfxo0cXFzcjdxKoOmMW9Uj6IeIi4uL+zDuOPzVHzUtsL654uDi4j6M2xnnShOnGwIZLi5ugzvXSukURluBDBcXdzF3RcG0XkhNUyxcXNzF3D/ZUZWMN6N3VAAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

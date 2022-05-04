@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="python,快速排序">
-    <meta name="description" content="快速排序–一种使用D&amp;amp;C的排序算法算法原理 快速排序是对冒泡排序算法的改进，基本思想是：选择一基准元素，以此将剩余元素中的小于该基准元素的值放在左边，大于该基准元素的值放在右边；然后再在左侧序列和右侧序列做同样的处理操作；以此类推，直至各个序列都剩余一个元素时，即排序完成。  算法实现步骤 首先设定一基准值（pivot），通过该基准值将待排序序列分成左右两部分。 将小于或等于基准值的元素放">
+    <meta name="description" content="快速排序—一种使用D&amp;amp;C的排序算法算法原理 快速排序是对冒泡排序算法的改进，基本思想是：选择一基准元素，以此将剩余元素中的小于该基准元素的值放在左边，大于该基准元素的值放在右边；然后再在左侧序列和右侧序列做同样的处理操作；以此类推，直至各个序列都剩余一个元素时，即排序完成。  算法实现步骤 首先设定一基准值（pivot），通过该基准值将待排序序列分成左右两部分。 将小于或等于基准值的元素放">
 <meta name="keywords" content="python,快速排序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序算法之快速排序">
-<meta property="og:url" content="https://albert-5.github.io/blogs/77638675/index.html">
+<meta property="og:url" content="https://albert-5.cn/77638675/index.html">
 <meta property="og:site_name" content="Albert&#39;s Blog">
-<meta property="og:description" content="快速排序–一种使用D&amp;amp;C的排序算法算法原理 快速排序是对冒泡排序算法的改进，基本思想是：选择一基准元素，以此将剩余元素中的小于该基准元素的值放在左边，大于该基准元素的值放在右边；然后再在左侧序列和右侧序列做同样的处理操作；以此类推，直至各个序列都剩余一个元素时，即排序完成。  算法实现步骤 首先设定一基准值（pivot），通过该基准值将待排序序列分成左右两部分。 将小于或等于基准值的元素放">
+<meta property="og:description" content="快速排序—一种使用D&amp;amp;C的排序算法算法原理 快速排序是对冒泡排序算法的改进，基本思想是：选择一基准元素，以此将剩余元素中的小于该基准元素的值放在左边，大于该基准元素的值放在右边；然后再在左侧序列和右侧序列做同样的处理操作；以此类推，直至各个序列都剩余一个元素时，即排序完成。  算法实现步骤 首先设定一基准值（pivot），通过该基准值将待排序序列分成左右两部分。 将小于或等于基准值的元素放">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2021-11-06T08:56:36.008Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法之快速排序">
-<meta name="twitter:description" content="快速排序–一种使用D&amp;amp;C的排序算法算法原理 快速排序是对冒泡排序算法的改进，基本思想是：选择一基准元素，以此将剩余元素中的小于该基准元素的值放在左边，大于该基准元素的值放在右边；然后再在左侧序列和右侧序列做同样的处理操作；以此类推，直至各个序列都剩余一个元素时，即排序完成。  算法实现步骤 首先设定一基准值（pivot），通过该基准值将待排序序列分成左右两部分。 将小于或等于基准值的元素放">
+<meta name="twitter:description" content="快速排序—一种使用D&amp;amp;C的排序算法算法原理 快速排序是对冒泡排序算法的改进，基本思想是：选择一基准元素，以此将剩余元素中的小于该基准元素的值放在左边，大于该基准元素的值放在右边；然后再在左侧序列和右侧序列做同样的处理操作；以此类推，直至各个序列都剩余一个元素时，即排序完成。  算法实现步骤 首先设定一基准值（pivot），通过该基准值将待排序序列分成左右两部分。 将小于或等于基准值的元素放">
     
         <link rel="alternate" type="application/atom+xml" title="Albert&#39;s Blog" href="/atom.xml">
     
@@ -174,7 +174,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#快速排序–一种使用D-amp-C的排序算法"><span class="post-toc-text">快速排序–一种使用D&amp;C的排序算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法原理"><span class="post-toc-text">算法原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法实现步骤"><span class="post-toc-text">算法实现步骤</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码实现"><span class="post-toc-text">代码实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关于复杂度"><span class="post-toc-text">关于复杂度</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#快速排序—一种使用D-amp-C的排序算法"><span class="post-toc-text">快速排序—一种使用D&amp;C的排序算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法原理"><span class="post-toc-text">算法原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法实现步骤"><span class="post-toc-text">算法实现步骤</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码实现"><span class="post-toc-text">代码实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关于复杂度"><span class="post-toc-text">关于复杂度</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -200,7 +200,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="快速排序–一种使用D-amp-C的排序算法"><a href="#快速排序–一种使用D-amp-C的排序算法" class="headerlink" title="快速排序–一种使用D&amp;C的排序算法"></a>快速排序–一种使用<code>D&amp;C</code>的排序算法</h1><h2 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h2><blockquote>
+            <h1 id="快速排序—一种使用D-amp-C的排序算法"><a href="#快速排序—一种使用D-amp-C的排序算法" class="headerlink" title="快速排序—一种使用D&amp;C的排序算法"></a>快速排序—一种使用<code>D&amp;C</code>的排序算法</h1><h2 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h2><blockquote>
 <p>快速排序是对冒泡排序算法的改进，基本思想是：选择一<code>基准元素</code>，以此将剩余元素中的小于该基准元素的值放在左边，大于该基准元素的值放在右边；然后再在左侧序列和右侧序列做同样的处理操作；以此类推，直至各个序列都剩余一个元素时，即排序完成。</p>
 </blockquote>
 <h2 id="算法实现步骤"><a href="#算法实现步骤" class="headerlink" title="算法实现步骤"></a>算法实现步骤</h2><ul>
@@ -212,7 +212,7 @@
 </ul>
 <h2 id="关于复杂度"><a href="#关于复杂度" class="headerlink" title="关于复杂度"></a>关于复杂度</h2><p>快速排序算法的性能高度依赖于基准值的选取。在上述代码中是将第一个元素作为基准值，且要处理的数据是有序的。它并不会检查数据的有序性，只会按部就班的进行排序操作。<br>最糟糕情况下，所有的元素都是已经排好序的，但此时算法仍会按照步骤进行排序，且选择的基准值是第一个元素，所花费的时间较长，复杂度为<code>O(n²)</code>；最好的情况是已排好序的序列，每次选取序列的中间位置元素作为基准值，这样复杂度大大减小，为<code>O(nlogn)</code>。</p>
 <p><a href="https://visualgo.net/zh/sorting" target="_blank" rel="noopener">快速排序算法动图展示</a></p>
-<div><strong>🚩推荐阅读</strong>（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）<ul><li><a href="https://albert-5.github.io/blogs/2f6ec745/">LDA线性判别分析</a></li><li><a href="https://albert-5.github.io/blogs/cb33e42c/">排序算法之选择排序</a></li><li><a href="https://albert-5.github.io/blogs/573d89ae/">豆瓣电影top250</a></li><li><a href="https://blog.naaln.com/2015/07/of-python-zen/">zen of python</a></li><li><a href="https://blog.naaln.com/2015/07/python-learning-notes-variable-objects-and-immutable-objects/">Python学习笔记——可变对象和不可变对象</a></li></ul></div>
+
         </div>
 
         <blockquote class="post-copyright">
@@ -225,12 +225,12 @@
 
 
         
-        版权声明：转载请注明出处<a href="/77638675/" target="_blank" rel="external">https://albert-5.github.io/blogs/77638675/</a>！
+        版权声明：转载请注明出处<a href="/77638675/" target="_blank" rel="external">https://albert-5.cn/77638675/</a>！
         
     </div>
     
     <footer>
-        <a href="https://albert-5.github.io/blogs">
+        <a href="https://albert-5.cn">
             <img src="/img/avatar.jpg" alt="Albert">
             Albert
         </a>
@@ -256,7 +256,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/77638675/&title=《排序算法之快速排序》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.cn/77638675/&title=《排序算法之快速排序》 — Albert's Blog&pic=https://albert-5.cn/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -266,22 +266,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/77638675/&title=《排序算法之快速排序》 — Albert's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.cn/77638675/&title=《排序算法之快速排序》 — Albert's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/77638675/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.cn/77638675/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《排序算法之快速排序》 — Albert's Blog&url=https://albert-5.github.io/blogs/77638675/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《排序算法之快速排序》 — Albert's Blog&url=https://albert-5.cn/77638675/&via=https://albert-5.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/77638675/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.cn/77638675/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -437,7 +437,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/77638675/&title=《排序算法之快速排序》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.cn/77638675/&title=《排序算法之快速排序》 — Albert's Blog&pic=https://albert-5.cn/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -447,22 +447,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/77638675/&title=《排序算法之快速排序》 — Albert's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.cn/77638675/&title=《排序算法之快速排序》 — Albert's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/77638675/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.cn/77638675/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《排序算法之快速排序》 — Albert's Blog&url=https://albert-5.github.io/blogs/77638675/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《排序算法之快速排序》 — Albert's Blog&url=https://albert-5.cn/77638675/&via=https://albert-5.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/77638675/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.cn/77638675/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -473,7 +473,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABvUlEQVR42u3awa6DMAwEwP7/T/dJ79QL7S4OoaomJwQIJjlYjp3HIx7P//F6nd95vX/0zcUDFxd3zH2+HUefTp4mIzfg4uLu586DVxJz8gkf3sfFxf0ybkJJJoCLi/tL3PYHSUKDi4v7zdx2c9IGuKN3Ltyr4eLiDrjnCqZrry+v7+Li4i7qSrQJSl4iOfl3XFzcLdykTfL+fvL7vJgShTlcXNwt3LZUurbR0jZgcHFxr+bmRy7OvbmqFPIhI8PFxV3KbT+XBKn2zTZJwsXF3cnNU5M8PZrj6jXGxcW9gJu8eq7YMW/N4uLi7uHm7c8W0a5TXdnFxcW9jJufcEimNympjLpAuLi4F3DblmoepCYbG1xc3Lu4eYipWx1lWSRaOFxc3C3cZKvTFjdbbps84eLiXs2dtDlXBaaivIKLi7uR2xZMkwA3b9bi4uLey83HpACat2TqxgkuLu5S7vy41bnU51xbFxcXdyc3D16rEqC20YKLi3sX91zxop1k3nSpH+Pi4t7EbY9rTEonh09xcXG/mJunJu0m58PS4OLibuTOD2m1G6ckkI3KIri4uANuWzCdH9HIv4yLi7ud+wemNLR7RDoHswAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAByUlEQVR42u3aQY6DMAwF0N7/0sy2Uqfw7RCLSi+rikJ4YWE5dl6veBxv4/3K57/v18+f/bzztoGLi7vMPU5HFZTMkCz465JwcXEHud8ixvnUOSWf/8KGi4v7SO75lfP0ZWVJuLi4T+bm25heuoOLi/scbrJ1uau8MrRXw8XFXeCuv2b995b6Li4ubot7FEeSgtxVZv3nWVxc3BFuHlDW6b1AhouLO89NmqkrDZUkwBU+DS4u7iC3GmLyckZSXslTH1xc3BlukgH1XrxerYlmwMXF3cbNCxm94FWdobBXw8XF3cDtTb1eTLltr4aLi7uBe57W5AHo3g5pFHdxcXG3cfNA1gtw1UB58flwcXFHuHlikSCSKytHNHBxcSe51eZH0gKJvlCvsouLizvO7R3MyturSbvlImji4uIOcntHK/Ima964vQimuLi4g9wdZdC8yFK4BxcXdzP3KI71PUj1qAcuLu48Nx8rL6umRCslFVxc3Lu4eVEjX0avmBKlXLi4uIPccksjuCdvu5ZbKbi4uI/k9gofeTiLWim4uLg/xU2SpN6BDFxc3Elu9fBE7whFMufFx8LFxR3hVkNJ3kzNSx6Fg1m4uLh7uX8qrCn4ZOz+CQAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

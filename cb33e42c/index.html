@@ -25,7 +25,7 @@
 <meta name="keywords" content="python,选择排序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序算法之选择排序">
-<meta property="og:url" content="https://albert-5.github.io/blogs/cb33e42c/index.html">
+<meta property="og:url" content="https://albert-5.cn/cb33e42c/index.html">
 <meta property="og:site_name" content="Albert&#39;s Blog">
 <meta property="og:description" content="排序算法之选择排序数组数据在内存中的顺序是连续的，在使用时需要向计算机申请分配一定的内存空间，如果申请的空间一定，再加入新的数据时如果当前空间不足需要重新向计算机申请；同样，如果先前申请了大量的空间，但在使用过程中并没有被用到，则会造成空间的浪费。 术语数组的元素带编号，编号从0开始，这个位置叫做索引，故说：”元素a位于索引1处“，在元素读取和插入时有以下特征：">
 <meta property="og:locale" content="zh-CN">
@@ -247,7 +247,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findsmallest</span><span class="params">(arr)</span>:</span></span><br><span class="line">    smallest = arr[<span class="number">0</span>]</span><br><span class="line">    smallest_index = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(arr)):</span><br><span class="line">        <span class="keyword">if</span> arr[i] &lt; smallest:</span><br><span class="line">            smallest = arr[i]</span><br><span class="line">            smallest_index = i</span><br><span class="line">    <span class="keyword">return</span> smallest_index</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">selectsort</span><span class="params">(arr)</span>:</span></span><br><span class="line">    newarr = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(arr)):</span><br><span class="line">        smallest = findsmallest(arr)</span><br><span class="line">        newarr.append(arr.pop(smallest))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> newarr</span><br><span class="line"></span><br><span class="line">print(selectsort([<span class="number">3</span>, <span class="number">7</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">6</span>]))</span><br></pre></td></tr></table></figure>
 <p>输出结果如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">9</span>]</span><br></pre></td></tr></table></figure>
-<div><strong>🚩推荐阅读</strong>（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）<ul><li><a href="https://albert-5.github.io/blogs/77638675/">排序算法之快速排序</a></li><li><a href="https://albert-5.github.io/blogs/2f6ec745/">LDA线性判别分析</a></li><li><a href="https://albert-5.github.io/blogs/573d89ae/">豆瓣电影top250</a></li><li><a href="https://blog.naaln.com/2015/07/of-python-zen/">zen of python</a></li><li><a href="https://blog.naaln.com/2015/07/python-learning-notes-variable-objects-and-immutable-objects/">Python学习笔记——可变对象和不可变对象</a></li></ul></div>
+
         </div>
 
         <blockquote class="post-copyright">
@@ -260,12 +260,12 @@
 
 
         
-        版权声明：转载请注明出处<a href="/cb33e42c/" target="_blank" rel="external">https://albert-5.github.io/blogs/cb33e42c/</a>！
+        版权声明：转载请注明出处<a href="/cb33e42c/" target="_blank" rel="external">https://albert-5.cn/cb33e42c/</a>！
         
     </div>
     
     <footer>
-        <a href="https://albert-5.github.io/blogs">
+        <a href="https://albert-5.cn">
             <img src="/img/avatar.jpg" alt="Albert">
             Albert
         </a>
@@ -291,7 +291,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/cb33e42c/&title=《排序算法之选择排序》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.cn/cb33e42c/&title=《排序算法之选择排序》 — Albert's Blog&pic=https://albert-5.cn/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -301,22 +301,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/cb33e42c/&title=《排序算法之选择排序》 — Albert's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.cn/cb33e42c/&title=《排序算法之选择排序》 — Albert's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/cb33e42c/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.cn/cb33e42c/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《排序算法之选择排序》 — Albert's Blog&url=https://albert-5.github.io/blogs/cb33e42c/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《排序算法之选择排序》 — Albert's Blog&url=https://albert-5.cn/cb33e42c/&via=https://albert-5.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/cb33e42c/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.cn/cb33e42c/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -472,7 +472,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/cb33e42c/&title=《排序算法之选择排序》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.cn/cb33e42c/&title=《排序算法之选择排序》 — Albert's Blog&pic=https://albert-5.cn/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -482,22 +482,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/cb33e42c/&title=《排序算法之选择排序》 — Albert's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.cn/cb33e42c/&title=《排序算法之选择排序》 — Albert's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/cb33e42c/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.cn/cb33e42c/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《排序算法之选择排序》 — Albert's Blog&url=https://albert-5.github.io/blogs/cb33e42c/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《排序算法之选择排序》 — Albert's Blog&url=https://albert-5.cn/cb33e42c/&via=https://albert-5.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/cb33e42c/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.cn/cb33e42c/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -508,7 +508,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAB0ElEQVR42u3ay4rDMAwF0Pz/T3dgVoVO0isrFhk4XgXipidZCD18HPF6/a7P6+s97+t6/80LFxe3zX1drrNHV+8mz7/eg4uLO8+tBqY8DJ3trwZHXFzcZ3L7CcrZM3Fxcf8vN0lNrpOns9CGi4v7TG61OMnTlyTp2VKr4eLiNrh3pSad66H+Li4ubnsqkaQvSXhaC15//DsuLu4It9rySIama3vycggXF3eemwSjvJjJ06bCa+Pi4o5wO8VPPoLttEIWyyRcXNwGNylXqiXQWsJUPpiFi4u7jXtX8MpfvhP+cHFxd3M7o9C8aZKURlHwwsXFHeHmQ5G1hmmeoBRaKri4uJu5a2PRapmU3/3yv7i4uCPcave0c+RiLSzi4uLOc5MH5YGs0x5NfouLizvDXRt2Jg2OtcolSbNwcXF3c6ttjiQBqgamQgGGi4s7yM3HKnkhVD48kXwCXFzcQW6+dqQy5fMguLi4m7nVgLLWBk1euHoXFxd3NzcJXtXDWGvD16j0wsXFHeRWmxf9c1N5oXXkuRUuLu44t9MezcuqL6+Hi4v7SG5ezFSHstEnwMXFHeSuFSrVwilPem5oi+Di4ja4/YbpXQe5qk0ZXFzcDdwfqQ6+Vf2AqfEAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABx0lEQVR42u3aMW7DMAwF0Nz/0unSoUBg5ZO0bBd4moxAVp48ECKp1yse74/x9/fPOUfvrmeeNnBxccfc93Ik3GSFyTq4uLh3cY8ixjpgrefkgSwx4OLiPp9bDkDxVnFxcf8vd4Jbr4+Li/scbpL85JR1TWMUEHFxcS/hzv9m/rylvouLi9vivotjnhr1/vf3XVxc3Eu4eUDJDz3rLVWPL7i4uE/g5lclqjOjkkeSVuHi4m7mVgNNL1T11jw8keHi4m7mTo41eYG1V/osF1BwcXFP4lYvV1UDUK/yefjJcHFxH8BNWNXeR7LCl+QHFxd3M/fcYui+3uhp3xgXF7d4Zjhh3620JwlzuLi4V3J7DZVJgpRf0fiyYVxc3M3cPAlJcJNkKTo84eLi3srNF+21afPnKJDh4uJu4ybBK0mQ8pBXPUjh4uJeyU1apJMWSLUBU+jP4OLinsqdF0zz9KlaEMHFxb2LW011oiZHK33qhU5cXNx93EkykzdZJykQLi7uXdxeoMkvb/XWKXd+cHFxb+JWm6/VBszo+gUuLu6t3OqxphfUvnR+cHFxN3Pz9mq1GTNZExcX9y5ur7jZa5P0SjC4uLgXcn8Ag94gHp3FkLIAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="学习笔记,Linux">
-    <meta name="description" content="Linux学习笔记六Linux任务计划crontab周期性的清理/tmp、周期性的去备份一次数据库、周期性的分析日志等，因此需要利用Linux系统的计划工具–crontab（用于设置周期性被执行的命令）。 crontab命令从输入设备读取指令，并将其存放于crontab文件中，以供之后读取和执行。通常情况下，crontab存储的指令被守护进程激活，crond为其守护进程，crond常常在后台运行，">
+    <meta name="description" content="Linux学习笔记六Linux任务计划crontab周期性的清理/tmp、周期性的去备份一次数据库、周期性的分析日志等，因此需要利用Linux系统的计划工具—crontab（用于设置周期性被执行的命令）。 crontab命令从输入设备读取指令，并将其存放于crontab文件中，以供之后读取和执行。通常情况下，crontab存储的指令被守护进程激活，crond为其守护进程，crond常常在后台运行，">
 <meta name="keywords" content="学习笔记,Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux学习笔记六">
-<meta property="og:url" content="https://albert-5.github.io/blogs/fc88e170/index.html">
+<meta property="og:url" content="https://albert-5.cn/fc88e170/index.html">
 <meta property="og:site_name" content="Albert&#39;s Blog">
-<meta property="og:description" content="Linux学习笔记六Linux任务计划crontab周期性的清理/tmp、周期性的去备份一次数据库、周期性的分析日志等，因此需要利用Linux系统的计划工具–crontab（用于设置周期性被执行的命令）。 crontab命令从输入设备读取指令，并将其存放于crontab文件中，以供之后读取和执行。通常情况下，crontab存储的指令被守护进程激活，crond为其守护进程，crond常常在后台运行，">
+<meta property="og:description" content="Linux学习笔记六Linux任务计划crontab周期性的清理/tmp、周期性的去备份一次数据库、周期性的分析日志等，因此需要利用Linux系统的计划工具—crontab（用于设置周期性被执行的命令）。 crontab命令从输入设备读取指令，并将其存放于crontab文件中，以供之后读取和执行。通常情况下，crontab存储的指令被守护进程激活，crond为其守护进程，crond常常在后台运行，">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2022-02-14T07:01:00.456Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux学习笔记六">
-<meta name="twitter:description" content="Linux学习笔记六Linux任务计划crontab周期性的清理/tmp、周期性的去备份一次数据库、周期性的分析日志等，因此需要利用Linux系统的计划工具–crontab（用于设置周期性被执行的命令）。 crontab命令从输入设备读取指令，并将其存放于crontab文件中，以供之后读取和执行。通常情况下，crontab存储的指令被守护进程激活，crond为其守护进程，crond常常在后台运行，">
+<meta name="twitter:description" content="Linux学习笔记六Linux任务计划crontab周期性的清理/tmp、周期性的去备份一次数据库、周期性的分析日志等，因此需要利用Linux系统的计划工具—crontab（用于设置周期性被执行的命令）。 crontab命令从输入设备读取指令，并将其存放于crontab文件中，以供之后读取和执行。通常情况下，crontab存储的指令被守护进程激活，crond为其守护进程，crond常常在后台运行，">
     
         <link rel="alternate" type="application/atom+xml" title="Albert&#39;s Blog" href="/atom.xml">
     
@@ -174,7 +174,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Linux学习笔记六"><span class="post-toc-text">Linux学习笔记六</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Linux任务计划crontab"><span class="post-toc-text">Linux任务计划crontab</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#命令执行顺序控制和管道"><span class="post-toc-text">命令执行顺序控制和管道</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#顺序执行多条命令"><span class="post-toc-text">顺序执行多条命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#有选择的执行命令"><span class="post-toc-text">有选择的执行命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#管道"><span class="post-toc-text">管道</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cut命令打印输出文件"><span class="post-toc-text">cut命令打印输出文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#grep命令–查找"><span class="post-toc-text">grep命令–查找</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#wc命令"><span class="post-toc-text">wc命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sort排序"><span class="post-toc-text">sort排序</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Linux学习笔记六"><span class="post-toc-text">Linux学习笔记六</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Linux任务计划crontab"><span class="post-toc-text">Linux任务计划crontab</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#————————-minute-0-59"><span class="post-toc-text">.———————— minute (0 - 59)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#——————-hour-0-23"><span class="post-toc-text">|  .——————- hour (0 - 23)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#—————-day-of-month-1-31"><span class="post-toc-text">|  |  .————— day of month (1 - 31)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#———-month-1-12-OR-jan-feb-mar-apr-…"><span class="post-toc-text">|  |  |  .———- month (1 - 12) OR jan,feb,mar,apr …</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#——-day-of-week-0-6-Sunday-0-or-7-OR-sun-mon-tue-wed-thu-fri-sat"><span class="post-toc-text">|  |  |  |  .—— day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#user-name-command-to-be-executed"><span class="post-toc-text">|  |  |  |  | #         * user-name command to be executed</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#命令执行顺序控制和管道"><span class="post-toc-text">命令执行顺序控制和管道</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#顺序执行多条命令"><span class="post-toc-text">顺序执行多条命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#有选择的执行命令"><span class="post-toc-text">有选择的执行命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#管道"><span class="post-toc-text">管道</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cut命令打印输出文件"><span class="post-toc-text">cut命令打印输出文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#grep命令—查找"><span class="post-toc-text">grep命令—查找</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#wc命令"><span class="post-toc-text">wc命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sort排序"><span class="post-toc-text">sort排序</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -200,18 +200,12 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="Linux学习笔记六"><a href="#Linux学习笔记六" class="headerlink" title="Linux学习笔记六"></a>Linux学习笔记六</h1><h2 id="Linux任务计划crontab"><a href="#Linux任务计划crontab" class="headerlink" title="Linux任务计划crontab"></a>Linux任务计划crontab</h2><p>周期性的清理<code>/tmp</code>、周期性的去备份一次数据库、周期性的分析日志等，因此需要利用Linux系统的计划工具–crontab（用于设置周期性被执行的命令）。</p>
+            <h1 id="Linux学习笔记六"><a href="#Linux学习笔记六" class="headerlink" title="Linux学习笔记六"></a>Linux学习笔记六</h1><h2 id="Linux任务计划crontab"><a href="#Linux任务计划crontab" class="headerlink" title="Linux任务计划crontab"></a>Linux任务计划crontab</h2><p>周期性的清理<code>/tmp</code>、周期性的去备份一次数据库、周期性的分析日志等，因此需要利用Linux系统的计划工具—crontab（用于设置周期性被执行的命令）。</p>
 <p>crontab命令从输入设备读取指令，并将其存放于crontab文件中，以供之后读取和执行。通常情况下，crontab存储的指令被守护进程激活，crond为其守护进程，crond常常在后台运行，每一分钟会检查一次是否由预定的作业需要执行。</p>
 <p>crontab指令格式：</p>
 <blockquote>
 <p># Example of job definition: </p>
-<p>#.—————- minute (0 - 59) </p>
-<p>#|  .————- hour (0 - 23) </p>
-<p>#|  |  .———- day of month (1 - 31) </p>
-<p>#|  |  |  .——- month (1 - 12) OR jan,feb,mar,apr … </p>
-<p>#|  |  |  |  .—- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</p>
-<p>#|  |  |  |  | # <em>  </em>  <em>  </em>  * user-name command to be executed</p>
-</blockquote>
+<h1 id="————————-minute-0-59"><a href="#————————-minute-0-59" class="headerlink" title=".———————— minute (0 - 59)"></a>.———————— minute (0 - 59)</h1><h1 id="——————-hour-0-23"><a href="#——————-hour-0-23" class="headerlink" title="|  .——————- hour (0 - 23)"></a>|  .——————- hour (0 - 23)</h1><h1 id="—————-day-of-month-1-31"><a href="#—————-day-of-month-1-31" class="headerlink" title="|  |  .————— day of month (1 - 31)"></a>|  |  .————— day of month (1 - 31)</h1><h1 id="———-month-1-12-OR-jan-feb-mar-apr-…"><a href="#———-month-1-12-OR-jan-feb-mar-apr-…" class="headerlink" title="|  |  |  .———- month (1 - 12) OR jan,feb,mar,apr …"></a>|  |  |  .———- month (1 - 12) OR jan,feb,mar,apr …</h1><h1 id="——-day-of-week-0-6-Sunday-0-or-7-OR-sun-mon-tue-wed-thu-fri-sat"><a href="#——-day-of-week-0-6-Sunday-0-or-7-OR-sun-mon-tue-wed-thu-fri-sat" class="headerlink" title="|  |  |  |  .—— day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat"></a>|  |  |  |  .—— day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</h1><h1 id="user-name-command-to-be-executed"><a href="#user-name-command-to-be-executed" class="headerlink" title="|  |  |  |  | #         * user-name command to be executed"></a>|  |  |  |  | # <em>  </em>  <em>  </em>  * user-name command to be executed</h1></blockquote>
 <p><strong>crontab的使用</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
 <p>以上命令来添加一个计划任务。</p>
@@ -240,7 +234,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cut /etc/passwd -d ':' -f 1,6</span><br></pre></td></tr></table></figure>
 <p>打印 <code>/etc/passwd</code> 文件中每一行的前 N 个字符：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 前五个（包含第五个）</span></span><br><span class="line">cut /etc/passwd -c -5</span><br><span class="line"><span class="comment"># 前五个之后的（包含第五个）</span></span><br><span class="line">cut /etc/passwd -c 5-</span><br><span class="line"><span class="comment"># 第五个</span></span><br><span class="line">cut /etc/passwd -c 5</span><br><span class="line"><span class="comment"># 2 到 5 之间的（包含第五个）</span></span><br><span class="line">cut /etc/passwd -c 2-5</span><br></pre></td></tr></table></figure>
-<h3 id="grep命令–查找"><a href="#grep命令–查找" class="headerlink" title="grep命令–查找"></a>grep命令–查找</h3><p>一般形式为：</p>
+<h3 id="grep命令—查找"><a href="#grep命令—查找" class="headerlink" title="grep命令—查找"></a>grep命令—查找</h3><p>一般形式为：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep [命令选项]... 用于匹配的表达式 [文件]</span><br></pre></td></tr></table></figure>
 <p>例如：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -rnI "shiyanlou" ~</span><br></pre></td></tr></table></figure>
@@ -268,12 +262,12 @@
 
 
         
-        版权声明：转载请注明出处<a href="/fc88e170/" target="_blank" rel="external">https://albert-5.github.io/blogs/fc88e170/</a>！
+        版权声明：转载请注明出处<a href="/fc88e170/" target="_blank" rel="external">https://albert-5.cn/fc88e170/</a>！
         
     </div>
     
     <footer>
-        <a href="https://albert-5.github.io/blogs">
+        <a href="https://albert-5.cn">
             <img src="/img/avatar.jpg" alt="Albert">
             Albert
         </a>
@@ -299,7 +293,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/fc88e170/&title=《Linux学习笔记六》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.cn/fc88e170/&title=《Linux学习笔记六》 — Albert's Blog&pic=https://albert-5.cn/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -309,22 +303,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/fc88e170/&title=《Linux学习笔记六》 — Albert's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.cn/fc88e170/&title=《Linux学习笔记六》 — Albert's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/fc88e170/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.cn/fc88e170/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Linux学习笔记六》 — Albert's Blog&url=https://albert-5.github.io/blogs/fc88e170/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Linux学习笔记六》 — Albert's Blog&url=https://albert-5.cn/fc88e170/&via=https://albert-5.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/fc88e170/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.cn/fc88e170/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -480,7 +474,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/fc88e170/&title=《Linux学习笔记六》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.cn/fc88e170/&title=《Linux学习笔记六》 — Albert's Blog&pic=https://albert-5.cn/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -490,22 +484,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/fc88e170/&title=《Linux学习笔记六》 — Albert's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.cn/fc88e170/&title=《Linux学习笔记六》 — Albert's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/fc88e170/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.cn/fc88e170/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Linux学习笔记六》 — Albert's Blog&url=https://albert-5.github.io/blogs/fc88e170/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Linux学习笔记六》 — Albert's Blog&url=https://albert-5.cn/fc88e170/&via=https://albert-5.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/fc88e170/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.cn/fc88e170/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -516,7 +510,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAByUlEQVR42u3ay2rDMBAF0Pz/T6fQVaG1c2f0cuFoFRKjHHkxSHf0esXj/T3uP/9+/ue4n3PywMXFHea+b8cVMf8mn//+GVxc3P3cpHglpSdZTLUg4uLiPpmbb1Cqc+Li4v5f7hW6+uv9FgoXF/c53PxwkkyaPL/8rIaLizvAnRWYjnw+kO/i4uK2uhK9cLMXs0Zz4uLibuFWI4/qAnozfChzuLi4i7l5qDEesFZD1csShouLu52bl6peYepFIYUdGS4u7iRu8sezgtFebPqht4OLi7uMW0X3LlhUj0x/pDi4uLiLuUk5W/GX+WuKujq4uLhTudWtSR5xRu+pGqng4uJu4SatlF7zY1Zx/EOIi4u7mJuXm96mpNequVw8Li7uIW7eXKleuxy5IYKLi7uTW71WlRyNqo2TasyKi4u7mlvF9VqweUSLi4v7HO7Itct8Yb2Bi4t7ipuPalxSDVKb7wMXF3cqt1pQqq2Xast2VknFxcUd5ybFKz/wVA9OSciCi4t7ilsNL3qhSa+hG/2Mi4t7iJsfcqpHrLxhg4uL+0xuTk+WVL6QgYuLu5GbH1RGYpR8zgmxCC4u7gB3PDDNo9K8kOHi4h7ifgEnd7R7FjbwDAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAB0UlEQVR42u3aQW6EMAwF0Ln/pem2EgW+bchQ6WVVhQy8dGE5dj6feGy/RjK/f7pfefSrGwYuLu6Yu52O/auPnp7PH70nN+Di4q7nHkWMozU9VrL+woaLi/tKbpVVfScuLu7/4p7PzEMhLi7u27jJ4Sfn5oecB89quLi4A25epXzu70fqu7i4uC3uVhzJZ/JgVP46Li7uEm6vlZIEuzy5qSZMuLi4T3Or7c/eTLUgcjiDi4u7nBsVK4P5QrIStGD/yMhwcXEXcqvJTbV4mkDP0bi4uCu5+cWpvMmRbL4QwpJ94+Li3sqtBrK8RDIvuUaxExcX9wFurzCat0jzaxYXIRUXF/dL3DxZmRyN8tQnyshwcXFv5U7QvWLoDc1XXFzcF3An2+gVTC+SJ1xc3CXcPKGpruldzigcsXBxcR/jjo4irSZrcgms0P/BxcVdwu3lFdUAlxRYb6vX4uLixmu24qheoZhs7+JiFi4u7mPcfFRLpb2y6TzI4uLi3sWtFj3zQNYrr1x8BRcXdyG31wpNGiTlqHme4uDi4r6Sm4ew6r8gKqbg4uK+mJuHoXmAw8XF/RZ3crkqf9rb9qf6Ulxc3DG397NJG6baqmnWd3FxcTvcH5s3AS/QJgXMAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 

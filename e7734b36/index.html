@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="学习笔记,Linux">
-    <meta name="description" content="Linux学习笔记四文件打包常见的文件压缩包文件格式，windows上常见的有*.zip、*.7z。但Linux上要有更多，如下：    文件后缀名 说明     *.zip zip 程序打包压缩的文件   *.rar rar 程序压缩的文件   *.7z 7zip 程序压缩的文件   *.tar tar 程序打包，未压缩的文件   *.gz gzip 程序（GNU zip）压缩的文件   *.x">
+    <meta name="description" content="Linux学习笔记四文件打包常见的文件压缩包文件格式，windows上常见的有*.zip、*.7z。但Linux上要有更多，如下：     文件后缀名 说明     *.zip zip 程序打包压缩的文件   *.rar rar 程序压缩的文件   *.7z 7zip 程序压缩的文件   *.tar tar 程序打包，未压缩的文件   *.gz gzip 程序（GNU zip）压缩的文件   *.">
 <meta name="keywords" content="学习笔记,Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux学习笔记四">
-<meta property="og:url" content="https://albert-5.github.io/blogs/e7734b36/index.html">
+<meta property="og:url" content="https://albert-5.cn/e7734b36/index.html">
 <meta property="og:site_name" content="Albert&#39;s Blog">
-<meta property="og:description" content="Linux学习笔记四文件打包常见的文件压缩包文件格式，windows上常见的有*.zip、*.7z。但Linux上要有更多，如下：    文件后缀名 说明     *.zip zip 程序打包压缩的文件   *.rar rar 程序压缩的文件   *.7z 7zip 程序压缩的文件   *.tar tar 程序打包，未压缩的文件   *.gz gzip 程序（GNU zip）压缩的文件   *.x">
+<meta property="og:description" content="Linux学习笔记四文件打包常见的文件压缩包文件格式，windows上常见的有*.zip、*.7z。但Linux上要有更多，如下：     文件后缀名 说明     *.zip zip 程序打包压缩的文件   *.rar rar 程序压缩的文件   *.7z 7zip 程序压缩的文件   *.tar tar 程序打包，未压缩的文件   *.gz gzip 程序（GNU zip）压缩的文件   *.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2022-02-07T03:26:42.910Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux学习笔记四">
-<meta name="twitter:description" content="Linux学习笔记四文件打包常见的文件压缩包文件格式，windows上常见的有*.zip、*.7z。但Linux上要有更多，如下：    文件后缀名 说明     *.zip zip 程序打包压缩的文件   *.rar rar 程序压缩的文件   *.7z 7zip 程序压缩的文件   *.tar tar 程序打包，未压缩的文件   *.gz gzip 程序（GNU zip）压缩的文件   *.x">
+<meta name="twitter:description" content="Linux学习笔记四文件打包常见的文件压缩包文件格式，windows上常见的有*.zip、*.7z。但Linux上要有更多，如下：     文件后缀名 说明     *.zip zip 程序打包压缩的文件   *.rar rar 程序压缩的文件   *.7z 7zip 程序压缩的文件   *.tar tar 程序打包，未压缩的文件   *.gz gzip 程序（GNU zip）压缩的文件   *.">
     
         <link rel="alternate" type="application/atom+xml" title="Albert&#39;s Blog" href="/atom.xml">
     
@@ -201,6 +201,7 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h1 id="Linux学习笔记四"><a href="#Linux学习笔记四" class="headerlink" title="Linux学习笔记四"></a>Linux学习笔记四</h1><h2 id="文件打包"><a href="#文件打包" class="headerlink" title="文件打包"></a>文件打包</h2><p>常见的文件压缩包文件格式，windows上常见的有<code>*.zip</code>、<code>*.7z</code>。但Linux上要有更多，如下：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -255,6 +256,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>使用<code>zip</code>打包文件夹</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd 目录</span><br><span class="line">zip -p -r -o fiel.zip 路径</span><br><span class="line">du -h file.zip</span><br><span class="line">file file.zip</span><br></pre></td></tr></table></figure>
 <p>其中，<code>-r</code>参数表示递归打包包含子目录的全部内容，<code>-q</code>参数表示为安静模式，即不向屏幕输出信息，<code>-o</code>表示输出文件，需在其后紧跟打包输出文件名。后面使用<code>du</code>命令查看打包后文件的大小。</p>
@@ -265,7 +267,7 @@
 <p>1表示最快压缩但体积大，9表示体积最小但耗时最久。</p>
 <p>在使用<code>du</code>命令分别查看默认压缩级别、最低、最高压缩级别以及未压缩的文件的大小。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -h -d 0 *.zip ~ | sort</span><br></pre></td></tr></table></figure>
-<p><code>注</code> <code>-h</code>全称–human-reachable，易人们读；<code>-d</code>全称为–max-depth</p>
+<p><code>注</code> <code>-h</code>全称—human-reachable，易人们读；<code>-d</code>全称为—max-depth</p>
 <p><strong>创建加密zip包</strong></p>
 <p>使用<code>-e</code>参数可以创建加密压缩包</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zip -r -e -o file.zip 待压缩文件目录</span><br></pre></td></tr></table></figure>
@@ -306,12 +308,12 @@
 
 
         
-        版权声明：转载请注明出处<a href="/e7734b36/" target="_blank" rel="external">https://albert-5.github.io/blogs/e7734b36/</a>！
+        版权声明：转载请注明出处<a href="/e7734b36/" target="_blank" rel="external">https://albert-5.cn/e7734b36/</a>！
         
     </div>
     
     <footer>
-        <a href="https://albert-5.github.io/blogs">
+        <a href="https://albert-5.cn">
             <img src="/img/avatar.jpg" alt="Albert">
             Albert
         </a>
@@ -337,7 +339,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/e7734b36/&title=《Linux学习笔记四》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.cn/e7734b36/&title=《Linux学习笔记四》 — Albert's Blog&pic=https://albert-5.cn/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -347,22 +349,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/e7734b36/&title=《Linux学习笔记四》 — Albert's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.cn/e7734b36/&title=《Linux学习笔记四》 — Albert's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/e7734b36/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.cn/e7734b36/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Linux学习笔记四》 — Albert's Blog&url=https://albert-5.github.io/blogs/e7734b36/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Linux学习笔记四》 — Albert's Blog&url=https://albert-5.cn/e7734b36/&via=https://albert-5.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/e7734b36/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.cn/e7734b36/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -518,7 +520,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/e7734b36/&title=《Linux学习笔记四》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.cn/e7734b36/&title=《Linux学习笔记四》 — Albert's Blog&pic=https://albert-5.cn/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -528,22 +530,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/e7734b36/&title=《Linux学习笔记四》 — Albert's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.cn/e7734b36/&title=《Linux学习笔记四》 — Albert's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/e7734b36/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.cn/e7734b36/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Linux学习笔记四》 — Albert's Blog&url=https://albert-5.github.io/blogs/e7734b36/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Linux学习笔记四》 — Albert's Blog&url=https://albert-5.cn/e7734b36/&via=https://albert-5.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/e7734b36/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.cn/e7734b36/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -554,7 +556,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxklEQVR42u3aQWoDMQwF0N7/0lPoqpB2+r8Vm6E8r4aEjJ+zEJKsj494XV/r9fn+2+vbev3k9T1vW7i4uGPudbuSjZMj/bZjbsDFxT3PTYJXG87mx8PFxX0+dy3duQ+OuLi4/4N7X8bMf4WLi/scbh508jLmfuPttRouLu6AO2mYvuv5UH8XFxd3fCuRB7W25bq2cHFxz3DXCpK2sLlPffLrFlxc3DPcpKRJEGtHGuVZuLi427jtsFSbAOUjWaMuDi4u7gbuZGRqMqIxSbBwcXH3cRfPNBjMWrtE+aGLg4uLe5C7do3aNlNGtRouLu5m7nubIJNwVjRucHFxj3Pz/mRCaRumUUMEFxd3M3ftyjOhtwVSUfzg4uJu5q41KfJGZzuiEUUtXFzczdwk4Zhs3KZBUQjDxcU9yE3Sl3yztQbKH38iLi7uEW4etvJt8sGL0TUPLi7uNu5VrrYJknxeBERcXNwj3DastIEvv7Jtj4qLi7ubOy+B2sGLyfUtLi7uSe6kHGpbpaNaDRcX92HcdtCqHeZILndxcXGfzM1HNFp0XYfh4uJu47ZN0qTsad8QpUS4uLhHuG3DdG3LfHhrXnrh4uIOuJ8AoeIxF7aaNwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABw0lEQVR42u3awa7CMAwEQP7/p3lXpCfKbty0IE1OqCrJpAcrsf14xOP5Ml6fHL9z/N//b542cHFxx9zn4ciXXJshN+Di4l7PfRcxjt9pKe38uLi4v8g9Dkb5nLi4uL/OXQtw+XEHFxf3e7jJ1aXltp/g5LsaLi7ugDtfZv57S34XFxd3ifssR54YbVOo0eq4uLiXcPOA0h6DkkJsuy4uLu5d3LxVIr+uJKWUYku4uLibuW3LVL5Au5lkNlxc3Gu4k/LnvIC6NhsuLu5u7jzo5CeptcJJncXBxcU9ibtW/mw3kDyPLj+4uLi3chPK2sFlSyDDxcU9lTs/1uTp1yTYvQ2XuLi4N3GTxOgaPb8IFYEMFxd3A7edeu0OkjdbFMlWXFzczdyoqDkotbbllg+fABcX90JunrhMkhp5s1f+HBcX9y5umwbNU5/5/B/ewcXF3cydt1q25dI8IYKLi3sXdxKw5uEpT9HWm8HFxR1z28tMfkhaa8D6EEZxcXEv5LaIJDrOQ95ieRUXF/dy7lpCJJ8nOuLg4uJ+JTdHTIJaXfnBxcU9lZsnN5NjTVtSLT4WLi7uJdw2lLQtF+e2buDi4m7m/gGlS5p5QSwiiAAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

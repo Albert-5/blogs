@@ -25,7 +25,7 @@
 <meta name="keywords" content="python,wechat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="wechat信息抓取">
-<meta property="og:url" content="https://albert-5.github.io/blogs/6739178/index.html">
+<meta property="og:url" content="https://albert-5.cn/6739178/index.html">
 <meta property="og:site_name" content="Albert&#39;s Blog">
 <meta property="og:description" content="微信好友 一览无余【itchat】一个微信的开源API，微信是一种常用的社交网络应用程序。 通过python中的聊天访问个人微信账户，然后通过微信机器人进行处理个人所有基本信息。 安装itchat模块1pip install itchat 简单使用123import itchatitchat.auto_login()itchat.send(&apos;Hello, filehelper&apos;, toUserNa">
 <meta property="og:locale" content="zh-CN">
@@ -223,7 +223,10 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_var</span><span class="params">(var)</span>:</span></span><br><span class="line">    variable = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> friends:</span><br><span class="line">        value = i[var]</span><br><span class="line">        variable.append(value)</span><br><span class="line">    <span class="keyword">return</span> variable</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用函数得到各个变量,存在csv文件中</span></span><br><span class="line">NickName = get_var(<span class="string">'NickName'</span>)</span><br><span class="line">Sex = get_var(<span class="string">'Sex'</span>)</span><br><span class="line">Province = get_var(<span class="string">'Province'</span>)</span><br><span class="line">City = get_var(<span class="string">'City'</span>)</span><br><span class="line">Signature = get_var(<span class="string">'Signature'</span>)</span><br><span class="line">Username = get_var(<span class="string">'UserName'</span>)</span><br><span class="line">ContactFlag = get_var(<span class="string">'ContactFlag'</span>)</span><br><span class="line">SnsFlag = get_var(<span class="string">'SnsFlag'</span>)</span><br></pre></td></tr></table></figure>
 <p><strong>定义函数parse_friends()</strong>，将得到的好友数据存储在txt文本中</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 收集并保存好友信息数据</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_friends</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 设置需要爬取的信息字段,使用字典形式,参考官网以及个人需求设置字段信息</span></span><br><span class="line">    result = &#123;<span class="string">'NickName'</span>: NickName, <span class="string">'Sex'</span>: Sex, <span class="string">'Province'</span>: Province, <span class="string">'City'</span>: City, <span class="string">'UserName'</span>: Username,</span><br><span class="line">            <span class="string">'ContactFlag'</span>: ContactFlag, <span class="string">'SnsFlag'</span>: SnsFlag, <span class="string">'Signature'</span>: Signature, &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> user <span class="keyword">in</span> friends:</span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">'myfriends.txt'</span>, <span class="string">'a'</span>, encoding=<span class="string">'utf8'</span>) <span class="keyword">as</span> fh:</span><br><span class="line">            fh.write(<span class="string">'-------------------------\n'</span>)</span><br><span class="line">        <span class="keyword">for</span> r <span class="keyword">in</span> result:</span><br><span class="line">            <span class="keyword">with</span> open(<span class="string">'myfriends.txt'</span>, <span class="string">'a'</span>, encoding=<span class="string">'utf8'</span>) <span class="keyword">as</span> fh:</span><br><span class="line">                fh.write(str(r) + <span class="string">":"</span> + str(user.get(r))+<span class="string">"\n"</span>)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"分析完毕！"</span>)</span><br></pre></td></tr></table></figure>
-<center>设置最后打印标识，提醒已完成信息存储；<br><br><br><center>同时当前文件夹中出现一个文件<code>myfriends.txt</code></center>
+<center>设置最后打印标识，提醒已完成信息存储；
+
+
+<center>同时当前文件夹中出现一个文件`myfriends.txt`</center>
 
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -262,11 +265,12 @@
                 </div>
                 <div class="image-caption">比例.png</div>
             </figure>
-<center>或许这就是你Single的原因吧 –苦笑–<br></center>
+<center>或许这就是你Single的原因吧 --苦笑-- 
+</center>
 
 
 
-</center><div><strong>🚩推荐阅读</strong>（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）<ul><li><a href="https://albert-5.github.io/blogs/77638675/">排序算法之快速排序</a></li><li><a href="https://albert-5.github.io/blogs/2f6ec745/">LDA线性判别分析</a></li><li><a href="https://albert-5.github.io/blogs/cb33e42c/">排序算法之选择排序</a></li><li><a href="https://blog.naaln.com/2015/07/of-python-zen/">zen of python</a></li><li><a href="https://blog.naaln.com/2015/07/python-learning-notes-variable-objects-and-immutable-objects/">Python学习笔记——可变对象和不可变对象</a></li></ul></div>
+</center>
         </div>
 
         <blockquote class="post-copyright">
@@ -279,12 +283,12 @@
 
 
         
-        版权声明：转载请注明出处<a href="/6739178/" target="_blank" rel="external">https://albert-5.github.io/blogs/6739178/</a>！
+        版权声明：转载请注明出处<a href="/6739178/" target="_blank" rel="external">https://albert-5.cn/6739178/</a>！
         
     </div>
     
     <footer>
-        <a href="https://albert-5.github.io/blogs">
+        <a href="https://albert-5.cn">
             <img src="/img/avatar.jpg" alt="Albert">
             Albert
         </a>
@@ -310,7 +314,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/6739178/&title=《wechat信息抓取》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.cn/6739178/&title=《wechat信息抓取》 — Albert's Blog&pic=https://albert-5.cn/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -320,22 +324,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/6739178/&title=《wechat信息抓取》 — Albert's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.cn/6739178/&title=《wechat信息抓取》 — Albert's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/6739178/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.cn/6739178/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《wechat信息抓取》 — Albert's Blog&url=https://albert-5.github.io/blogs/6739178/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《wechat信息抓取》 — Albert's Blog&url=https://albert-5.cn/6739178/&via=https://albert-5.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/6739178/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.cn/6739178/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -491,7 +495,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/6739178/&title=《wechat信息抓取》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.cn/6739178/&title=《wechat信息抓取》 — Albert's Blog&pic=https://albert-5.cn/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -501,22 +505,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/6739178/&title=《wechat信息抓取》 — Albert's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.cn/6739178/&title=《wechat信息抓取》 — Albert's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/6739178/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.cn/6739178/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《wechat信息抓取》 — Albert's Blog&url=https://albert-5.github.io/blogs/6739178/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《wechat信息抓取》 — Albert's Blog&url=https://albert-5.cn/6739178/&via=https://albert-5.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/6739178/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.cn/6739178/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -527,7 +531,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwklEQVR42u3aS27DMAwFwNz/0um6CGI/UhLrAqOV4cjOeEOIn9crXu+P9flrvv/bU9sWLi7uMvd9uT73JO+53vPt+tqAi4s7z81fnQSs6/vV9+Pi4j6fm4S8XiDDxcX9v9zkzspxBxcX9zncXniK0pU4/G3O1XBxcRe4eZXy3PWR+i4uLm6L+y6ualmkWhi9+XdcXNwRbh5Q9pY+8+MLLi7uPDdPQpJm6kpZJBrdwMXFHeTmLZBe8Lr+jGSo61cgw8XFPczNE5U88CUJz0ohBhcX9zQ3L0ZUd1aDWnScwsXFHeH2uhXVBGZb8oOLizvC7RUxewMT2+IuLi7uOHdvi7Q6knVTOsHFxR3kJgeX/JSUB7Vk/02TFRcX9wC3hztRHo0qu7i4uH/EzUufPcTKoQoXF3ee22uX9nautGxxcXHnudeHnvxg1GuuRIESFxf3MHe9AJqPc21Ik3BxcUe4J1KXbeWPVusXFxd3FzcPXsl3J88mqc7NeBYuLu4ItxpokqGu3uBXlKvh4uI+mJukRrsGO3BxcZ/MzVsgeZgrCHFxcQe5eZE0p5dHK5IwiouLO8Ith5JiUSNv26ykTLi4uJu4P6XVSOc9CjDCAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABw0lEQVR42u3ay2rDMBAF0Pz/T6dQuiiEOPfqVVOOVkbYylEWg2ZGj0c8nt/jdeb3ePfV6zvXXy0YuLi409zn5Ui41/P5+tfv4OLinudeB68El2w1ef5gw8XFvRk3oeczuLi4/4O7L0jh4uLek7sqOWnToY25Gi4u7gS3LZjueN5Y38XFxS25z3KMJUXzv/uzJi4u7hFuXs5oG6tJ2EoOPUW/FxcXdwM3J+Ypytj1iyJXw8XF3cDNCxxtU6Rtx0YSXFzcg9y8ddqWU9uNFWkPLi7uZu6qixQzSVQS/nBxcU9yx1iDRY24hDpYv8HFxZ3mjhVHkqsVect2sPmKi4u7jdseQXLoWHn0w8q4uLgHufOpS/5+GzpxcXH/lpscR9rSZ7Ja8RUuLu4RbnscWfX+zB+Bi4u7m7sqLZkplyRJFC4u7nluXtBMQk8+07ZYcHFxT3Lba5Rt+aNt2RadWFxc3A3cNqCMzRQl0ZkuMS4u7lJuG7zy0JOvU2wVFxf3IHf+OJJvNQ+auLi49+fmmxlLq4ojDi4u7s24SaEkv+xVX8jAxcU9yE2Sn/YQ0+IWl0VwcXFn65NFwXTs+sXYUQkXF/c49wt7dJWMM/lmYAAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

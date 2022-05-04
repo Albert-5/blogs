@@ -25,7 +25,7 @@
 <meta name="keywords" content="立体视觉,视差图">
 <meta property="og:type" content="article">
 <meta property="og:title" content="立体视觉计算视差图">
-<meta property="og:url" content="https://albert-5.github.io/blogs/18650a07/index.html">
+<meta property="og:url" content="https://albert-5.cn/18650a07/index.html">
 <meta property="og:site_name" content="Albert&#39;s Blog">
 <meta property="og:description" content="立体视觉计算视差图 stereo vision一、实验原理1、立体图像立体视差也就是立体视像，是基于双眼视差所获得的深度知觉。所谓立体图像，其实就是有两台水平的相机对同一场景进行观测，这时，得到的两幅图像就有了相同的图像平面，图像的行是对齐的。参考图如下所示：">
 <meta property="og:locale" content="zh-CN">
@@ -215,11 +215,12 @@
                     <img src="https://i.loli.net/2021/10/23/q8euCFYdoKbZQxf.jpg" alt="原理图1.jpg" title>
                 </div>
                 <div class="image-caption">原理图1.jpg</div>
-            </figure><br>由于采用的图像是<a href>官网</a>提供的图片，是已经矫正过的，所以这两幅图就可以看成是理想的。根据偏移可以计算出深度，公式如下：<br>$$Z=\frac{fb}{x_l-x_r}$$<br>其中，$f$是焦距，$b$是两个相机中心的距离，$x_l$和$x_r$分别是左右两个图像中的$x$坐标，分开照相机中心的距离成为基线。</p>
+            </figure><br>由于采用的图像是<a href>官网</a>提供的图片，是已经矫正过的，所以这两幅图就可以看成是理想的。根据偏移可以计算出深度，公式如下：</p>
+<script type="math/tex; mode=display">Z=\frac{fb}{x_l-x_r}</script><p>其中，$f$是焦距，$b$是两个相机中心的距离，$x_l$和$x_r$分别是左右两个图像中的$x$坐标，分开照相机中心的距离成为基线。</p>
 <h3 id="2、计算视差"><a href="#2、计算视差" class="headerlink" title="2、计算视差"></a>2、计算视差</h3><p><strong>在立体重建算法中，对图像中的每个像素尝试不同的偏移，并按照局部图像周围归一化的互相关值，选择具有最好分数的偏移，记录该最佳偏移。</strong></p>
 <h3 id="3、归一化互相关NCC"><a href="#3、归一化互相关NCC" class="headerlink" title="3、归一化互相关NCC"></a>3、归一化互相关NCC</h3><p>归一化互相关算法原理为：对于已经矫正过的两个图像$I_1$和$I_2$，ncc算法对图像$I_1$一个待匹配像素构建一个匹配窗口，在另一个图像的极线上对每个像素构建匹配窗口与待匹配像素匹配窗口计算相关性，相关性越高则表示匹配度越好。</p>
-<p>下面对每个像素周围的像素块来计算归一化相关值，公式如下：<br>$$ncc(I_1,I_2)=\frac{\Sigma_x(I_1(X)-\mu_1)(I_2(X)-\mu_2)}{\sqrt{\Sigma_x(I_1(X)-\mu_1)^2}\sqrt{\Sigma_x(I_2(X)-\mu_2)^2}}$$</p>
-<h2 id="二、实验步骤"><a href="#二、实验步骤" class="headerlink" title="二、实验步骤"></a>二、实验步骤</h2><p>得到计算视差图的基本步骤如下：</p>
+<p>下面对每个像素周围的像素块来计算归一化相关值，公式如下：</p>
+<script type="math/tex; mode=display">ncc(I_1,I_2)=\frac{\Sigma_x(I_1(X)-\mu_1)(I_2(X)-\mu_2)}{\sqrt{\Sigma_x(I_1(X)-\mu_1)^2}\sqrt{\Sigma_x(I_2(X)-\mu_2)^2}}</script><h2 id="二、实验步骤"><a href="#二、实验步骤" class="headerlink" title="二、实验步骤"></a>二、实验步骤</h2><p>得到计算视差图的基本步骤如下：</p>
 <ul>
 <li>校正：校正的目的是为了使得两帧图像的光心处于同一水平线上，便于后续的ncc操作。</li>
 <li>特征匹配：利用ncc做匹配，右视图中与左视图待测像素同一水平线上相关性最高即为最优匹配，完成匹配后，需要记录视差d，即待测像素水平方向$x_l$和匹配像素水平方向$x_r$之间的差值，再由上述推导的深度公式计算出深度$Z$，最终可以得到一个与原始图像尺寸相同的视差图。</li>
@@ -242,6 +243,7 @@
                 <div class="image-caption">im1.jpg</div>
             </figure>
 <p>对不同窗口下的视差图如下（窗口值从1-30,50，100）</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -303,6 +305,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h2 id="五、实验结果分析"><a href="#五、实验结果分析" class="headerlink" title="五、实验结果分析"></a>五、实验结果分析</h2><p>结果上来看，窗口值的大小改变对结果较大，wid值越小，颗粒感越大，匹配结果的区分度越低，并且成散粉分裂状；随着窗口值增大，匹配区分度逐渐清晰，精度也变高；当窗口值过大时，效果没有更好，反而暗区会越来越黑，匹配效果不是很好。</p>
 
         </div>
@@ -317,12 +320,12 @@
 
 
         
-        版权声明：转载请注明出处<a href="/18650a07/" target="_blank" rel="external">https://albert-5.github.io/blogs/18650a07/</a>！
+        版权声明：转载请注明出处<a href="/18650a07/" target="_blank" rel="external">https://albert-5.cn/18650a07/</a>！
         
     </div>
     
     <footer>
-        <a href="https://albert-5.github.io/blogs">
+        <a href="https://albert-5.cn">
             <img src="/img/avatar.jpg" alt="Albert">
             Albert
         </a>
@@ -348,7 +351,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/18650a07/&title=《立体视觉计算视差图》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.cn/18650a07/&title=《立体视觉计算视差图》 — Albert's Blog&pic=https://albert-5.cn/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -358,22 +361,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/18650a07/&title=《立体视觉计算视差图》 — Albert's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.cn/18650a07/&title=《立体视觉计算视差图》 — Albert's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/18650a07/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.cn/18650a07/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《立体视觉计算视差图》 — Albert's Blog&url=https://albert-5.github.io/blogs/18650a07/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《立体视觉计算视差图》 — Albert's Blog&url=https://albert-5.cn/18650a07/&via=https://albert-5.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/18650a07/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.cn/18650a07/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -529,7 +532,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.github.io/blogs/18650a07/&title=《立体视觉计算视差图》 — Albert's Blog&pic=https://albert-5.github.io/blogs/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.cn/18650a07/&title=《立体视觉计算视差图》 — Albert's Blog&pic=https://albert-5.cn/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -539,22 +542,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.github.io/blogs/18650a07/&title=《立体视觉计算视差图》 — Albert's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.cn/18650a07/&title=《立体视觉计算视差图》 — Albert's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.github.io/blogs/18650a07/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.cn/18650a07/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《立体视觉计算视差图》 — Albert's Blog&url=https://albert-5.github.io/blogs/18650a07/&via=https://albert-5.github.io/blogs" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《立体视觉计算视差图》 — Albert's Blog&url=https://albert-5.cn/18650a07/&via=https://albert-5.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.github.io/blogs/18650a07/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.cn/18650a07/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -565,7 +568,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxklEQVR42u3aSU7DQBAAQP//00bihBTs9DYTg2pOUUg8RQ6t3o4jfM7v8/P167n/5NV3jxUHFxe3zT1vz/01r1dGQJHnXz4BFxd3IzcevLIBK/6EewMuLu4zuZG/dpIhXFzc/8TNfiuSKuHi4j6BW2t2XJUo8TJpYa2Gi4vb4NYaprOvl/d3cXFxh6YSkVBVa5LWDi4u7h7uVEFSG5/Eo9YxWz/h4uImuZExSTxBiRRFrfULXFzcBdxaSOoPYiP3XiY3uLi4W7i1pYp4SlSLRQPJDS4ubr2WSQxc482L7LpG8YfAxcVdwO23SjvrF60qDRcXdxk3O0ydeqeTEuHi4u7h1oYftbWq7CC2mIXh4uI2uJ1rauOW+D+ZLn5wcXGHuNmBa63lURvVJBqmuLi4o9x4+EgPOdqjml/uwsXFfQC3E7ZqqxtvCiRcXNwt3NrjOslNbcyDi4u7k3smT6TB0VnpeFMg4eLibuFO5Q+10Ug2UOLi4u7kxocZYw2OcCBLNEdwcXEXcKeCV5xbrNVwcXEfxu0PV/pFFy4u7l/h1jY+QrhslwUXF3eUGy9+sp/slE+4uLif4tYapp0Fi0iR06Lj4uLWuV+FngsJjMLuVgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxElEQVR42u3aQXKEMAwEwPz/0+QDwYws5GxS7dMWsLi5qGRJX1/xum7W3d27/95deXnh4uK2uddyrTdYo/t3f/gkXFzcg9y7iJGz1s+vQ15iwMXF/WTu+kqevuDi4v4/7vp6ErZwcXE/n5unLNWwladBL5/VcHFxG9y8Sjn3e6S+i4uLu8W9iitPa/be/7A7Li7uEW4eUPJWSlI6ae2Li4s7zO03VifGLx5CGC4u7hFuErDyAuteeSUaAsPFxT3CzcNNf+TirUIMLi7uGW4SOPLUp/qGanqEi4s7za0mK53xizyRKpdKcXFxB7j99kk1WWkFMlxc3GHuXlkzL3PkoXC9Ly4u7kluNWxVw02SGLXiLi4u7gC32iDpoPMkKUqtcHFxh7l7B569I83e74fiCC4u7hg3OSetEXmTNXnPQ5MVFxf3IDfZIA9k1dZL9AwuLu4w9yqu6mEmf090NMLFxT3CrTZKO5tVWzJ7JRVcXNy3uJ3xi06TNQ9wuLi4v8XNWxpVUOfwU26v4uLifhi32oDZHL/AxcX9U9zqZ+wNZODi4p7kVouk1dGKauH1ocmKi4s7zK2GknyDvORRGMzCxcWd5X4DoCnYVyUUUsYAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
