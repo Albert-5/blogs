@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="学习笔记,Linux">
-    <meta name="description" content="Linux学习笔记四文件打包常见的文件压缩包文件格式，windows上常见的有*.zip、*.7z。但Linux上要有更多，如下：     文件后缀名 说明     *.zip zip 程序打包压缩的文件   *.rar rar 程序压缩的文件   *.7z 7zip 程序压缩的文件   *.tar tar 程序打包，未压缩的文件   *.gz gzip 程序（GNU zip）压缩的文件   *.">
+    <meta name="description" content="Linux学习笔记四文件打包常见的文件压缩包文件格式，windows上常见的有*.zip、*.7z。但Linux上要有更多，如下：    文件后缀名 说明     *.zip zip 程序打包压缩的文件   *.rar rar 程序压缩的文件   *.7z 7zip 程序压缩的文件   *.tar tar 程序打包，未压缩的文件   *.gz gzip 程序（GNU zip）压缩的文件   *.x">
 <meta name="keywords" content="学习笔记,Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux学习笔记四">
 <meta property="og:url" content="https://albert-5.github.io/blogs/e7734b36/index.html">
 <meta property="og:site_name" content="Albert&#39;s Blog">
-<meta property="og:description" content="Linux学习笔记四文件打包常见的文件压缩包文件格式，windows上常见的有*.zip、*.7z。但Linux上要有更多，如下：     文件后缀名 说明     *.zip zip 程序打包压缩的文件   *.rar rar 程序压缩的文件   *.7z 7zip 程序压缩的文件   *.tar tar 程序打包，未压缩的文件   *.gz gzip 程序（GNU zip）压缩的文件   *.">
+<meta property="og:description" content="Linux学习笔记四文件打包常见的文件压缩包文件格式，windows上常见的有*.zip、*.7z。但Linux上要有更多，如下：    文件后缀名 说明     *.zip zip 程序打包压缩的文件   *.rar rar 程序压缩的文件   *.7z 7zip 程序压缩的文件   *.tar tar 程序打包，未压缩的文件   *.gz gzip 程序（GNU zip）压缩的文件   *.x">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2022-02-07T03:26:42.910Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux学习笔记四">
-<meta name="twitter:description" content="Linux学习笔记四文件打包常见的文件压缩包文件格式，windows上常见的有*.zip、*.7z。但Linux上要有更多，如下：     文件后缀名 说明     *.zip zip 程序打包压缩的文件   *.rar rar 程序压缩的文件   *.7z 7zip 程序压缩的文件   *.tar tar 程序打包，未压缩的文件   *.gz gzip 程序（GNU zip）压缩的文件   *.">
+<meta name="twitter:description" content="Linux学习笔记四文件打包常见的文件压缩包文件格式，windows上常见的有*.zip、*.7z。但Linux上要有更多，如下：    文件后缀名 说明     *.zip zip 程序打包压缩的文件   *.rar rar 程序压缩的文件   *.7z 7zip 程序压缩的文件   *.tar tar 程序打包，未压缩的文件   *.gz gzip 程序（GNU zip）压缩的文件   *.x">
     
         <link rel="alternate" type="application/atom+xml" title="Albert&#39;s Blog" href="/atom.xml">
     
@@ -201,7 +201,6 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h1 id="Linux学习笔记四"><a href="#Linux学习笔记四" class="headerlink" title="Linux学习笔记四"></a>Linux学习笔记四</h1><h2 id="文件打包"><a href="#文件打包" class="headerlink" title="文件打包"></a>文件打包</h2><p>常见的文件压缩包文件格式，windows上常见的有<code>*.zip</code>、<code>*.7z</code>。但Linux上要有更多，如下：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -256,7 +255,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p><strong>使用<code>zip</code>打包文件夹</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd 目录</span><br><span class="line">zip -p -r -o fiel.zip 路径</span><br><span class="line">du -h file.zip</span><br><span class="line">file file.zip</span><br></pre></td></tr></table></figure>
 <p>其中，<code>-r</code>参数表示递归打包包含子目录的全部内容，<code>-q</code>参数表示为安静模式，即不向屏幕输出信息，<code>-o</code>表示输出文件，需在其后紧跟打包输出文件名。后面使用<code>du</code>命令查看打包后文件的大小。</p>
@@ -267,7 +265,7 @@
 <p>1表示最快压缩但体积大，9表示体积最小但耗时最久。</p>
 <p>在使用<code>du</code>命令分别查看默认压缩级别、最低、最高压缩级别以及未压缩的文件的大小。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -h -d 0 *.zip ~ | sort</span><br></pre></td></tr></table></figure>
-<p><code>注</code> <code>-h</code>全称—human-reachable，易人们读；<code>-d</code>全称为—max-depth</p>
+<p><code>注</code> <code>-h</code>全称–human-reachable，易人们读；<code>-d</code>全称为–max-depth</p>
 <p><strong>创建加密zip包</strong></p>
 <p>使用<code>-e</code>参数可以创建加密压缩包</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zip -r -e -o file.zip 待压缩文件目录</span><br></pre></td></tr></table></figure>
