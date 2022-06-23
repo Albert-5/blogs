@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>securecrt以及windows与Ubuntu虚拟机共享文件夹设置 | Albert&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Linux,虚拟机共享文件">
+    <meta name="description" content="securecrt以及windows与虚拟机共享文件设置securecrt配置 　SecureCRT是一款支持SSH（SSH1和SSH2）的终端仿真程序，简单地说是Windows下登录UNIX或Linux服务器主机的软件。这样操作的时候不必进入到Linux桌面，可以更方便的在命令行下进行操作。 虚拟机ip 进入到Ubuntu下，先查看Ubuntu虚拟机的IP配置，打开终端(Ctrl+Alt+DEL">
+<meta name="keywords" content="Linux,虚拟机共享文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="securecrt以及windows与Ubuntu虚拟机共享文件夹设置">
+<meta property="og:url" content="https://albert-5.cn/a6fc0db3/index.html">
+<meta property="og:site_name" content="Albert&#39;s Blog">
+<meta property="og:description" content="securecrt以及windows与虚拟机共享文件设置securecrt配置 　SecureCRT是一款支持SSH（SSH1和SSH2）的终端仿真程序，简单地说是Windows下登录UNIX或Linux服务器主机的软件。这样操作的时候不必进入到Linux桌面，可以更方便的在命令行下进行操作。 虚拟机ip 进入到Ubuntu下，先查看Ubuntu虚拟机的IP配置，打开终端(Ctrl+Alt+DEL">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s2.loli.net/2022/06/23/TBUWON7fl4Zwj5y.png">
+<meta property="og:image" content="https://s2.loli.net/2022/06/23/Uvk3lje65JzPAZT.png">
+<meta property="og:image" content="https://s2.loli.net/2022/06/23/gzYZqJIhpNrUok3.png">
+<meta property="og:image" content="https://s2.loli.net/2022/06/23/ByQFgJCDV2Uxb8s.png">
+<meta property="og:image" content="https://s2.loli.net/2022/06/23/4iYWH2dyRnlsvuI.png">
+<meta property="og:image" content="https://s2.loli.net/2022/06/23/v8jY2tuzH4dD9nC.png">
+<meta property="og:image" content="https://s2.loli.net/2022/06/23/YU65krDTnyeRaEN.png">
+<meta property="og:updated_time" content="2022-06-23T06:05:53.380Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="securecrt以及windows与Ubuntu虚拟机共享文件夹设置">
+<meta name="twitter:description" content="securecrt以及windows与虚拟机共享文件设置securecrt配置 　SecureCRT是一款支持SSH（SSH1和SSH2）的终端仿真程序，简单地说是Windows下登录UNIX或Linux服务器主机的软件。这样操作的时候不必进入到Linux桌面，可以更方便的在命令行下进行操作。 虚拟机ip 进入到Ubuntu下，先查看Ubuntu虚拟机的IP配置，打开终端(Ctrl+Alt+DEL">
+<meta name="twitter:image" content="https://s2.loli.net/2022/06/23/TBUWON7fl4Zwj5y.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Albert&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Albert</h5>
+          <a href="mailto:981287080@qq.com" title="981287080@qq.com" class="mail">981287080@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://https://github.com/Albert-5" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">securecrt以及windows与Ubuntu虚拟机共享文件夹设置</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">securecrt以及windows与Ubuntu虚拟机共享文件夹设置</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-06-23T06:04:39.000Z" itemprop="datePublished" class="page-time">
+  2022-06-23
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#securecrt以及windows与虚拟机共享文件设置"><span class="post-toc-text">securecrt以及windows与虚拟机共享文件设置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#securecrt配置"><span class="post-toc-text">securecrt配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#windows与虚拟机Ubuntu建立共享文件夹"><span class="post-toc-text">windows与虚拟机Ubuntu建立共享文件夹</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-securecrt以及windows与Ubuntu虚拟机共享文件夹设置"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">securecrt以及windows与Ubuntu虚拟机共享文件夹设置</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-06-23 14:04:39" datetime="2022-06-23T06:04:39.000Z"  itemprop="datePublished">2022-06-23</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="securecrt以及windows与虚拟机共享文件设置"><a href="#securecrt以及windows与虚拟机共享文件设置" class="headerlink" title="securecrt以及windows与虚拟机共享文件设置"></a>securecrt以及windows与虚拟机共享文件设置</h2><h3 id="securecrt配置"><a href="#securecrt配置" class="headerlink" title="securecrt配置"></a>securecrt配置</h3><hr>
+<p>　SecureCRT是一款支持SSH（SSH1和SSH2）的终端仿真程序，简单地说是Windows下登录UNIX或Linux服务器主机的软件。这样操作的时候不必进入到Linux桌面，可以更方便的在命令行下进行操作。</p>
+<p><strong>虚拟机ip</strong></p>
+<p>进入到Ubuntu下，先查看Ubuntu虚拟机的IP配置，打开终端(Ctrl+Alt+DEL)，通过ifconfig命令查看，可以看到Ubuntu下的IP地址信息。回到window win+R—&gt;cmd—ipcong 查看你的电脑的ip，先分别在Windows上ipconfig和Ubuntu上ifconfig下 互ping一下,如果我们的环境是一个样的话，应该是没有问题的。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/06/23/TBUWON7fl4Zwj5y.png" alt="虚拟机ip" title>
+                </div>
+                <div class="image-caption">虚拟机ip</div>
+            </figure>
+<p>图中的<code>inet 192.168.220.128</code>就是我们需要的ip。</p>
+<p><strong>ssh安装</strong></p>
+<p>命令行中输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh username@localhost</span><br><span class="line"></span><br><span class="line">output: ssh:connect to host localhost port 22: Connect refused</span><br></pre></td></tr></table></figure>
+<p>这种情况说明没有安装ssh，需要自行安装。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssh-server</span><br></pre></td></tr></table></figure>
+<p>安装完默认是打开的，使用以下命令查看是否有进程在22端口上监听，即是否已经启动。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -nat | grep 22</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/06/23/Uvk3lje65JzPAZT.png" alt="22端口已显示" title>
+                </div>
+                <div class="image-caption">22端口已显示</div>
+            </figure>
+<p>这里是已经成功了的！</p>
+<p><strong>打开securecrt</strong></p>
+<p>新建连接，参数如下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/06/23/gzYZqJIhpNrUok3.png" alt="securecrt" title>
+                </div>
+                <div class="image-caption">securecrt</div>
+            </figure>
+<p><code>注：</code>用户名是虚拟机Ubuntu的用户名，如果没问题待会会提示要输出密码！</p>
+<h4 id="windows与虚拟机Ubuntu建立共享文件夹"><a href="#windows与虚拟机Ubuntu建立共享文件夹" class="headerlink" title="windows与虚拟机Ubuntu建立共享文件夹"></a>windows与虚拟机Ubuntu建立共享文件夹</h4><p><strong>本机设置</strong></p>
+<p>新建一个文件夹，用来作为共享文件夹，打开属性；</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/06/23/ByQFgJCDV2Uxb8s.png" alt="共享文件夹" title>
+                </div>
+                <div class="image-caption">共享文件夹</div>
+            </figure>
+<p>在<code>高级共享</code>选择共享此文件夹。</p>
+<p><strong>虚拟机设置</strong></p>
+<p>在虚拟机设置选项中选择<code>共享文件夹</code>，并选择<code>始终启用</code>，然后选择本机共享文件夹的路径。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/06/23/4iYWH2dyRnlsvuI.png" alt="虚拟机中共享文件夹" title>
+                </div>
+                <div class="image-caption">虚拟机中共享文件夹</div>
+            </figure>
+<p><strong>终端设置</strong></p>
+<p>首先看看是否下载安装<code>vmwaretools</code>，通过命令能看到与本机共享的文件夹名称。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vmware-hgfsclient</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/06/23/v8jY2tuzH4dD9nC.png" alt="vmwaretools" title>
+                </div>
+                <div class="image-caption">vmwaretools</div>
+            </figure>
+<p>打开虚拟机终端，进入到<code>/mnt/hgfs</code>文件夹中，会发现没有此文件夹。</p>
+<p>安装成功之后，终端输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vmhgfs-fuse .host:/ /mnt/hgfs</span><br></pre></td></tr></table></figure>
+<p>报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fuse: bad mount point `/mnt/hgfs&apos;: No such file or directory</span><br></pre></td></tr></table></figure>
+<p>会发现没有这个<code>hgfs</code>文件夹。</p>
+<p>自行搭建挂载点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /mnt/</span><br><span class="line">mkdir hgfs</span><br></pre></td></tr></table></figure>
+<p>此时已经存在了<code>hgfs</code>文件夹了，但是进行<code>ls</code>时发现，提示权限不足</p>
+<p>重新用以下命令掛載即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /usr/bin/vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other -o uid=1000 -o gid=1000 -o <span class="built_in">umask</span>=022</span><br></pre></td></tr></table></figure>
+<p>【注意】上面命令中的 uid 和 gid 需要根据 ubuntu 用户 uid 来决定，在home目录输入id 命令即可查询。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UserName@UserName:~$ id</span><br><span class="line">用户id=1000(albert) 组id=1000(albert) 组=1000(albert),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),120(lpadmin),132(lxd),133(sambashare)</span><br></pre></td></tr></table></figure>
+<p>如果出现下面错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UserName@UserName:/mnt$ sudo /usr/bin/vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other -o uid=1000 -o gid=1000 -o <span class="built_in">umask</span>=022</span><br><span class="line">fuse: mountpoint is not empty</span><br><span class="line">fuse: <span class="keyword">if</span> you are sure this is safe, use the <span class="string">'nonempty'</span> mount option</span><br></pre></td></tr></table></figure>
+<p>把命令改为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /usr/bin/vmhgfs-fuse .host:/ /mnt/hgfs -o nonempty -o allow_other -o uid=1000 -o gid=1000 -o <span class="built_in">umask</span>=022</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/06/23/YU65krDTnyeRaEN.png" alt="成功！" title>
+                </div>
+                <div class="image-caption">成功！</div>
+            </figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2022-06-23T06:05:53.380Z" itemprop="dateUpdated">2022-06-23 14:05:53</time>
+</span><br>
+
+
+        
+        版权声明：转载请注明出处<a href="/a6fc0db3/" target="_blank" rel="external">https://albert-5.cn/a6fc0db3/</a>！
+        
+    </div>
+    
+    <footer>
+        <a href="https://albert-5.cn">
+            <img src="/img/avatar.jpg" alt="Albert">
+            Albert
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/虚拟机共享文件/">虚拟机共享文件</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.cn/a6fc0db3/&title=《securecrt以及windows与Ubuntu虚拟机共享文件夹设置》 — Albert's Blog&pic=https://albert-5.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.cn/a6fc0db3/&title=《securecrt以及windows与Ubuntu虚拟机共享文件夹设置》 — Albert's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.cn/a6fc0db3/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《securecrt以及windows与Ubuntu虚拟机共享文件夹设置》 — Albert's Blog&url=https://albert-5.cn/a6fc0db3/&via=https://albert-5.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.cn/a6fc0db3/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/4574b265/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">基于Sphinx和furo的个人笔记文档网站搭建教程</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "INtYRvGKRn1Ey9323UGJz7gk-gzGzoHsz",
+            appKey: "sruYEhxHh1hJxo04K2Gd8heb",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Albert &copy; 2019 - 2022</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.cn/a6fc0db3/&title=《securecrt以及windows与Ubuntu虚拟机共享文件夹设置》 — Albert's Blog&pic=https://albert-5.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.cn/a6fc0db3/&title=《securecrt以及windows与Ubuntu虚拟机共享文件夹设置》 — Albert's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.cn/a6fc0db3/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《securecrt以及windows与Ubuntu虚拟机共享文件夹设置》 — Albert's Blog&url=https://albert-5.cn/a6fc0db3/&via=https://albert-5.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.cn/a6fc0db3/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABv0lEQVR42u3aS44CMQwFQO5/6Z7tLKB5tpOAUGWFRJOusLD8yeMRr+vfqj7z6lf3u40WLi7umHvdrpyS75B/++RIuLi4B7n3gaa69avPyf5vbLi4uF/PTYLU/a9wcXF/g1t9WZWOi4v7PdxeylJtbUzSJlxc3JPc+Wvmn7f0d3FxcVvcq7iqg5Nr6cLFxT3DzQPK5Ej3+5SHu7i4uJu51cFnfoz5tYyX/ysuLu5mbhJ08uZptb1S3Q0XF/c8tzoKnRxv0ojBxcXdzc1Hm5PgNRmcPCl+cHFxD3LXpinV6xeFWg0XF3czNwlSvdbGxtkoLi7uZm7yULUQSg5Z/WtwcXE/y83bGb2CJ0mtCoEMFxd3AzcJJdXxai8NKnR2cXFxD3Kr2/WGowuSJFxc3IPc5HpWMhrpXdfIiy5cXNzz3EnykSdG+VsKcRQXF3cRtzfkyFuieYiM0ixcXNwj3F7BkzdVR+2PYpDFxcVdy50Hr/mYJLkihouLe57bCzT3RcvkIld5lIKLi/sF3F4ZU22mLAtkuLi4m7nzZkq1cMLFxf0UdzJqTUqjfM83YRQXF/cIt9fc7F3PWjuqwcXF3cD9A4MzkJ8m2TzJAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    <!-- //引入小心心特效 -->
+    <script src="https://cdn.jsdelivr.net/gh/Sanarous/files@1.151/js/clicklove.js"></script>
+    
+</body>
+</html>
