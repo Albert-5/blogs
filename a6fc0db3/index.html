@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://s2.loli.net/2022/06/23/4iYWH2dyRnlsvuI.png">
 <meta property="og:image" content="https://s2.loli.net/2022/06/23/v8jY2tuzH4dD9nC.png">
 <meta property="og:image" content="https://s2.loli.net/2022/06/23/YU65krDTnyeRaEN.png">
-<meta property="og:updated_time" content="2022-06-23T06:05:53.380Z">
+<meta property="og:updated_time" content="2022-06-24T02:14:32.338Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="securecrt以及windows与Ubuntu虚拟机共享文件夹设置">
 <meta name="twitter:description" content="securecrt以及windows与虚拟机共享文件设置securecrt配置 　SecureCRT是一款支持SSH（SSH1和SSH2）的终端仿真程序，简单地说是Windows下登录UNIX或Linux服务器主机的软件。这样操作的时候不必进入到Linux桌面，可以更方便的在命令行下进行操作。 虚拟机ip 进入到Ubuntu下，先查看Ubuntu虚拟机的IP配置，打开终端(Ctrl+Alt+DEL">
@@ -211,7 +211,7 @@
             <h2 id="securecrt以及windows与虚拟机共享文件设置"><a href="#securecrt以及windows与虚拟机共享文件设置" class="headerlink" title="securecrt以及windows与虚拟机共享文件设置"></a>securecrt以及windows与虚拟机共享文件设置</h2><h3 id="securecrt配置"><a href="#securecrt配置" class="headerlink" title="securecrt配置"></a>securecrt配置</h3><hr>
 <p>　SecureCRT是一款支持SSH（SSH1和SSH2）的终端仿真程序，简单地说是Windows下登录UNIX或Linux服务器主机的软件。这样操作的时候不必进入到Linux桌面，可以更方便的在命令行下进行操作。</p>
 <p><strong>虚拟机ip</strong></p>
-<p>进入到Ubuntu下，先查看Ubuntu虚拟机的IP配置，打开终端(Ctrl+Alt+DEL)，通过ifconfig命令查看，可以看到Ubuntu下的IP地址信息。回到window win+R—&gt;cmd—ipcong 查看你的电脑的ip，先分别在Windows上ipconfig和Ubuntu上ifconfig下 互ping一下,如果我们的环境是一个样的话，应该是没有问题的。</p>
+<p>进入到Ubuntu下，先查看Ubuntu虚拟机的IP配置，打开终端(Ctrl+Alt+DEL)，通过ifconfig命令查看，可以看到Ubuntu下的IP地址信息。回到window win+R–&gt;cmd–ipcong 查看你的电脑的ip，先分别在Windows上ipconfig和Ubuntu上ifconfig下 互ping一下,如果我们的环境是一个样的话，应该是没有问题的。</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -298,6 +298,9 @@
                 </div>
                 <div class="image-caption">成功！</div>
             </figure>
+<p><strong>一些问题</strong></p>
+<p>关机重启电脑后发现<code>共享文件夹</code>并没有自动挂载上，特定目录下没有文件夹<code>nfs</code>，需要进行以下操作；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mount -t fuse.vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other,defaults</span><br></pre></td></tr></table></figure>
 
         </div>
 
@@ -306,7 +309,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2022-06-23T06:05:53.380Z" itemprop="dateUpdated">2022-06-23 14:05:53</time>
+    最后更新时间：<time datetime="2022-06-24T02:14:32.338Z" itemprop="dateUpdated">2022-06-24 10:14:32</time>
 </span><br>
 
 

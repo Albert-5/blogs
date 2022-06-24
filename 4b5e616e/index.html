@@ -21,13 +21,13 @@
     
     
     <meta name="keywords" content="相机标定,计算机视觉">
-    <meta name="description" content="相机标定一、前提准备1、伪硬件    名称  数量     标定板8×10  1   手机  1   待标定照片  12   支架  1     手机固定在支架上，调整标定板位置，对其从不同角度进行拍照，所拍摄照片为11张。保存到文件夹后对其进行依次命名：*.jpg(如：1.jpg) 2、软件&amp;nbsp; 使用的编程语言：python&amp;nbsp; 工具包：opencv, numpy, glob 二">
+    <meta name="description" content="相机标定一、前提准备1、伪硬件   名称  数量     标定板8×10  1   手机  1   待标定照片  12   支架  1    手机固定在支架上，调整标定板位置，对其从不同角度进行拍照，所拍摄照片为11张。保存到文件夹后对其进行依次命名：*.jpg(如：1.jpg) 2、软件&amp;nbsp; 使用的编程语言：python&amp;nbsp; 工具包：opencv, numpy, glob 二、寻">
 <meta name="keywords" content="相机标定,计算机视觉">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Camera-calibration">
 <meta property="og:url" content="https://albert-5.cn/4b5e616e/index.html">
 <meta property="og:site_name" content="Albert&#39;s Blog">
-<meta property="og:description" content="相机标定一、前提准备1、伪硬件    名称  数量     标定板8×10  1   手机  1   待标定照片  12   支架  1     手机固定在支架上，调整标定板位置，对其从不同角度进行拍照，所拍摄照片为11张。保存到文件夹后对其进行依次命名：*.jpg(如：1.jpg) 2、软件&amp;nbsp; 使用的编程语言：python&amp;nbsp; 工具包：opencv, numpy, glob 二">
+<meta property="og:description" content="相机标定一、前提准备1、伪硬件   名称  数量     标定板8×10  1   手机  1   待标定照片  12   支架  1    手机固定在支架上，调整标定板位置，对其从不同角度进行拍照，所拍摄照片为11张。保存到文件夹后对其进行依次命名：*.jpg(如：1.jpg) 2、软件&amp;nbsp; 使用的编程语言：python&amp;nbsp; 工具包：opencv, numpy, glob 二、寻">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2021/10/09/SBd7WJi2rutq91Y.png">
 <meta property="og:image" content="https://i.loli.net/2021/10/09/ATCJK8ugYMjIZP6.png">
@@ -39,7 +39,7 @@
 <meta property="og:updated_time" content="2021-11-06T08:22:24.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Camera-calibration">
-<meta name="twitter:description" content="相机标定一、前提准备1、伪硬件    名称  数量     标定板8×10  1   手机  1   待标定照片  12   支架  1     手机固定在支架上，调整标定板位置，对其从不同角度进行拍照，所拍摄照片为11张。保存到文件夹后对其进行依次命名：*.jpg(如：1.jpg) 2、软件&amp;nbsp; 使用的编程语言：python&amp;nbsp; 工具包：opencv, numpy, glob 二">
+<meta name="twitter:description" content="相机标定一、前提准备1、伪硬件   名称  数量     标定板8×10  1   手机  1   待标定照片  12   支架  1    手机固定在支架上，调整标定板位置，对其从不同角度进行拍照，所拍摄照片为11张。保存到文件夹后对其进行依次命名：*.jpg(如：1.jpg) 2、软件&amp;nbsp; 使用的编程语言：python&amp;nbsp; 工具包：opencv, numpy, glob 二、寻">
 <meta name="twitter:image" content="https://i.loli.net/2021/10/09/SBd7WJi2rutq91Y.png">
     
         <link rel="alternate" type="application/atom+xml" title="Albert&#39;s Blog" href="/atom.xml">
@@ -208,8 +208,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="相机标定"><a href="#相机标定" class="headerlink" title="相机标定"></a>相机标定</h1><h2 id="一、前提准备"><a href="#一、前提准备" class="headerlink" title="一、前提准备"></a>一、前提准备</h2><h3 id="1、伪硬件"><a href="#1、伪硬件" class="headerlink" title="1、伪硬件"></a>1、伪硬件</h3><div class="table-container">
-<table>
+            <h1 id="相机标定"><a href="#相机标定" class="headerlink" title="相机标定"></a>相机标定</h1><h2 id="一、前提准备"><a href="#一、前提准备" class="headerlink" title="一、前提准备"></a>一、前提准备</h2><h3 id="1、伪硬件"><a href="#1、伪硬件" class="headerlink" title="1、伪硬件"></a>1、伪硬件</h3><table>
 <thead>
 <tr>
 <th style="text-align:center">名称</th>
@@ -240,7 +239,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>手机固定在支架上，调整标定板位置，对其从不同角度进行拍照，所拍摄照片为11张。保存到文件夹后对其进行依次命名：*.jpg(如：1.jpg)</p>
 <h3 id="2、软件"><a href="#2、软件" class="headerlink" title="2、软件"></a>2、软件</h3><p>&nbsp; 使用的编程语言：<code>python</code><br>&nbsp; 工具包：<code>opencv</code>, <code>numpy</code>, <code>glob</code></p>
 <h2 id="二、寻找标定棋盘并进行标定"><a href="#二、寻找标定棋盘并进行标定" class="headerlink" title="二、寻找标定棋盘并进行标定"></a>二、寻找标定棋盘并进行标定</h2><h3 id="1、python-opencv-的方案"><a href="#1、python-opencv-的方案" class="headerlink" title="1、python + opencv 的方案"></a>1、<code>python + opencv</code> 的方案</h3><p> &nbsp;&nbsp;利用<code>opencv</code>寻找棋盘，所用到的函数如下：</p>
@@ -255,7 +253,6 @@
 <h3 id="2、具体实施"><a href="#2、具体实施" class="headerlink" title="2、具体实施"></a>2、具体实施</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> glob</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 采用循环找取亚像素点的参数，最大迭代次数采用30次，精度为0.001，两者同时满足时停止迭代</span></span><br><span class="line">criteria = (cv2.TERM_CRITERIA_MAX_ITER | cv2.TERM_CRITERIA_EPS, <span class="number">30</span>, <span class="number">0.001</span>)</span><br><span class="line"><span class="comment"># 所采用的棋盘规格8×10</span></span><br><span class="line">objp = np.zeros((<span class="number">7</span> * <span class="number">9</span>, <span class="number">3</span>), np.float32)</span><br><span class="line">objp[:, :<span class="number">2</span>] = np.mgrid[<span class="number">0</span>:<span class="number">9</span>, <span class="number">0</span>:<span class="number">7</span>].T.reshape(<span class="number">-1</span>, <span class="number">2</span>) <span class="comment"># 将世界坐标系建在标定板上，所有点的Z坐标全部为0</span></span><br><span class="line">obj_points = [] <span class="comment"># 坐标系中的三维点</span></span><br><span class="line">img_points = [] <span class="comment"># 图像平面中的二维点</span></span><br><span class="line"><span class="comment"># 从文件中依次读取照片</span></span><br><span class="line">images = glob.glob(<span class="string">r'G:\biaoding\*.jpg'</span>)</span><br><span class="line"><span class="keyword">for</span> fname <span class="keyword">in</span> images:</span><br><span class="line">  img = cv2.imread(fname)</span><br><span class="line">  cv2.namedWindow(<span class="string">'img'</span>, <span class="number">0</span>)</span><br><span class="line">  cv2.resizeWindow(<span class="string">'img'</span>, <span class="number">600</span>, <span class="number">600</span>)</span><br><span class="line">  cv2.imshow(<span class="string">'img'</span>,img)</span><br><span class="line">  cv2.waitKey()</span><br><span class="line">  <span class="comment"># cv2.destroyAllWindows()</span></span><br><span class="line">  gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</span><br><span class="line">  size = gray.shape[::<span class="number">-1</span>]</span><br><span class="line">  <span class="comment"># print(size)</span></span><br><span class="line">  <span class="comment"># findchessboardcorner函数里寻找棋盘图的内角点</span></span><br><span class="line">  retv, corners = cv2.findChessboardCorners(gray, (<span class="number">7</span>, <span class="number">9</span>), <span class="literal">None</span>)</span><br><span class="line">  print(retv)</span><br><span class="line">  <span class="keyword">if</span> retv:</span><br><span class="line">    obj_points.append(objp)</span><br><span class="line">    <span class="comment"># 在原角点的基础上寻找亚像素角点</span></span><br><span class="line">    corners2 = cv2.cornerSubPix(gray, corners, (<span class="number">6</span>, <span class="number">6</span>), (<span class="number">-1</span>, <span class="number">-1</span>), criteria) </span><br><span class="line">    print(corners2)</span><br><span class="line">    <span class="keyword">if</span> [corners2]:</span><br><span class="line">      img_points.append(corners2)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      img_points.append(corners)</span><br><span class="line">    <span class="comment"># 绘制找到的角点</span></span><br><span class="line">    cv2.drawChessboardCorners(img, (<span class="number">7</span>, <span class="number">9</span>), corners, retv)</span><br><span class="line">    cv2.namedWindow(<span class="string">'img'</span>, <span class="number">0</span>)</span><br><span class="line">    cv2.resizeWindow(<span class="string">'img'</span>, <span class="number">600</span>, <span class="number">600</span>)</span><br><span class="line">    cv2.imshow(<span class="string">'img'</span>, img)</span><br><span class="line">    cv2.waitKey(<span class="number">20000</span>)</span><br></pre></td></tr></table></figure>
 <p>  &nbsp; 待标定图像如下所示：<br>  <img src="https://i.loli.net/2021/10/09/SBd7WJi2rutq91Y.png" alt="标定图像.png"></p>
 <p>找到棋牌并进行标定后的图片如下图所示：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -282,7 +279,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 <h3 id="3、相机相关参数"><a href="#3、相机相关参数" class="headerlink" title="3、相机相关参数"></a>3、相机相关参数</h3><p>相机矩阵Mtx：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="number">1.86761254e+04</span> <span class="number">0.00000000e+00</span> <span class="number">4.09207342e+02</span>]</span><br><span class="line">[<span class="number">0.00000000e+00</span> <span class="number">1.77781655e+03</span> <span class="number">4.23180100e+02</span>]</span><br><span class="line">[<span class="number">0.00000000e+00</span> <span class="number">0.00000000e+00</span> <span class="number">1.00000000e+00</span>]]</span><br></pre></td></tr></table></figure>
 <p>畸变系数dist:</p>
