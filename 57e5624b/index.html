@@ -21,24 +21,24 @@
     
     
     <meta name="keywords" content="网速测试,speedtest,ubuntu">
-    <meta name="description" content="如何在ubuntu搭建speedtest网速测试服务器 一、安装apache2 php服务1sudo apt install apache2 php [                                                                                             pCizm11.png](https://s1.ax1x.co">
+    <meta name="description" content="如何在ubuntu搭建speedtest网速测试服务器一、安装apache2 php服务1sudo apt install apache2 php                                                                                              pCizm11.png              二、下载源代码1">
 <meta name="keywords" content="网速测试,speedtest,ubuntu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自己动手搭建speedtest网速测试服务器">
 <meta property="og:url" content="https://albert-5.cn/57e5624b/index.html">
 <meta property="og:site_name" content="Albert&#39;s Blog">
-<meta property="og:description" content="如何在ubuntu搭建speedtest网速测试服务器 一、安装apache2 php服务1sudo apt install apache2 php [                                                                                             pCizm11.png](https://s1.ax1x.co">
+<meta property="og:description" content="如何在ubuntu搭建speedtest网速测试服务器一、安装apache2 php服务1sudo apt install apache2 php                                                                                              pCizm11.png              二、下载源代码1">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://imgse.com/i/pCizm11">
+<meta property="og:image" content="https://s1.ax1x.com/2023/06/07/pCizm11.png">
 <meta property="og:image" content="https://s1.ax1x.com/2023/06/07/pCizGhd.png">
 <meta property="og:image" content="https://s1.ax1x.com/2023/06/07/pCizNct.png">
 <meta property="og:image" content="https://s1.ax1x.com/2023/06/07/pCizt1I.png">
 <meta property="og:image" content="https://s1.ax1x.com/2023/06/07/pCizY9A.png">
-<meta property="og:updated_time" content="2023-06-07T05:52:23.067Z">
+<meta property="og:updated_time" content="2023-06-07T06:05:06.320Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自己动手搭建speedtest网速测试服务器">
-<meta name="twitter:description" content="如何在ubuntu搭建speedtest网速测试服务器 一、安装apache2 php服务1sudo apt install apache2 php [                                                                                             pCizm11.png](https://s1.ax1x.co">
-<meta name="twitter:image" content="https://imgse.com/i/pCizm11">
+<meta name="twitter:description" content="如何在ubuntu搭建speedtest网速测试服务器一、安装apache2 php服务1sudo apt install apache2 php                                                                                              pCizm11.png              二、下载源代码1">
+<meta name="twitter:image" content="https://s1.ax1x.com/2023/06/07/pCizm11.png">
     
         <link rel="alternate" type="application/atom+xml" title="Albert&#39;s Blog" href="/atom.xml">
     
@@ -180,7 +180,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、安装apache2-php服务"><span class="post-toc-text">一、安装apache2 php服务</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、下载源代码"><span class="post-toc-text">二、下载源代码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三、复制主页文件到apache2-var-www-html"><span class="post-toc-text">三、复制主页文件到apache2 /var/www/html</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#五、查看本地ip"><span class="post-toc-text">五、查看本地ip</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#六、启动服务"><span class="post-toc-text">六、启动服务</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#如何在ubuntu搭建speedtest网速测试服务器"><span class="post-toc-text">如何在ubuntu搭建speedtest网速测试服务器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、安装apache2-php服务"><span class="post-toc-text">一、安装apache2 php服务</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、下载源代码"><span class="post-toc-text">二、下载源代码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三、复制主页文件到apache2-var-www-html"><span class="post-toc-text">三、复制主页文件到apache2 /var/www/html</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#五、查看本地ip"><span class="post-toc-text">五、查看本地ip</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#六、启动服务"><span class="post-toc-text">六、启动服务</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -206,15 +206,14 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>如何在ubuntu搭建speedtest网速测试服务器</p>
-<h2 id="一、安装apache2-php服务"><a href="#一、安装apache2-php服务" class="headerlink" title="一、安装apache2 php服务"></a>一、安装apache2 php服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install apache2 php</span><br></pre></td></tr></table></figure>
-<p>[<figure class="image-bubble">
+            <h1 id="如何在ubuntu搭建speedtest网速测试服务器"><a href="#如何在ubuntu搭建speedtest网速测试服务器" class="headerlink" title="如何在ubuntu搭建speedtest网速测试服务器"></a>如何在ubuntu搭建speedtest网速测试服务器</h1><h2 id="一、安装apache2-php服务"><a href="#一、安装apache2-php服务" class="headerlink" title="一、安装apache2 php服务"></a>一、安装apache2 php服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install apache2 php</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://imgse.com/i/pCizm11" alt="pCizm11.png](https://s1.ax1x.com/2023/06/07/pCizm11.png)" title>
+                    <img src="https://s1.ax1x.com/2023/06/07/pCizm11.png" alt="pCizm11.png" title>
                 </div>
-                <div class="image-caption">pCizm11.png](https://s1.ax1x.com/2023/06/07/pCizm11.png)</div>
-            </figure></p>
+                <div class="image-caption">pCizm11.png</div>
+            </figure>
 <h2 id="二、下载源代码"><a href="#二、下载源代码" class="headerlink" title="二、下载源代码"></a>二、下载源代码</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/仓库名</span><br></pre></td></tr></table></figure>
 <h3 id="三、复制主页文件到apache2-var-www-html"><a href="#三、复制主页文件到apache2-var-www-html" class="headerlink" title="三、复制主页文件到apache2 /var/www/html"></a>三、复制主页文件到<strong>apache2 /var/www/html</strong></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd speedtest</span><br><span class="line">sudo cp -R * /var/www/html/        //拷贝所有文件到html文件夹下</span><br><span class="line">cd /var/www/html/</span><br><span class="line">ls -la  // 查看文件是否拷贝成功</span><br><span class="line">sudo cp 文件.html index.html    //html文件名改为index.html，如果本身就是index就不用改</span><br></pre></td></tr></table></figure>
 <figure class="image-bubble">
@@ -257,7 +256,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2023-06-07T05:52:23.067Z" itemprop="dateUpdated">2023-06-07 13:52:23</time>
+    最后更新时间：<time datetime="2023-06-07T06:05:06.320Z" itemprop="dateUpdated">2023-06-07 14:05:06</time>
 </span><br>
 
 
