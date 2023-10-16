@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>虚拟机配置问题 | Albert&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="ubuntu,samba,虚拟机">
+    <meta name="description" content="虚拟机ubuntu常见问题 net-tools下载安装通过网站下载相应的net-tools文件，后缀为.deb，通过共享文件夹传输至虚拟机共享文件夹内，然后使用 1sudo dpkg -i net-tools.xxx.deb vmware安装ubuntu18.04教程点击查看安装教程 安装vmware-tools工具点击虚拟机/VMwaretools安装，并将压缩包复制到桌面并解压 在终端打开文件">
+<meta name="keywords" content="ubuntu,samba,虚拟机">
+<meta property="og:type" content="article">
+<meta property="og:title" content="虚拟机配置问题">
+<meta property="og:url" content="https://albert-5.cn/4d3ee779/index.html">
+<meta property="og:site_name" content="Albert&#39;s Blog">
+<meta property="og:description" content="虚拟机ubuntu常见问题 net-tools下载安装通过网站下载相应的net-tools文件，后缀为.deb，通过共享文件夹传输至虚拟机共享文件夹内，然后使用 1sudo dpkg -i net-tools.xxx.deb vmware安装ubuntu18.04教程点击查看安装教程 安装vmware-tools工具点击虚拟机/VMwaretools安装，并将压缩包复制到桌面并解压 在终端打开文件">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2023-10-16T13:48:38.078Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="虚拟机配置问题">
+<meta name="twitter:description" content="虚拟机ubuntu常见问题 net-tools下载安装通过网站下载相应的net-tools文件，后缀为.deb，通过共享文件夹传输至虚拟机共享文件夹内，然后使用 1sudo dpkg -i net-tools.xxx.deb vmware安装ubuntu18.04教程点击查看安装教程 安装vmware-tools工具点击虚拟机/VMwaretools安装，并将压缩包复制到桌面并解压 在终端打开文件">
+    
+        <link rel="alternate" type="application/atom+xml" title="Albert&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Albert</h5>
+          <a href="mailto:981287080@qq.com" title="981287080@qq.com" class="mail">981287080@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://https://github.com/Albert-5" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">虚拟机配置问题</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">虚拟机配置问题</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2023-10-16T13:34:53.000Z" itemprop="datePublished" class="page-time">
+  2023-10-16
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ubuntu/">ubuntu</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#net-tools下载安装"><span class="post-toc-text">net-tools下载安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#vmware安装ubuntu18-04教程"><span class="post-toc-text">vmware安装ubuntu18.04教程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装vmware-tools工具"><span class="post-toc-text">安装vmware-tools工具</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#虚拟机防火墙问题"><span class="post-toc-text">虚拟机防火墙问题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#VMnet8出现黄色感叹号的解决方法"><span class="post-toc-text">VMnet8出现黄色感叹号的解决方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装samba出现的问题"><span class="post-toc-text">安装samba出现的问题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ubuntu离线安装samba文件的网站"><span class="post-toc-text">ubuntu离线安装samba文件的网站</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#依赖问题解决方法"><span class="post-toc-text">依赖问题解决方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#重点-对于离线的电脑最强解决方案"><span class="post-toc-text">[重点] 对于离线的电脑最强解决方案</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-虚拟机配置问题"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">虚拟机配置问题</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2023-10-16 21:34:53" datetime="2023-10-16T13:34:53.000Z"  itemprop="datePublished">2023-10-16</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ubuntu/">ubuntu</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>虚拟机ubuntu常见问题</p>
+<h2 id="net-tools下载安装"><a href="#net-tools下载安装" class="headerlink" title="net-tools下载安装"></a>net-tools下载安装</h2><p>通过网站<a href="http://archive.ubuntu.com/ubuntu/pool/main/n/net-tools/" target="_blank" rel="noopener">下载</a>相应的net-tools文件，后缀为<code>.deb</code>，通过共享文件夹传输至虚拟机共享文件夹内，然后使用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i net-tools.xxx.deb</span><br></pre></td></tr></table></figure>
+<h2 id="vmware安装ubuntu18-04教程"><a href="#vmware安装ubuntu18-04教程" class="headerlink" title="vmware安装ubuntu18.04教程"></a>vmware安装ubuntu18.04教程</h2><p>点击查看<a href="https://cloud.tencent.com/developer/article/2062275" target="_blank" rel="noopener">安装教程</a></p>
+<h2 id="安装vmware-tools工具"><a href="#安装vmware-tools工具" class="headerlink" title="安装vmware-tools工具"></a>安装<code>vmware-tools</code>工具</h2><p>点击<code>虚拟机/VMwaretools安装</code>，并将压缩包复制到桌面并解压</p>
+<p>在终端打开文件夹，<code>cd filefoder</code>，然后输入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./vmware-tools-distrib/vmware-install.pl</span><br></pre></td></tr></table></figure>
+<p>在提示的第一个信息里出入<code>yes</code>，其他直接默认就可以。</p>
+<p>显示<code>Enjoy, the vmware team</code>即表示安装成功，此时窗口自适应调整大小！</p>
+<h2 id="虚拟机防火墙问题"><a href="#虚拟机防火墙问题" class="headerlink" title="虚拟机防火墙问题"></a>虚拟机防火墙问题</h2><p>查看防火墙当前状态</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw status</span><br></pre></td></tr></table></figure>
+<p>开启防火墙</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw enable</span><br></pre></td></tr></table></figure>
+<p>关闭防火墙</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw disable</span><br></pre></td></tr></table></figure>
+<p>查看防火墙版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw version</span><br></pre></td></tr></table></figure>
+<p>默认允许外部访问本机</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw default allow</span><br></pre></td></tr></table></figure>
+<p>默认拒绝外部访问本机</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw default deny</span><br></pre></td></tr></table></figure>
+<p>允许外部访问443端口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 443</span><br></pre></td></tr></table></figure>
+<p>允许某个IP地址访问本机所有端口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow from 192.168.0.1</span><br></pre></td></tr></table></figure>
+<h2 id="VMnet8出现黄色感叹号的解决方法"><a href="#VMnet8出现黄色感叹号的解决方法" class="headerlink" title="VMnet8出现黄色感叹号的解决方法"></a>VMnet8出现黄色感叹号的解决方法</h2><p>导致出现该情况的原因是之前下载的vmware但注册表未清理干净，解决的方法也很简单，只需要下载软件<a hred="https://www.ccleaner.com/zh-cn">CCleaner</a>一键修复注册表问题。</p>
+<h2 id="安装samba出现的问题"><a href="#安装samba出现的问题" class="headerlink" title="安装samba出现的问题"></a>安装samba出现的问题</h2><p>tar：无法创建……的符号链接：不支持的操作</p>
+<p>tar：由于前次错误，将以上次的错误状态退出</p>
+<p>sudo tar zxvf folder.tar.gz</p>
+<p>上述方法并没有效果</p>
+<p>正确的解决方法是：</p>
+<p>1、使用管理员权限，加入-C解压到指定路径</p>
+<p>2、如果需要解压的文件是在VMware虚拟机的共享文件夹中，则需要共享目录中的压缩包移动到Linux虚拟机中再执行解压命令才行，因为解压的压缩包放在linux虚拟机和windows的共享文件夹下，windows下只能在NTFS文件系统重创建硬链接，而且只有在同一个文件系统中的文件才能创建硬链接，很明显，共享目录所在的文件系统和linux的文件系统并不是同一个系统，故而不能创建硬链接</p>
+<h2 id="ubuntu离线安装samba文件的网站"><a href="#ubuntu离线安装samba文件的网站" class="headerlink" title="ubuntu离线安装samba文件的网站"></a>ubuntu离线安装samba文件的网站</h2><p><a href="https://ubuntu.pkgs.org/20.04/ubuntu-updates-main-amd64/samba-libs_4.15.13+dfsg-0ubuntu0.20.04.7_amd64.deb.html" target="_blank" rel="noopener">deb文件下载</a></p>
+<p><a href="https://mirrors.ustc.edu.cn/ubuntu/pool/universe/s/samba/" target="_blank" rel="noopener">镜像网站使用</a></p>
+<p><a href="https://www.cnblogs.com/Huae/p/17178800.html" target="_blank" rel="noopener">ubuntu配置samba服务</a></p>
+<h2 id="依赖问题解决方法"><a href="#依赖问题解决方法" class="headerlink" title="依赖问题解决方法"></a>依赖问题解决方法</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt --fix-broken install file</span><br></pre></td></tr></table></figure>
+<p>下面是几个 Ubuntu 版本的 Samba 版本信息：</p>
+<ul>
+<li>Ubuntu 18.04 LTS：Samba 版本是 4.7.6-Ubuntu</li>
+<li>Ubuntu 20.04 LTS：Samba 版本是 4.11.6-Ubuntu</li>
+<li>Ubuntu 21.04：Samba 版本是 4.13.8-Ubuntu</li>
+</ul>
+<h2 id="重点-对于离线的电脑最强解决方案"><a href="#重点-对于离线的电脑最强解决方案" class="headerlink" title="[重点] 对于离线的电脑最强解决方案"></a>[重点] 对于离线的电脑最强解决方案</h2><p>在可联网的电脑上进行虚拟机配置并下载好各种需要的文件</p>
+<p>复制虚拟机整个系统文件到离线电脑中</p>
+<p>打开虚拟机即可</p>
+<p>参考文章</p>
+<p><a href="https://blog.csdn.net/weixin_44476993/article/details/118709263" target="_blank" rel="noopener">Linux下解压.tar文件出现“：无法创建到 “xxx” 的符号连接: 不支持的操作,tar: 由于前次错误，将以上次的错误状态退出”问题解决方案</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2023-10-16T13:48:38.078Z" itemprop="dateUpdated">2023-10-16 21:48:38</time>
+</span><br>
+
+
+        
+        版权声明：转载请注明出处<a href="/4d3ee779/" target="_blank" rel="external">https://albert-5.cn/4d3ee779/</a>！
+        
+    </div>
+    
+    <footer>
+        <a href="https://albert-5.cn">
+            <img src="/img/avatar.jpg" alt="Albert">
+            Albert
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/samba/">samba</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/虚拟机/">虚拟机</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.cn/4d3ee779/&title=《虚拟机配置问题》 — Albert's Blog&pic=https://albert-5.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.cn/4d3ee779/&title=《虚拟机配置问题》 — Albert's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.cn/4d3ee779/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《虚拟机配置问题》 — Albert's Blog&url=https://albert-5.cn/4d3ee779/&via=https://albert-5.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.cn/4d3ee779/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/4510e8da/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Aqara智能开关H1_Pro初体验</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "INtYRvGKRn1Ey9323UGJz7gk-gzGzoHsz",
+            appKey: "sruYEhxHh1hJxo04K2Gd8heb",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Albert &copy; 2019 - 2023</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://albert-5.cn/4d3ee779/&title=《虚拟机配置问题》 — Albert's Blog&pic=https://albert-5.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://albert-5.cn/4d3ee779/&title=《虚拟机配置问题》 — Albert's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://albert-5.cn/4d3ee779/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《虚拟机配置问题》 — Albert's Blog&url=https://albert-5.cn/4d3ee779/&via=https://albert-5.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://albert-5.cn/4d3ee779/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABy0lEQVR42u3aS4rDMBAFwNz/0h6YVSBj+bXaUjxQWoVg2aVNo/68XvE6ftf4/+NtfT6TPHnbwsXFbXOP4Tpjne1N3py85/RIuLi4G7l5kDpjjWNO8v4ogOLi4j6Muyeo4eLi/i9uNbFJDoaLi/tkbhJoqp/vHPKGXA0XF7fBrRZMV/xeWN/FxcUtco/iSi5G+ZWo/HVcXNwt3LMPdwoleZCaS4dwcXF3cvNUJE9pxodJGjAXuRouLu4Cbj5mkRRDq9DydQoXF3cLN09jOsMTnTJrofODi4t7K3eu8ZmHuWrlM7oM4eLibud22p9zLdLyLlxc3MXcuWbJ3CBXUmDFxcX9LjfZlgxs5W+odkb+qOLg4uIu5uYbOkWNcmIzDm24uLiLudXPd24anZELXFzcndwqa66BWp2duAipuLi4i7nlxCMuelaLKbi4uE/j5gXQzlhG9Ri4uLjf5earGrzmkqtCJxYXF3cBt9NA7bdsq6UWXFzcndxqM7XTiM0D2cUQBi4u7hbu3AWlE7wmgyYuLu7DuNXhjLmxjOiKg4uL+zBu9bJSTYFuDmS4uLgN7r3DE/mAV2vCFBcXdxm3WjAd/9O/GHVGQHBxcdvcH1gklYyEHvi7AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    <!-- //引入小心心特效 -->
+    <script src="https://cdn.jsdelivr.net/gh/Sanarous/files@1.151/js/clicklove.js"></script>
+    
+</body>
+</html>
