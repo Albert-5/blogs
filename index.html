@@ -162,6 +162,66 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-虚拟机samba配置"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2023-11-06 16:27:24" datetime="2023-11-06T08:27:24.000Z"  itemprop="datePublished">2023-11-06</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/虚拟机/">虚拟机</a></li></ul>
+
+
+
+        <!-- 添加的置顶 -->
+        
+            <span><icon class="icon icon-thumb-tack icon-pr"></icon><font color="ff4081">置顶</font></span>
+        
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/12c24336/">虚拟机samba配置</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        samba服务器安装1sudo apt-get install samba
+配置samba1vi /etc/samba/smb.conf
+在文件末尾加上：
+123456[share]comment=usernamepath=/home/username/folder   //指定共享的文件夹writable=yesbrowseable=yesvalid user=username
+添加samba用户添加samba用户：比如usr，密码设置：自定义，命令如下：
+1sudo smbpasswd -a usr
+
+终端信息中输入密码，回车
+根据终端提示，再次输入确认密码
+
+重启服务器1servi...
+    
+
+        <a href="/12c24336/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/samba/">samba</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
+
+    </div>
+    
+</article>
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-Github-charts展示"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -512,66 +572,6 @@ github上新建一个仓库，这...
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/manim/">manim</a></li></ul>
-
-    </div>
-    
-</article>
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-虚拟机samba配置"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2023-11-06 16:27:24" datetime="2023-11-06T08:27:24.000Z"  itemprop="datePublished">2023-11-06</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/虚拟机/">虚拟机</a></li></ul>
-
-
-
-        <!-- 添加的置顶 -->
-        
-            <span><icon class="icon icon-thumb-tack icon-pr"></icon><font color="ff4081">置顶</font></span>
-        
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/12c24336/">虚拟机samba配置</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        samba服务器安装1sudo apt-get install samba
-配置samba1vi /etc/samba/smb.conf
-在文件末尾加上：
-123456[share]comment=usernamepath=/home/username/folder   //指定共享的文件夹writable=yesbrowseable=yesvalid user=username
-添加samba用户添加samba用户：比如usr，密码设置：自定义，命令如下：
-1sudo smbpasswd -a usr
-
-终端信息中输入密码，回车
-根据终端提示，再次输入确认密码
-
-重启服务器1servi...
-    
-
-        <a href="/12c24336/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/samba/">samba</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
 
     </div>
     
