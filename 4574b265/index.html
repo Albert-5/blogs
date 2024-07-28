@@ -218,7 +218,7 @@
 <p>Github地址为：<a href="https://github.com/sphinx-doc/sphinx" target="_blank" rel="noopener">https://github.com/sphinx-doc/sphinx</a></p>
 <p>当然也可以在命令窗口进行<code>pip</code>安装：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -U sphinx</span><br></pre></td></tr></table></figure>
-<ol start="2">
+<ol>
 <li>创建文档</li>
 </ol>
 <p>github上新建一个仓库，这个仓库就是托管自己文档的仓库，没有的话就新建一个；然后将其克隆到本地，在项目根目录下创建一个<code>docs</code>目录，cd进入到该目录，执行命令：</p>
@@ -233,7 +233,7 @@
 <li>source/conf.py 项目配置文件，上面的配置可以在这里面修改</li>
 <li>source/index.rst 首页</li>
 </ul>
-<ol start="3">
+<ol>
 <li><p>编译</p>
 <p>对<code>index.rst</code>文件进行编译生成HTML以及相关静态文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Running Sphinx v4.5.0</span><br><span class="line">loading translations [zh_CN]... <span class="keyword">done</span></span><br><span class="line">making output directory... <span class="keyword">done</span></span><br><span class="line">building [mo]: targets <span class="keyword">for</span> 0 po files that are out of date</span><br><span class="line">building [html]: targets <span class="keyword">for</span> 1 <span class="built_in">source</span> files that are out of date</span><br><span class="line">updating environment: [new config] 1 added, 0 changed, 0 removed</span><br><span class="line">reading sources... [100%] index</span><br><span class="line">looking <span class="keyword">for</span> now-outdated files... none found</span><br><span class="line">pickling environment... <span class="keyword">done</span></span><br><span class="line">checking consistency... <span class="keyword">done</span></span><br><span class="line">preparing documents... <span class="keyword">done</span></span><br><span class="line">writing output... [100%] index</span><br><span class="line">generating indices... genindex <span class="keyword">done</span></span><br><span class="line">writing additional pages... search <span class="keyword">done</span></span><br><span class="line">copying static files... <span class="keyword">done</span></span><br><span class="line">copying extra files... <span class="keyword">done</span></span><br><span class="line">dumping search index <span class="keyword">in</span> Chinese (code: zh)... <span class="keyword">done</span></span><br><span class="line">dumping object inventory... <span class="keyword">done</span></span><br><span class="line">build succeeded.</span><br><span class="line"></span><br><span class="line">The HTML pages are <span class="keyword">in</span> build\html.</span><br></pre></td></tr></table></figure>
@@ -277,7 +277,7 @@
                 <div class="image-caption">更改文件夹.png</div>
             </figure>
 <p>点击<code>save</code>即可。</p>
-<ol start="6">
+<ol>
 <li><p>操作命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成页面</span></span><br><span class="line">make html</span><br><span class="line"><span class="comment"># 复制渲染好的画面</span></span><br><span class="line">cp -r build/html/* docs/</span><br><span class="line"><span class="comment"># 远程提交</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"add logo"</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
 </li>

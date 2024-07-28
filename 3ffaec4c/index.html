@@ -21,13 +21,13 @@
     
     
     <meta name="keywords" content="计算机视觉,opencv">
-    <meta name="description" content="最近学习了计算机视觉的课程，准备用opencv来实现相机标定，但在import cv2时出现了一些问题，看了许多博客都没感觉有啥用。  问题一：vscode中import cv2出现错误在进行调用库文件import cv2时出现提示：ImportError: No module named cv2这种情况是属于没有下载opencv文件或者是安装位置不对导致的，所以去网站下了相关文件，具体链接如下">
+    <meta name="description" content="最近学习了计算机视觉的课程，准备用opencv来实现相机标定，但在import cv2时出现了一些问题，看了许多博客都没感觉有啥用。 问题一：vscode中import cv2出现错误在进行调用库文件import cv2时出现提示：ImportError: No module named cv2这种情况是属于没有下载opencv文件或者是安装位置不对导致的，所以去网站下了相关文件，具体链接如下：">
 <meta name="keywords" content="计算机视觉,opencv">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于opencv的配置问题">
 <meta property="og:url" content="https://albert-5.cn/3ffaec4c/index.html">
 <meta property="og:site_name" content="Albert&#39;s Blog">
-<meta property="og:description" content="最近学习了计算机视觉的课程，准备用opencv来实现相机标定，但在import cv2时出现了一些问题，看了许多博客都没感觉有啥用。  问题一：vscode中import cv2出现错误在进行调用库文件import cv2时出现提示：ImportError: No module named cv2这种情况是属于没有下载opencv文件或者是安装位置不对导致的，所以去网站下了相关文件，具体链接如下">
+<meta property="og:description" content="最近学习了计算机视觉的课程，准备用opencv来实现相机标定，但在import cv2时出现了一些问题，看了许多博客都没感觉有啥用。 问题一：vscode中import cv2出现错误在进行调用库文件import cv2时出现提示：ImportError: No module named cv2这种情况是属于没有下载opencv文件或者是安装位置不对导致的，所以去网站下了相关文件，具体链接如下：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2021/09/22/H5adfwCocASYu4t.jpg">
 <meta property="og:image" content="https://i.loli.net/2021/09/22/5YKEVWfXxs1jClo.jpg">
@@ -36,7 +36,7 @@
 <meta property="og:updated_time" content="2021-09-22T14:16:19.965Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于opencv的配置问题">
-<meta name="twitter:description" content="最近学习了计算机视觉的课程，准备用opencv来实现相机标定，但在import cv2时出现了一些问题，看了许多博客都没感觉有啥用。  问题一：vscode中import cv2出现错误在进行调用库文件import cv2时出现提示：ImportError: No module named cv2这种情况是属于没有下载opencv文件或者是安装位置不对导致的，所以去网站下了相关文件，具体链接如下">
+<meta name="twitter:description" content="最近学习了计算机视觉的课程，准备用opencv来实现相机标定，但在import cv2时出现了一些问题，看了许多博客都没感觉有啥用。 问题一：vscode中import cv2出现错误在进行调用库文件import cv2时出现提示：ImportError: No module named cv2这种情况是属于没有下载opencv文件或者是安装位置不对导致的，所以去网站下了相关文件，具体链接如下：">
 <meta name="twitter:image" content="https://i.loli.net/2021/09/22/H5adfwCocASYu4t.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="Albert&#39;s Blog" href="/atom.xml">
@@ -207,7 +207,6 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <blockquote>
 <p>最近学习了计算机视觉的课程，准备用opencv来实现相机标定，但在<code>import cv2</code>时出现了一些问题，看了许多博客都没感觉有啥用。</p>
-</blockquote>
 <h2 id="问题一：vscode中import-cv2出现错误"><a href="#问题一：vscode中import-cv2出现错误" class="headerlink" title="问题一：vscode中import cv2出现错误"></a>问题一：vscode中<code>import cv2</code>出现错误</h2><p>在进行调用库文件<code>import cv2</code>时出现提示：<br><code>ImportError: No module named cv2</code><br>这种情况是属于没有下载<code>opencv</code>文件或者是安装位置不对导致的，所以去网站下了相关文件，具体链接如下：<a src="https://pypi.org/project/opencv-python/#files">opencv点击下载</a><br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -215,6 +214,7 @@
                 </div>
                 <div class="image-caption">opencv.jpg</div>
             </figure><br><code>注：</code>下载前确定好自己的<code>python版本</code>，版本不对的话还是会出现错误的。</p>
+</blockquote>
 <p>紧接着，<code>ctrl + r</code>输入<code>cmd</code>，在命令提示窗内继续输入<code>pip install &lt;刚刚下载下来的文件路径&gt;</code></p>
 <h2 id="问题二：pip-install出现问题"><a href="#问题二：pip-install出现问题" class="headerlink" title="问题二：pip install出现问题"></a>问题二：pip install出现问题</h2><p>上诉操作之后按道理来说是没有任何问题的，但偏偏还是出现了问题：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImportError: DLL load failed：找不到指定模块</span><br></pre></td></tr></table></figure></p>
 <p> 这种情况错误产生的原因是<code>对应模块的文件不完善或者没有对应的模块</code>；<br> 解决方法下载相对应的模块，<a src="https://sourceforge.net/projects/opencvlibrary/files/">点击进入</a>。因为我用的是opencv-python，所以在下载完成后将python文件夹下的python38版本的opencv文件（<code>.pyd</code>结尾的）复制到python的安装目录<code>\python38\Lib\site-packages</code>下,并将其改名为<code>c2.pyd</code>。</p>
