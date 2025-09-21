@@ -702,14 +702,14 @@ github上新建一个仓库，这...
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-重装电脑后触摸板、网口无法使用"
+            <article id="post-Hexo部署Github-ssh方式完整方案"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2024-01-11 14:54:57" datetime="2024-01-11T06:54:57.000Z"  itemprop="datePublished">2024-01-11</time>
+        <time class="post-time" title="2024-09-20 21:42:00" datetime="2024-09-20T13:42:00.000Z"  itemprop="datePublished">2024-09-20</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/疑难杂症/">疑难杂症</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Hexo/">Hexo</a></li></ul>
 
 
 
@@ -722,7 +722,7 @@ github上新建一个仓库，这...
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/994be801/">重装电脑后触摸板、网口无法使用</a>
+      <a class="post-title-link" href="/9d5b7a9c/">Hexo部署Github_ssh方式完整方案</a>
     </h3>
   
 
@@ -732,32 +732,40 @@ github上新建一个仓库，这...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        关于重装完Win10系统触摸板、网口无法使用的问题、
+        Hexo 部署到 GitHub（SSH 方式）完整方案1️⃣ 准备工作
+安装 Git
+1git --version
+确认 Git 已安装。
 
-使用的机器型号如下:
-型号：ThinkPad T16 G1
-内存：16G
-存储：500G
+安装 Node.js 与 Hexo
+12npm install -g hexo-clihexo -v
 
-问题描述
-原装系统为win11，重装系统为win10，U盘启动安装后存在硬盘异常，经查重新下载官网系统镜像文件可解决。
-重装完系统后，存在触摸板失灵、网口无法识别（* 通过拓展坞可以连接）等问题。
 
-解决方法通过ThinkPad官网进行下载相应缺少的驱动程序，同时较为重要的是需要下载名为Intel Serial IO的驱动程序。
 
-                
-                    
-                  ...
+2️⃣ 生成 SSH Key如果没有 SSH key：
+1ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+一路回车，使用默认路径 ~/.ssh/id_rsa
+生成文件：
+id_rsa（私钥）
+id_rsa.pub（公钥）
+
+
+
+
+3️⃣ 将公钥添加到 GitHub
+查看公钥内容：
+...
     
 
-        <a href="/994be801/" class="post-more waves-effect waves-button">
+        <a href="/9d5b7a9c/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系统重装/">系统重装</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网口无效/">网口无效</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/触控板失灵/">触控板失灵</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/">ssh</a></li></ul>
 
     </div>
     
