@@ -4913,3 +4913,71 @@ pre .javascript .function {
 #comments.vcomment .vcard section {
   border-bottom: 1px solid #dadada;
 }
+/* ================== 手机端优化 ================== */
+@media (max-width: 768px) {
+  /* 页面整体 */
+  html,
+  body {
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  /* 主内容区域自适应 */
+  main#main {
+    width: 100%;
+    padding: 0 10px;
+  }
+  /* 侧边栏隐藏 */
+  .sidebar,
+  .aside {
+    display: none !important;
+  }
+  /* 导航菜单 */
+  nav.menu,
+  .menu {
+    width: 100%;
+    font-size: 14px;
+    text-align: left;
+  }
+  /* 图片和表格自适应 */
+  img,
+  table {
+    max-width: 100%;
+    height: auto;
+  }
+  /* 隐藏小心心特效 */
+  .clicklove {
+    display: none;
+  }
+  /* 文章标题大小调整 */
+  h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  h2 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  h3 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  /* 按钮和链接点击区域增大 */
+  a,
+  button,
+  input[type="button"],
+  input[type="submit"] {
+    padding: 8px 12px;
+  }
+  /* 文章内容段落间距 */
+  p {
+    margin: 10px 0;
+  }
+  /* 页脚调整 */
+  footer {
+    padding: 15px 10px;
+    font-size: 12px;
+    text-align: center;
+  }
+}
