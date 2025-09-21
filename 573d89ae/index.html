@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="python,爬虫">
-    <meta name="description" content="豆瓣电影Top 250原理方法使用的模块chardet模块—-判断编码 1Pip install chardet 使用上述命令安装模块 123456789101112131415#如果你的python没有安装chardet模块，你需要首先安装一下chardet判断编码的模块哦import chardetimport urllib#先获取网页内容data = urllib.urlopen(&apos;http">
+    <meta name="description" content="豆瓣电影Top 250原理方法使用的模块chardet模块—判断编码 1Pip install chardet 使用上述命令安装模块 123456789101112131415#如果你的python没有安装chardet模块，你需要首先安装一下chardet判断编码的模块哦import chardetimport urllib#先获取网页内容data = urllib.urlopen(&apos;http:">
 <meta name="keywords" content="python,爬虫">
 <meta property="og:type" content="article">
 <meta property="og:title" content="豆瓣电影top250">
 <meta property="og:url" content="https://albert-5.cn/573d89ae/index.html">
 <meta property="og:site_name" content="Albert&#39;s Blog">
-<meta property="og:description" content="豆瓣电影Top 250原理方法使用的模块chardet模块—-判断编码 1Pip install chardet 使用上述命令安装模块 123456789101112131415#如果你的python没有安装chardet模块，你需要首先安装一下chardet判断编码的模块哦import chardetimport urllib#先获取网页内容data = urllib.urlopen(&apos;http">
+<meta property="og:description" content="豆瓣电影Top 250原理方法使用的模块chardet模块—判断编码 1Pip install chardet 使用上述命令安装模块 123456789101112131415#如果你的python没有安装chardet模块，你需要首先安装一下chardet判断编码的模块哦import chardetimport urllib#先获取网页内容data = urllib.urlopen(&apos;http:">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2023-06-07T06:04:56.914Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="豆瓣电影top250">
-<meta name="twitter:description" content="豆瓣电影Top 250原理方法使用的模块chardet模块—-判断编码 1Pip install chardet 使用上述命令安装模块 123456789101112131415#如果你的python没有安装chardet模块，你需要首先安装一下chardet判断编码的模块哦import chardetimport urllib#先获取网页内容data = urllib.urlopen(&apos;http">
+<meta name="twitter:description" content="豆瓣电影Top 250原理方法使用的模块chardet模块—判断编码 1Pip install chardet 使用上述命令安装模块 123456789101112131415#如果你的python没有安装chardet模块，你需要首先安装一下chardet判断编码的模块哦import chardetimport urllib#先获取网页内容data = urllib.urlopen(&apos;http:">
     
         <link rel="alternate" type="application/atom+xml" title="Albert&#39;s Blog" href="/atom.xml">
     
@@ -200,7 +200,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="豆瓣电影Top-250"><a href="#豆瓣电影Top-250" class="headerlink" title="豆瓣电影Top 250"></a>豆瓣电影Top 250</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h3 id="使用的模块"><a href="#使用的模块" class="headerlink" title="使用的模块"></a>使用的模块</h3><p><strong>chardet模块—-判断编码</strong></p>
+            <h2 id="豆瓣电影Top-250"><a href="#豆瓣电影Top-250" class="headerlink" title="豆瓣电影Top 250"></a>豆瓣电影Top 250</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h3 id="使用的模块"><a href="#使用的模块" class="headerlink" title="使用的模块"></a>使用的模块</h3><p><strong>chardet模块—判断编码</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Pip install chardet</span><br></pre></td></tr></table></figure>
 <p>使用上述命令安装模块</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#如果你的python没有安装chardet模块，你需要首先安装一下chardet判断编码的模块哦</span></span><br><span class="line"><span class="keyword">import</span> chardet</span><br><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"><span class="comment">#先获取网页内容</span></span><br><span class="line">data = urllib.urlopen(<span class="string">'http://www.pythontab.com'</span>).read()</span><br><span class="line"><span class="comment">#用chardet进行内容分析</span></span><br><span class="line">chardit = chardet.detect(data)</span><br><span class="line">  </span><br><span class="line">data1 = urllib.urlopen(<span class="string">'http://www.baidu.com'</span>).read()</span><br><span class="line">  </span><br><span class="line">chardit1 = chardet.detect(data1)</span><br><span class="line">  </span><br><span class="line"><span class="keyword">print</span> chardit[<span class="string">'encoding'</span>] <span class="comment"># pythontab</span></span><br><span class="line">  </span><br><span class="line"><span class="keyword">print</span> chardit1[<span class="string">'encoding'</span>] <span class="comment"># baidu</span></span><br></pre></td></tr></table></figure>
@@ -213,7 +213,6 @@
 <p>find_all()方法返回文档中符合条件的所有tags，尽管有时候我们只想得到一个结果。比如文章中只有一个<body>标签，那么使用find_all()方法来查找<body>标签不太合适了使用find_all()方法设置limit=1参数不如直接使用find()方法</body></body></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; soup.find_all(<span class="string">'title'</span>, limit=<span class="number">1</span>)</span><br><span class="line">&gt; <span class="comment"># [&lt;title&gt;The Story&lt;/title&gt;]</span></span><br><span class="line">&gt; soup.find(<span class="string">'title'</span>)</span><br><span class="line">&gt; <span class="comment"># [&lt;title&gt;The Story&lt;/title&gt;]</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
-<p>&gt;</p>
 <blockquote>
 <p><strong>唯一的区别是find_all()方法返回的结果是只包含一个元素的列表，而find()方法直接返回结果；find_all()方法没有找到指定元素时返回空列表，而find()方法找不到目标时返回None</strong></p>
 </blockquote>
@@ -240,7 +239,7 @@
 <p>通过正则表达式查找：</p>
 <p>想找出第一个邮箱地址，但是第一个邮箱地址没有标签包含，所以通过其他方式很难找到。但是可以将邮箱地址进行正则表达式处理。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">email_id_example = <span class="string">"""&lt;br/&gt;</span></span><br><span class="line"><span class="string">&lt;div&gt;The below HTML has the information that has email ids.&lt;/div&gt; </span></span><br><span class="line"><span class="string">abc@example.com </span></span><br><span class="line"><span class="string">&lt;div&gt;xyz@example.com&lt;/div&gt; </span></span><br><span class="line"><span class="string">&lt;span&gt;foo@example.com&lt;/span&gt; </span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line">soup = BeautifulSoup(email_id_example)</span><br><span class="line">emailid_regexp = re.compile(<span class="string">"\w+@\w+\.\w+"</span>)　　　　<span class="comment"># regexp 表达式对象</span></span><br><span class="line">first_email_id = soup.find(text=emailid_regexp)　　</span><br><span class="line">print(first_email_id)</span><br></pre></td></tr></table></figure>
-<p>输出结果：abc@example.com</p>
+<p>输出结果：<a href="mailto:abc@example.com" target="_blank" rel="noopener">abc@example.com</a></p>
 <p>通过标签属性进行查找：</p>
 <p>上面html代码，其中第一个消费者在ul标签里面且id属性为priaryconsumer（priary consumer一次消费者，初级消费者）。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'ecologicalpyramid.html'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> ecological_pyramid:</span><br><span class="line">    soup = BeautifulSoup(eccological_pyramid, <span class="string">'html'</span>)</span><br><span class="line">primary_consumer = soup.find(id=<span class="string">'primaryconsumers'</span>)</span><br><span class="line">print(primary_consumer.li.div.string)</span><br></pre></td></tr></table></figure>
@@ -269,10 +268,10 @@
 <p><strong>limit</strong>参数可以限制得到的结果的数目。</p>
 <p>参照前面的邮件地址例子，得到所有邮件地址：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">email_ids = soup.find_all(text=emailid_regexp)</span><br><span class="line">print(email_ids)</span><br></pre></td></tr></table></figure>
-<p>输出结果：[u’abc@example.com’,u’xyz@example.com’,u’foo@example.com’]</p>
+<p>输出结果：[<a href="mailto:u&#39;abc@example.com" target="_blank" rel="noopener">u&#39;abc@example.com</a>‘,<a href="mailto:u&#39;xyz@example.com" target="_blank" rel="noopener">u&#39;xyz@example.com</a>‘,<a href="mailto:u&#39;foo@example.com" target="_blank" rel="noopener">u&#39;foo@example.com</a>‘]</p>
 <p>使用limit参数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">email_ids_limited = soup.find_all(text=emailid_regexp, limit = <span class="number">2</span>)</span><br><span class="line">print(email_ids_limited)</span><br></pre></td></tr></table></figure>
-<p>限制得到两个结果，所以输出结果：[u’abc@example.com’,u’xyz@example.com’]</p>
+<p>限制得到两个结果，所以输出结果：[<a href="mailto:u&#39;abc@example.com" target="_blank" rel="noopener">u&#39;abc@example.com</a>‘,<a href="mailto:u&#39;xyz@example.com" target="_blank" rel="noopener">u&#39;xyz@example.com</a>‘]</p>
 <p>可以向find函数传递True或False参数，如果传递True给find_all()，则返回soup对象的所有标签。对于find()来说，则返回soup对象的第一个标签。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">all_texts = soup.find_all(text=<span class="literal">True</span>)</span><br><span class="line">print(all_texts)</span><br></pre></td></tr></table></figure>
 <p>同样，可以在传递text参数时传递一个字符串列表，那么find_all()会找到挨个在列表中定义过的字符串。</p>
@@ -519,7 +518,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>Albert &copy; 2019 - 2024</span>
+        <p><span>Albert &copy; 2019 - 2025</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

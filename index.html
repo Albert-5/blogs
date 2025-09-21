@@ -312,14 +312,14 @@ Markdown...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        领扣—引领新时尚
+        领扣–引领新时尚
 1. 两数之和问题给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
 你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
 示例:
 
 给定 nums = [2, 7, 11, 15], target = 9因为 nums[0] + nums[1] = 2 + 7 = 9所以返回 [0, 1]
 
-解法1—暴力解法
+解法1–暴力解法
 思路：
 
 给定一个数组和一个特定的目标值，对每一个数进行遍历，然后利用两层循环遍历的值进行if条件判断，如果相等，则返回下标；否则返回None.
@@ -335,6 +335,71 @@ Markdown...
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
+
+    </div>
+    
+</article>
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-XubuntuDock微信突变显示解决问题"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2025-09-21 21:16:45" datetime="2025-09-21T13:16:45.000Z"  itemprop="datePublished">2025-09-21</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Xubuntu/">Xubuntu</a></li></ul>
+
+
+
+        <!-- 添加的置顶 -->
+        
+            <span><icon class="icon icon-thumb-tack icon-pr"></icon><font color="ff4081">置顶</font></span>
+        
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/b98c6073/">XubuntuDock微信突变显示解决问题</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Xubuntu 微信 Dock 图标显示问题解决方案❌ 问题描述
+在 Xubuntu (aarch64) 安装 WeChat ARM 版本后：
+应用程序菜单里能看到微信图标
+Dock 上显示的是 齿轮图标，而不是微信图标
+
+
+
+原因：
+
+Dock（Plank / XFCE Panel）通过窗口的 WM_CLASS 匹配 .desktop 文件来显示图标
+微信窗口的 WM_CLASS 是 wechat.exe
+.desktop 文件缺少 StartupWMClass 配置，Dock 无法正确关联 → 显示齿轮
+
+
+✅ 解决方法1. 检查微信的 .desktop 文件系统级：
+1ls /us...
+    
+
+        <a href="/b98c6073/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RaspberryPi/">RaspberryPi</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xubuntu/">Xubuntu</a></li></ul>
 
     </div>
     
@@ -613,12 +678,13 @@ github上新建一个仓库，这...
     
         
 最近学习了计算机视觉的课程，准备用opencv来实现相机标定，但在import cv2时出现了一些问题，看了许多博客都没感觉有啥用。
+
 问题一：vscode中import cv2出现错误在进行调用库文件import cv2时出现提示：ImportError: No module named cv2这种情况是属于没有下载opencv文件或者是安装位置不对导致的，所以去网站下了相关文件，具体链接如下：opencv点击下载
                 
                     
                     
                 
-          ...
+         ...
     
 
         <a href="/3ffaec4c/" class="post-more waves-effect waves-button">
@@ -698,67 +764,6 @@ github上新建一个仓库，这...
 </article>
         </li>
     
-        <li class="post-list-item fade">
-            <article id="post-Aqara智能开关H1-Pro初体验"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2023-06-21 20:18:02" datetime="2023-06-21T12:18:02.000Z"  itemprop="datePublished">2023-06-21</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/智能家居/">智能家居</a></li></ul>
-
-
-
-        <!-- 添加的置顶 -->
-        
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/4510e8da/">Aqara智能开关H1_Pro初体验</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        
-很荣幸能够成为Aqara H1 Pro体验官，这也是我第一次玩直接支持homekit的智能家居产品，到手之后也立马进行了相关体验。
-
-产品外观智能开关面板颜色-星空灰，一种很高级的感觉，白色墙面+灰色面板也是很不错的选择，但出租屋里的脏兮兮的墙显得格格不入了，而且只有这一个开关是灰色的，不太合适了。
-
-                
-                    
-                    
-                
-                网关+开关+温湿度传感器
-            
-
-                
-        ...
-    
-
-        <a href="/4510e8da/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Aqara/">Aqara</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/智能家居/">智能家居</a></li></ul>
-
-    </div>
-    
-</article>
-        </li>
-    
     </ul>
 
     
@@ -792,7 +797,7 @@ github上新建一个仓库，这...
         </p>
     </div>
     <div class="bottom">
-        <p><span>Albert &copy; 2019 - 2024</span>
+        <p><span>Albert &copy; 2019 - 2025</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
