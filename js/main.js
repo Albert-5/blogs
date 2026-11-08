@@ -251,24 +251,59 @@
                 })
             }
         },
-        waterfall: function () {
+        // waterfall: function () {
 
+        //     if (w.innerWidth < 760) return;
+
+        //     forEach.call($$('.waterfall'), function (el) {
+        //         var childs = el.querySelectorAll('.waterfall-item');
+        //         var columns = [0, 0];
+
+        //         forEach.call(childs, function (item) {
+        //             var i = columns[0] <= columns[1] ? 0 : 1;
+        //             item.style.cssText = 'top:' + columns[i] + 'px;left:' + (i > 0 ? '50%' : 0);
+        //             columns[i] += item.offsetHeight;
+        //         })
+
+        //         el.style.height = Math.max(columns[0], columns[1]) + 'px';
+        //         el.classList.add('in')
+        //     })
+
+        // },
+        waterfall: function () {
+            forEach.call($$('.waterfall'), function (el) {
+            var childs = el.querySelectorAll('.waterfall-item');
+
+            // 先恢复默认布局
+            el.classList.remove('masonry');
+            el.style.height = '';
+
+            forEach.call(childs, function (item) {
+                item.style.cssText = '';
+            });
+
+            // 手机端直接使用普通流式布局
             if (w.innerWidth < 760) return;
 
-            forEach.call($$('.waterfall'), function (el) {
-                var childs = el.querySelectorAll('.waterfall-item');
-                var columns = [0, 0];
+            // 电脑端启用瀑布流
+            el.classList.add('masonry');
 
-                forEach.call(childs, function (item) {
-                    var i = columns[0] <= columns[1] ? 0 : 1;
-                    item.style.cssText = 'top:' + columns[i] + 'px;left:' + (i > 0 ? '50%' : 0);
-                    columns[i] += item.offsetHeight;
-                })
+            var columns = [0, 0];
 
-                el.style.height = Math.max(columns[0], columns[1]) + 'px';
-                el.classList.add('in')
-            })
+            forEach.call(childs, function (item) {
+                var i = columns[0] <= columns[1] ? 0 : 1;
 
+                item.style.top = columns[i] + 'px';
+                item.style.left = i > 0 ? '50%' : '0';
+
+                columns[i] += item.offsetHeight;
+            });
+
+            el.style.height = Math.max(
+                columns[0],
+                columns[1]
+            ) + 'px';
+            });
         },
         tabBar: function (el) {
             el.parentNode.parentNode.classList.toggle('expand')
