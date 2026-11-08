@@ -96,13 +96,23 @@
         }) || regtest(post.text, regExp);
     }
 
+    function escapeRegExp(value) {
+        return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
     function search(e) {
         var key = this.value.trim();
         if (!key) {
             return;
         }
 
-        var regExp = new RegExp(key.replace(/[ ]/g, '|'), 'gmi');
+        // Keep the existing OR-search behavior, but treat user input literally.
+        var terms = key.split(/\s+/).filter(Boolean);
+        if (!terms.length) {
+            return;
+        }
+
+        var regExp = new RegExp(terms.map(escapeRegExp).join('|'), 'i');
 
         loadData(function (data) {
 
